@@ -1,0 +1,9 @@
+=request.message
+.span-18
+  %h2 Content Items
+  %hr
+  %ul
+    -@content_items.each do |item|
+      %li=link_to item.name, url(:content_item, item)
+.span-3.last
+  =link_to "+ New Content Item", url(:new_content_item), :class => "button"

@@ -1,0 +1,27 @@
+=request.message
+.span-21
+  %table#tableAssets.tablesorter
+    %caption Asset
+    %thead
+      %tr
+        %th Type
+        %th Identifier
+        %th In Use
+        %th Location
+        %th Last Check In
+    %tbody
+      -@assets.each do |asset|
+        %tr
+          %td.type=asset.type
+          %td.identifier=link_to asset.identifier, url(:asset, asset)
+          %td.in_use=asset.inuse? ?  "Yes" : "No"
+          %td.location=asset.venue.name
+          -if asset.type == Display and not asset.last_checkin_at.nil?
+            %td.last_check_in=asset.last_checkin_at.strftime('%D')
+          -else
+            %td.last_check_in
+    %tfoot
+      %tr{ :style => "display: none;"}
+        %td{ :colspan => 4} No rows match the filter...
+.span-3.last
+  =link_to "+ New", url(:new_asset), :class => "new_button"

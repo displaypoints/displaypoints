@@ -1,0 +1,31 @@
+=request.message
+.span-21
+  %table#tableContracts.tablesorter
+    %caption Contracts
+    %thead
+      %tr
+        %th Campaign
+        %th Corporation
+        %th User
+        %th Start Date
+        %th End Date
+        %th State
+        %th Action
+    %tbody    
+      -@contracts.each do |contract|
+        %tr
+          %td.name=link_to contract.campaign.name, url(:campaign, contract.campaign)
+          %td.name=link_to contract.campaign.exec.corporation.name, url(:corporation, contract.campaign.exec.corporation)
+          %td.name=link_to contract.campaign.exec.name, url(:user,contract.campaign.exec)
+          %td.name=contract.start_at.strftime('%D')
+          %td.name=contract.end_at.strftime('%D')
+          -if contract.state == :approved
+            %td.name="Approved"
+            %td.name="<form method='POST' action='#{url(:unapprove_contract, :id => contract.id)}'><input type='Submit' value='Unapprove' /></form>"
+          -else
+            %td.name="Pending Approval"
+            %td.name="<form method='POST' action='#{url(:approve_contract, :id => contract.id)}'><input type='Submit' value='Approve' /></form>"
+    %tfoot
+      %tr{ :style => "display: none;"}
+        %td{ :colspan => 6} No rows match the filter...
+.span-3.last

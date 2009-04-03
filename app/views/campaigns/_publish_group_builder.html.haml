@@ -1,0 +1,11 @@
+#publish
+  =link_to "+ New Area","#", :class => "button hiddenSection"
+  .section
+    =form_for PublishGroup.new, :action => url(:new_publish_group), :class => "publishGroup" do
+      %h3 Build a New Area
+      %div=text_field :name, :label => "Name"
+      %hr
+      / %p.todo TODO: This section should only appear when when a user clicks a button that says "Create a new area"
+      =partial "publish_groups/publish_group_builder"
+      =submit "Add"
+      =link_to "Cancel","#", :class => "cancel"

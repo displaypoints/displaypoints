@@ -1,0 +1,18 @@
+=error_messages_for @content_item
+=form_for :content_item, :action => url(:new_content_item) do
+  %fieldset
+    %legend New Content Item
+    %div=text_field :name, :label => "Name"
+    %div
+      =select :resolution, :label => "Resolution", :collection => Resolution.all.map {|r| [r.id, r.humanize]}
+      (width x height)
+    %div=text_field :tags, :label => "Tags", :value => @content_item.tags.map {|t| t.name} * ', '
+    %hr
+    %fieldset
+      %legend Unused Pages
+      %p Hint: If you want to do A/B testing, just add 2 pages to test with. If you want to test several pages at the same time, add several pages. We take care of the details.
+      %p=link_to "Add Page", url(:new_root_page)
+      %ul.pages
+        -Page.users_unassociated_pages(session.user).each do |page|
+          %li=check_box :name => 'content_item[pages][]', :value => page.id, :label => image_tag(page.thumb.path)
+    %div=submit "Create"

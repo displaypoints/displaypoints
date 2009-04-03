@@ -1,0 +1,6 @@
+%li.activity
+  %h3
+    Contract Approved For
+    =link_to activity.contract.campaign.name, url(:campaign, activity.contract.campaign)
+    Campaign
+  .deets=link_to "Contract Details &raquo;", url(:contract, activity.contract)

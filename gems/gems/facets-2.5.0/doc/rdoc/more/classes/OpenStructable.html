@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Module: OpenStructable</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "+"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "-"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Module</span><br />OpenStructable</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/more/facets/ostructable_rb.html">lib/more/facets/ostructable.rb</a>
+        </td>
+      </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><p>
+OpensStructable is a mixin module which can provide OpenStruct behavior to
+any class or object. <a href="OpenStructable.html">OpenStructable</a>
+allows extention of data objects with arbitrary attributes.
+</p>
+<h2>Usage</h2>
+<pre>
+  require 'mega/ostructable'
+
+  class Record
+    include OpenStructable
+  end
+
+  record = Record.new
+  record.name    = &quot;John Smith&quot;
+  record.age     = 70
+  record.pension = 300
+
+  puts record.name     # -&gt; &quot;John Smith&quot;
+  puts record.address  # -&gt; nil
+</pre>
+<h2>Author(s)</h2>
+<ul>
+<li>Thomas Sawyer
+
+</li>
+<li>Yukihiro Matsumoto
+
+</li>
+<li>Gavin Sinclair (Documentation)
+
+</li>
+</ul>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <span style="padding-right: 5px;"><a href="#M000961">==</a></span>
+  <span style="padding-right: 5px;"><a href="#M000959">delete_field</a></span>
+  <span style="padding-right: 5px;"><a href="#M000954">initialize_copy</a></span>
+  <span style="padding-right: 5px;"><a href="#M000960">inspect</a></span>
+  <span style="padding-right: 5px;"><a href="#M000955">marshal_dump</a></span>
+  <span style="padding-right: 5px;"><a href="#M000956">marshal_load</a></span>
+  <span style="padding-right: 5px;"><a href="#M000953">new</a></span>
+  <span style="padding-right: 5px;"><a href="#M000957">new_ostruct_member</a></span>
+  <span style="padding-right: 5px;"><a href="#M000958">update</a></span>
+
+
+
+
+
+
+<div class="sectiontitle">Public Class methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000953"></a><b>new</b>(hash=nil)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000953_source')" id="l_M000953_source">+</a> ]</p>
+  <div id="M000953_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ostructable.rb, line 64</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">hash</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-ivar">@__table__</span> = {}
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hash</span>
+      <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">hash</span>
+        <span class="ruby-ivar">@__table__</span>[<span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_sym</span>] = <span class="ruby-identifier">v</span>
+        <span class="ruby-identifier">new_ostruct_member</span>(<span class="ruby-identifier">k</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000961"></a><b>==</b>(other)
+  </div>
+  <div class="description">
+  <p>
+Compare this object and <tt>other</tt> for equality.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000961_source')" id="l_M000961_source">+</a> ]</p>
+  <div id="M000961_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ostructable.rb, line 157</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">==</span>(<span class="ruby-identifier">other</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">unless</span>(<span class="ruby-identifier">other</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">OpenStruct</span>))
+    <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@__table__</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">table</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000959"></a><b>delete_field</b>(name)
+  </div>
+  <div class="description">
+  <p>
+Remove the named field from the object.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000959_source')" id="l_M000959_source">+</a> ]</p>
+  <div id="M000959_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ostructable.rb, line 135</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_field</span>(<span class="ruby-identifier">name</span>)
+    <span class="ruby-ivar">@__table__</span> <span class="ruby-operator">||=</span> {}
+    <span class="ruby-ivar">@__table__</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000954"></a><b>initialize_copy</b>(orig)
+  </div>
+  <div class="description">
+  <p>
+duplicate an OpenStruct object members.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000954_source')" id="l_M000954_source">+</a> ]</p>
+  <div id="M000954_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ostructable.rb, line 75</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize_copy</span>(<span class="ruby-identifier">orig</span>)
+    <span class="ruby-keyword kw">super</span>
+    <span class="ruby-ivar">@__table__</span> = <span class="ruby-ivar">@__table__</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000960"></a><b>inspect</b>()
+  </div>
+  <div class="description">
+  <p>
+Returns a string containing a detailed summary of the keys and values.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000960_source')" id="l_M000960_source">+</a> ]</p>
+  <div id="M000960_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ostructable.rb, line 143</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>
+    <span class="ruby-identifier">str</span> = <span class="ruby-node">&quot;&lt;#{self.class}&quot;</span>
+    <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span> <span class="ruby-keyword kw">in</span> (<span class="ruby-ivar">@__table__</span> <span class="ruby-operator">||=</span> {})
+      <span class="ruby-identifier">str</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; #{k}=#{v.inspect}&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">str</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;&gt;&quot;</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000955"></a><b>marshal_dump</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000955_source')" id="l_M000955_source">+</a> ]</p>
+  <div id="M000955_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ostructable.rb, line 80</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">marshal_dump</span>
+    <span class="ruby-ivar">@table</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000956"></a><b>marshal_load</b>(x)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000956_source')" id="l_M000956_source">+</a> ]</p>
+  <div id="M000956_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ostructable.rb, line 83</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">marshal_load</span>(<span class="ruby-identifier">x</span>)
+    <span class="ruby-ivar">@table</span> = <span class="ruby-identifier">x</span>
+    <span class="ruby-ivar">@table</span>.<span class="ruby-identifier">each_key</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">new_ostruct_member</span>(<span class="ruby-identifier">key</span>)}
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000957"></a><b>new_ostruct_member</b>(name)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000957_source')" id="l_M000957_source">+</a> ]</p>
+  <div id="M000957_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ostructable.rb, line 88</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new_ostruct_member</span>(<span class="ruby-identifier">name</span>)
+    <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">name</span>)
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">instance_eval</span> <span class="ruby-node">%{
+        def #{name}; @__table__[:#{name}]; end
+        def #{name}=(x); @__table__[:#{name}] = x; end
+      }</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000958"></a><b>update</b>(hash)
+  </div>
+  <div class="description">
+  <p>
+Generate additional attributes and values.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000958_source')" id="l_M000958_source">+</a> ]</p>
+  <div id="M000958_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ostructable.rb, line 100</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>(<span class="ruby-identifier">hash</span>)
+    <span class="ruby-ivar">@__table__</span> <span class="ruby-operator">||=</span> {}
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hash</span>
+      <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">hash</span>
+        <span class="ruby-ivar">@__table__</span>[<span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_sym</span>] = <span class="ruby-identifier">v</span>
+        <span class="ruby-identifier">new_ostruct_member</span>(<span class="ruby-identifier">k</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

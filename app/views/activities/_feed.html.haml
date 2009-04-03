@@ -1,0 +1,9 @@
+%ul.activities
+  -session.user.activities.each do |activity|
+    -case activity
+    -when Activity::NewCampaign
+      =partial 'activities/new_campaign', :activity => activity
+    -when Activity::ContractApproved
+      =partial 'activities/contract_approved', :activity => activity
+    -when Activity::NewPage
+      =partial 'activities/new_page', :activity => activity

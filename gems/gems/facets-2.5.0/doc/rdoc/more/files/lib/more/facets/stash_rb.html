@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>File: stash.rb</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "+"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "-"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table border='0' cellpadding='0' cellspacing='0' width="100%" class='banner'>
+  <tr><td>
+    <table width="100%" border='0' cellpadding='0' cellspacing='0'><tr>
+      <td class="file-title" colspan="2"><span class="file-title-prefix">File</span><br />stash.rb</td>
+      <td align="right">
+        <table border='0' cellspacing="0" cellpadding="2">
+          <tr>
+            <td>Path:</td>
+            <td>lib/more/facets/stash.rb
+            </td>
+          </tr>
+          <tr>
+            <td>Modified:</td>
+            <td>Wed Nov 26 16:22:09 -0500 2008</td>
+          </tr>
+        </table>
+      </td></tr>
+    </table>
+  </td></tr>
+</table><br />
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+
+  <div class="sectiontitle">Required Files</div>
+  <ul>
+  <li>facets/hash/rekey</li>
+  </ul>
+
+
+  <div class="sectiontitle">Methods</div>
+  <span style="padding-right: 5px;"><a href="#M000004">merge!</a></span>
+  <span style="padding-right: 5px;"><a href="#M000005">replace</a></span>
+  <span style="padding-right: 5px;"><a href="#M000003">update</a></span>
+  <span style="padding-right: 5px;"><a href="#M000006">values_at</a></span>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000004"></a><b>merge!</b>(other)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000004_source')" id="l_M000004_source">+</a> ]</p>
+  <div id="M000004_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/stash.rb, line 53</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">other</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">other</span>.<span class="ruby-identifier">rekey</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">:to_s</span>))
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000005"></a><b>replace</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000005_source')" id="l_M000005_source">+</a> ]</p>
+  <div id="M000005_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/stash.rb, line 57</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">replace</span>
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">other</span>.<span class="ruby-identifier">rekey</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">:to_s</span>))
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000003"></a><b>update</b>(other)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000003_source')" id="l_M000003_source">+</a> ]</p>
+  <div id="M000003_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/stash.rb, line 49</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>(<span class="ruby-identifier">other</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">other</span>.<span class="ruby-identifier">rekey</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">:to_s</span>))
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000006"></a><b>values_at</b>(*keys)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000006_source')" id="l_M000006_source">+</a> ]</p>
+  <div id="M000006_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/stash.rb, line 61</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">values_at</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">keys</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span><span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_s</span>})
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

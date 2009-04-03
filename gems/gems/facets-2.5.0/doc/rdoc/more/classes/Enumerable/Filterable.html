@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Module: Enumerable::Filterable</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "+"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "-"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Module</span><br />Enumerable::Filterable</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../../files/lib/more/facets/filter_rb.html">lib/more/facets/filter.rb</a>
+        </td>
+      </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><h1><a href="Filterable.html">Filterable</a></h1>
+<p>
+Classes which include <a href="Filterable.html">Enumerable::Filterable</a>
+will get versions of <a href="Filterable.html#M000983">map</a>, <a
+href="Filterable.html#M000985">select</a> etc. which return a Filter, so
+that they work horizontally without creating intermediate arrays.
+</p>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <span style="padding-right: 5px;"><a href="#M000984">collect</a></span>
+  <span style="padding-right: 5px;"><a href="#M000986">find_all</a></span>
+  <span style="padding-right: 5px;"><a href="#M000983">map</a></span>
+  <span style="padding-right: 5px;"><a href="#M000987">reject</a></span>
+  <span style="padding-right: 5px;"><a href="#M000985">select</a></span>
+  <span style="padding-right: 5px;"><a href="#M000989">skip</a></span>
+  <span style="padding-right: 5px;"><a href="#M000988">take</a></span>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000984"></a><b>collect</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="Filterable.html#M000983">map</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000986"></a><b>find_all</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="Filterable.html#M000985">select</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000983"></a><b>map</b>() {|*input| ...}
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="Filterable.html#M000984">collect</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000983_source')" id="l_M000983_source">+</a> ]</p>
+  <div id="M000983_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filter.rb, line 53</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">map</span>
+      <span class="ruby-constant">Enumerator</span><span class="ruby-operator">::</span><span class="ruby-constant">Filter</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">output</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">input</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">output</span>.<span class="ruby-identifier">yield</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">input</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000987"></a><b>reject</b>() {|*input| ...}
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000987_source')" id="l_M000987_source">+</a> ]</p>
+  <div id="M000987_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filter.rb, line 71</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reject</span>
+      <span class="ruby-constant">Enumerator</span><span class="ruby-operator">::</span><span class="ruby-constant">Filter</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">output</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">input</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">output</span>.<span class="ruby-identifier">yield</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">input</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">input</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000985"></a><b>select</b>() {|*input| ...}
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="Filterable.html#M000986">find_all</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000985_source')" id="l_M000985_source">+</a> ]</p>
+  <div id="M000985_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filter.rb, line 62</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">select</span>
+      <span class="ruby-constant">Enumerator</span><span class="ruby-operator">::</span><span class="ruby-constant">Filter</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">output</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">input</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">output</span>.<span class="ruby-identifier">yield</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">input</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">input</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000989"></a><b>skip</b>(n)
+  </div>
+  <div class="description">
+  <p>
+Skip the first n items in the list
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000989_source')" id="l_M000989_source">+</a> ]</p>
+  <div id="M000989_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filter.rb, line 94</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">skip</span>(<span class="ruby-identifier">n</span>)
+      <span class="ruby-constant">Enumerator</span><span class="ruby-operator">::</span><span class="ruby-constant">Filter</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">output</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">count</span> = <span class="ruby-value">0</span>
+        <span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">input</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">output</span>.<span class="ruby-identifier">yield</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">input</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">count</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">n</span>
+          <span class="ruby-identifier">count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000988"></a><b>take</b>(n)
+  </div>
+  <div class="description">
+  <p>
+Limit to the first n items in the list
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000988_source')" id="l_M000988_source">+</a> ]</p>
+  <div id="M000988_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/filter.rb, line 81</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">take</span>(<span class="ruby-identifier">n</span>)
+      <span class="ruby-constant">Enumerator</span><span class="ruby-operator">::</span><span class="ruby-constant">Filter</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">output</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">count</span> = <span class="ruby-value">0</span>
+        <span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">input</span><span class="ruby-operator">|</span>
+          <span class="ruby-keyword kw">break</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">count</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">n</span>
+          <span class="ruby-identifier">output</span>.<span class="ruby-identifier">yield</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">input</span>)
+          <span class="ruby-identifier">count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

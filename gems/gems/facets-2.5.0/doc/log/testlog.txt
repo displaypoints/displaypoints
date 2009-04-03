@@ -1,0 +1,278 @@
+= Solo Test @ Wed Sep 24 12:27:29 -0400 2008
+
+TEST FILE                                         TESTS    ASSERTIONS  FAILURES    ERRORS   
+test/test_facets.rb                                 1          1          0          0        [[32mPASS[0m]
+test/lore/test_basicobject.rb                       3          4          0          0        [[32mPASS[0m]
+test/lore/test_continuation.rb                      1          1          0          0        [[32mPASS[0m]
+test/lore/test_ostruct.rb                          17         48          0          0        [[32mPASS[0m]
+test/lore/test_date.rb                             10         12          0          0        [[32mPASS[0m]
+test/core/integer/test_of.rb                        2          2          0          0        [[32mPASS[0m]
+test/core/integer/test_factorial.rb                 1          5          0          0        [[32mPASS[0m]
+test/core/integer/test_even.rb                      2          0          0          2        [[31mFAIL[0m]
+test/core/integer/test_ordinal.rb                   1          4          0          0        [[32mPASS[0m]
+test/core/integer/test_bitmask.rb                   6         21          0          0        [[32mPASS[0m]
+test/core/integer/test_multiple.rb                  1          4          0          0        [[32mPASS[0m]
+test/core/symbol/test_generate.rb                   2          4          0          0        [[32mPASS[0m]
+test/core/symbol/test_chomp.rb                      2          2          0          0        [[32mPASS[0m]
+test/core/symbol/test_not.rb                        1          2          0          0        [[32mPASS[0m]
+test/core/symbol/test_succ.rb                       1          3          0          0        [[32mPASS[0m]
+test/core/symbol/test_to_proc.rb                    3          7          0          0        [[32mPASS[0m]
+test/core/nilclass/test_to_f.rb                     1          1          0          0        [[32mPASS[0m]
+test/core/numeric/test_distance.rb                  1          3          0          0        [[32mPASS[0m]
+test/core/numeric/test_round.rb                     4          8          0          0        [[32mPASS[0m]
+test/core/numeric/test_approx.rb                    1          3          0          0        [[32mPASS[0m]
+test/core/binding/test_defined.rb                   1          1          0          0        [[32mPASS[0m]
+test/core/binding/test_self.rb                      1          1          0          0        [[32mPASS[0m]
+test/core/binding/test_eval.rb                      1          1          0          0        [[32mPASS[0m]
+test/core/binding/test_caller.rb                    7          7          0          0        [[32mPASS[0m]
+test/core/binding/test_local_variables.rb           1          1          0          0        [[32mPASS[0m]
+test/core/binding/test_opvars.rb                    2          3          0          0        [[32mPASS[0m]
+test/core/proc/test_bind.rb                         1        100          0          0        [[32mPASS[0m]
+test/core/proc/test_to_method.rb                    2          6          0          0        [[32mPASS[0m]
+test/core/proc/test_curry.rb                        2          3          0          0        [[32mPASS[0m]
+test/core/proc/test_compose.rb                      2          4          0          0        [[32mPASS[0m]
+test/core/range/test_overlap.rb                     2          2          0          0        [[32mPASS[0m]
+test/core/range/test_combine.rb                     2          2          0          0        [[32mPASS[0m]
+test/core/range/test_to_r.rb                        2          2          0          0        [[32mPASS[0m]
+test/core/range/test_within.rb                      5         15          0          0        [[32mPASS[0m]
+test/core/file/test_file.rb                         9          9          0          0        [[32mPASS[0m]
+test/core/hash/test_collate.rb                      2         12          0          0        [[32mPASS[0m]
+test/core/hash/test_keys.rb                         3          5          0          0        [[32mPASS[0m]
+test/core/hash/test_inverse.rb                      1          3          0          0        [[32mPASS[0m]
+test/core/hash/test_stringify_keys.rb               2          4          0          0        [[32mPASS[0m]
+test/core/hash/test_delete.rb                       3          3          0          0        [[32mPASS[0m]
+test/core/hash/test_slice.rb                        2          3          0          0        [[32mPASS[0m]
+test/core/hash/test_symbolize_keys.rb               2          4          0          0        [[32mPASS[0m]
+test/core/hash/test_weave.rb                        1          1          0          0        [[32mPASS[0m]
+test/core/hash/test_alias.rb                        1          3          0          0        [[32mPASS[0m]
+test/core/hash/test_update.rb                       6          6          0          0        [[32mPASS[0m]
+test/core/hash/test_swap.rb                         1          1          0          0        [[32mPASS[0m]
+test/core/hash/test_at.rb                           1          2          0          0        [[32mPASS[0m]
+test/core/hash/test_op.rb                           5          5          0          0        [[32mPASS[0m]
+test/core/hash/test_select.rb                       1         12          0          0        [[32mPASS[0m]
+test/core/hash/test_autonew.rb                      1          0          0          0        [[32mPASS[0m]
+test/core/hash/test_insert.rb                       1          2          0          0        [[32mPASS[0m]
+test/core/hash/test_traverse.rb                     2          3          0          0        [[32mPASS[0m]
+test/core/hash/test_zipnew.rb                       1          1          0          0        [[32mPASS[0m]
+test/core/hash/test_mash.rb                         2          2          0          0        [[32mPASS[0m]
+test/core/hash/test_merge.rb                        1          1          0          0        [[32mPASS[0m]
+test/core/hash/test_rekey.rb                        9         24          0          0        [[32mPASS[0m]
+test/core/kernel/test_val.rb                        3          6          0          0        [[32mPASS[0m]
+test/core/kernel/test_not_nil.rb                    1          4          0          0        [[32mPASS[0m]
+test/core/kernel/test_resc.rb                       1          2          0          0        [[32mPASS[0m]
+test/core/kernel/test_attr_singleton.rb             3          8          0          0        [[32mPASS[0m]
+test/core/kernel/test_constant.rb                   1          4          0          0        [[32mPASS[0m]
+test/core/kernel/test_populate.rb                   3          9          0          0        [[32mPASS[0m]
+test/core/kernel/test_callstack.rb                  1          1          0          0        [[32mPASS[0m]
+test/core/kernel/test_instance_class.rb             1          1          0          0        [[32mPASS[0m]
+test/core/kernel/test_silence.rb                    1          1          0          0        [[32mPASS[0m]
+test/core/kernel/test_object_hexid.rb               1          1          0          0        [[32mPASS[0m]
+test/core/kernel/test_in.rb                         1          2          0          0        [[32mPASS[0m]
+test/core/kernel/test_instance_assign.rb            1          3          0          0        [[32mPASS[0m]
+test/core/kernel/test_object_class.rb               2          2          0          0        [[32mPASS[0m]
+test/core/kernel/test_tap.rb                        2          2          0          0        [[32mPASS[0m]
+test/core/kernel/test_returning.rb                  1          1          0          0        [[32mPASS[0m]
+test/core/kernel/test_here.rb                       1          1          0          0        [[32mPASS[0m]
+test/core/kernel/test_deepcopy.rb                   1          1          0          0        [[32mPASS[0m]
+test/core/kernel/test_as.rb                         4          5          0          0        [[32mPASS[0m]
+test/core/comparable/test_cmp.rb                    3         11          0          0        [[32mPASS[0m]
+test/core/comparable/test_comparable.rb             1          5          0          0        [[32mPASS[0m]
+test/core/comparable/test_bound.rb                  4         22          0          0        [[32mPASS[0m]
+test/core/enumerable/test_uniq_by.rb                1          1          0          0        [[32mPASS[0m]
+test/core/enumerable/test_none.rb                   1          4          0          0        [[32mPASS[0m]
+test/core/enumerable/test_frequency.rb              1          2          0          0        [[32mPASS[0m]
+test/core/enumerable/test_occur.rb                  1          4          0          0        [[32mPASS[0m]
+test/core/enumerable/test_inject.rb                 2          2          0          0        [[32mPASS[0m]
+test/core/enumerable/test_entropy.rb                2          3          0          0        [[32mPASS[0m]
+test/core/enumerable/test_modulate.rb               1          1          0          0        [[32mPASS[0m]
+test/core/enumerable/test_probability.rb            1          2          0          0        [[32mPASS[0m]
+test/core/enumerable/test_cluster_by.rb             2          3          0          0        [[32mPASS[0m]
+test/core/enumerable/test_group_by.rb               4          4          0          0        [[32mPASS[0m]
+test/core/enumerable/test_commonality.rb            1          2          0          0        [[32mPASS[0m]
+test/core/enumerable/test_count.rb                  3          4          0          0        [[32mPASS[0m]
+test/core/enumerable/test_each_by.rb                7          7          0          0        [[32mPASS[0m]
+test/core/enumerable/test_collect.rb                2          2          0          0        [[32mPASS[0m]
+test/core/enumerable/test_one.rb                    1          5          0          0        [[32mPASS[0m]
+test/core/enumerable/test_mash.rb                   5          5          0          0        [[32mPASS[0m]
+test/core/string/test_subtract.rb                   1          3          0          0        [[32mPASS[0m]
+test/core/string/test_natcmp.rb                     1          5          0          0        [[32mPASS[0m]
+test/core/string/test_words.rb                      3          3          0          0        [[32mPASS[0m]
+test/core/string/test_bytes.rb                      1          1          0          0        [[32mPASS[0m]
+test/core/string/test_each_char.rb                  1          1          0          0        [[32mPASS[0m]
+test/core/string/test_camelcase.rb                  3          7          0          0        [[32mPASS[0m]
+test/core/string/test_nchar.rb                      1          4          0          0        [[32mPASS[0m]
+test/core/string/test_cleave.rb                     4          9          0          0        [[32mPASS[0m]
+test/core/string/test_capitalized.rb                3          3          0          0        [[32mPASS[0m]
+test/core/string/test_titlecase.rb                  1          1          0          0        [[32mPASS[0m]
+test/core/string/test_fold.rb                       2          2          0          0        [[32mPASS[0m]
+test/core/string/test_line_wrap.rb                  1          2          0          0        [[32mPASS[0m]
+test/core/string/test_to_re.rb                      3          9          0          0        [[32mPASS[0m]
+test/core/string/test_range.rb                      3          5          0          0        [[32mPASS[0m]
+test/core/string/test_chars.rb                      1          2          0          0        [[32mPASS[0m]
+test/core/string/test_align.rb                      3          3          0          0        [[32mPASS[0m]
+test/core/string/test_lines.rb                      1          1          0          0        [[32mPASS[0m]
+test/core/string/test_word_wrap.rb                  2         10          0          0        [[32mPASS[0m]
+test/core/string/test_xor.rb                        1          1          0          0        [[32mPASS[0m]
+test/core/string/test_divide.rb                     1          1          0          0        [[32mPASS[0m]
+test/core/string/test_snakecase.rb                  1          4          0          0        [[32mPASS[0m]
+test/core/string/test_shatter.rb                    1          1          0          0        [[32mPASS[0m]
+test/core/string/test_interpolate.rb                1          1          0          0        [[32mPASS[0m]
+test/core/string/test_tab.rb                       15        129          0          0        [[32mPASS[0m]
+test/core/string/test_mscan.rb                      1          4          0          0        [[32mPASS[0m]
+test/core/string/test_each_word.rb                  1          1          0          0        [[32mPASS[0m]
+test/core/string/test_bracket.rb                    7         22          0          0        [[32mPASS[0m]
+test/core/module/test_spacename.rb                  1          4          0          0        [[32mPASS[0m]
+test/core/module/test_basename.rb                   1          1          0          0        [[32mPASS[0m]
+test/core/module/test_nesting.rb                    1          1          0          0        [[32mPASS[0m]
+test/core/module/test_ancestor.rb                   1          1          0          0        [[32mPASS[0m]
+test/core/module/test_modspace.rb                   1          3          0          0        [[32mPASS[0m]
+test/core/module/test_alias.rb                      2          2          0          0        [[32mPASS[0m]
+test/core/module/test_op.rb                         3         11          0          0        [[32mPASS[0m]
+test/core/module/test_revise.rb                    12         16          0          0        [[32mPASS[0m]
+test/core/module/test_abstract.rb                   2          2          0          0        [[32mPASS[0m]
+test/core/module/test_pathize.rb                    1          1          0          0        [[32mPASS[0m]
+test/core/time/test_to_time.rb                      1          1          0          0        [[32mPASS[0m]
+test/core/time/test_hence.rb                        1          1          0          0        [[32mPASS[0m]
+test/core/time/test_trunc.rb                        4          4          0          0        [[32mPASS[0m]
+test/core/time/test_round.rb                        4          4          0          0        [[32mPASS[0m]
+test/core/time/test_stamp.rb                        2          2          0          0        [[32mPASS[0m]
+test/core/time/test_change.rb                       1          1          0          0        [[32mPASS[0m]
+test/core/time/test_elapse.rb                       1          1          0          0        [[32mPASS[0m]
+test/core/dir/test_descend.rb                       1          4          0          0        [[32mPASS[0m]
+test/core/dir/test_ascend.rb                        2          7          0          0        [[32mPASS[0m]
+test/core/dir/test_multiglob.rb                     2          2          0          0        [[32mPASS[0m]
+test/core/dir/test_parent.rb                        1          1          0          0        [[32mPASS[0m]
+test/core/dir/test_recurse.rb                       2          2          0          0        [[32mPASS[0m]
+test/core/filetest/test_filetest.rb                 1          1          0          0        [[32mPASS[0m]
+test/core/class/test_descendents.rb                 1          1          0          0        [[32mPASS[0m]
+test/core/array/test_combination.rb                 2          2          0          0        [[32mPASS[0m]
+test/core/array/test_product.rb                     4          4          0          0        [[32mPASS[0m]
+test/core/array/test_delete.rb                      3          7          0          0        [[32mPASS[0m]
+test/core/array/test_stackable.rb                   2          4          0          0        [[32mPASS[0m]
+test/core/array/test_select.rb                      1          1          0          0        [[32mPASS[0m]
+test/core/array/test_only.rb                        1          4          0          0        [[32mPASS[0m]
+test/core/array/test_indexable.rb                  14         28          0          0        [[32mPASS[0m]
+test/core/array/test_permutation.rb                 1          1          0          0        [[32mPASS[0m]
+test/core/array/test_pad.rb                         4          4          0          0        [[32mPASS[0m]
+test/core/array/test_merge.rb                       2          2          0          0        [[32mPASS[0m]
+test/core/array/test_rotate.rb                      2          4          0          0        [[32mPASS[0m]
+test/core/regexp/test_to_re.rb                      2          2          0          0        [[32mPASS[0m]
+test/core/regexp/test_arity.rb                      1          4          0          0        [[32mPASS[0m]
+test/core/matchdata/test_matchset.rb                3          3          0          0        [[32mPASS[0m]
+test/core/matchdata/test_match.rb                   1          1          0          0        [[32mPASS[0m]
+test/core/exception/test_exception.rb               1          1          0          0        [[32mPASS[0m]
+test/more/test_syncarray.rb                         1          1          0          0        [[32mPASS[0m]
+test/more/test_crypt.rb                             2          8          0          0        [[32mPASS[0m]
+test/more/test_metaid.rb                            4          2          0          2        [[31mFAIL[0m]
+test/more/test_bytes.rb                            12         18          0          0        [[32mPASS[0m]
+test/more/test_infinity.rb                          4         16          0          0        [[32mPASS[0m]
+test/more/test_1stclassmethod.rb                    2          3          0          0        [[32mPASS[0m]
+test/more/test_typecast.rb                          1          0          0          1        [[31mFAIL[0m]
+test/more/test_buildable.rb                         2          2          0          0        [[32mPASS[0m]
+test/more/test_instantise.rb                        2          2          0          0        [[32mPASS[0m]
+test/more/test_openobject.rb                       13         29          0          0        [[32mPASS[0m]
+test/more/test_equatable.rb                         1          3          0          0        [[32mPASS[0m]
+test/more/test_uri.rb                               4          4          0          0        [[32mPASS[0m]
+test/more/test_opencascade.rb                       7        108          0          1        [[31mFAIL[0m]
+test/more/test_multipliers.rb                      22         22          0          0        [[32mPASS[0m]
+test/more/test_autoarray.rb                         0          0          0          0        [[32mPASS[0m]
+test/more/test_random.rb                           21        261          0          0        [[32mPASS[0m]
+test/more/test_boolean.rb                           8         35          0          0        [[32mPASS[0m]
+test/more/test_prototype.rb                         2          4          0          0        [[32mPASS[0m]
+test/more/test_elementwise.rb                       2          8          0          0        [[32mPASS[0m]
+test/more/test_class_extension.rb                   5          9          0          0        [[32mPASS[0m]
+test/more/test_thread.rb                            3          3          0          0        [[32mPASS[0m]
+test/more/test_dependency.rb                        4          4          0          0        [[32mPASS[0m]
+test/more/test_times.rb                            13         13          0          0        [[32mPASS[0m]
+test/more/test_binreadable.rb                       4         13          0          0        [[32mPASS[0m]
+test/more/test_cloneable.rb                         2          6          0          0        [[32mPASS[0m]
+test/more/test_inheritor.rb                        20         23          0          0        [[32mPASS[0m]
+test/more/test_uninheritable.rb                     1          2          0          0        [[32mPASS[0m]
+test/more/test_timer.rb                             3          8          0          0        [[32mPASS[0m]
+test/more/test_annotations.rb                      16         22          0          0        [[32mPASS[0m]
+test/more/test_recorder.rb                          1          1          0          0        [[32mPASS[0m]
+test/more/test_tuple.rb                             6         11          0          0        [[32mPASS[0m]
+test/more/test_classmethods.rb                      5          9          0          0        [[32mPASS[0m]
+test/more/test_association.rb                       3          4          0          0        [[32mPASS[0m]
+test/more/test_blank.rb                             1          2          0          0        [[32mPASS[0m]
+test/more/test_command.rb                           3          3          0          0        [[32mPASS[0m]
+test/more/test_bbcode.rb                            2          2          0          0        [[32mPASS[0m]
+test/more/test_memoize.rb                           3          3          0          0        [[32mPASS[0m]
+test/more/test_interval.rb                         38         38          0          0        [[32mPASS[0m]
+test/more/test_getoptlong.rb                        1          2          0          0        [[32mPASS[0m]
+test/more/test_snapshot.rb                          1          3          0          0        [[32mPASS[0m]
+test/more/test_succ.rb                              3         16          0          0        [[32mPASS[0m]
+test/more/test_style.rb                             1          0          0          1        [[31mFAIL[0m]
+test/more/test_coroutine.rb                         1          1          0          0        [[32mPASS[0m]
+test/more/test_overload.rb                         13         15          0          0        [[32mPASS[0m]
+test/more/test_elementor.rb                         5          8          0          0        [[32mPASS[0m]
+test/more/test_to_hash.rb                           5          5          0          0        [[32mPASS[0m]
+test/more/test_enumerablepass.rb                    8          7          0          0        [[32mPASS[0m]
+test/more/test_ansicode.rb                          2          2          0          0        [[32mPASS[0m]
+test/more/test_dictionary.rb                       14         40          0          0        [[32mPASS[0m]
+test/more/test_lrucache.rb                          1          0          0          0        [[32mPASS[0m]
+test/more/test_xoxo.rb                             26         28          0          0        [[32mPASS[0m]
+test/more/test_instantiable.rb                      2          2          0          0        [[32mPASS[0m]
+test/more/test_functor.rb                           2          9          0          0        [[32mPASS[0m]
+test/more/test_linkedlist.rb                        1         20          0          0        [[32mPASS[0m]
+test/more/test_partial.rb                           3          3          0          0        [[32mPASS[0m]
+test/more/test_methodspace.rb                       6          6          0          0        [[32mPASS[0m]
+test/more/test_synchash.rb                          1          1          0          0        [[32mPASS[0m]
+test/more/test_arguments.rb                         6         10          0          0        [[32mPASS[0m]
+test/more/test_paramix.rb                          13         26          0          0        [[32mPASS[0m]
+test/more/test_multiton.rb                          6         16          0          0        [[32mPASS[0m]
+test/more/test_advisable.rb                         2          4          0          0        [[32mPASS[0m]
+test/more/test_cattr.rb                             4          8          0          0        [[32mPASS[0m]
+TOTAL                                             748       1847          0          7
+
+-- Failures and Errors --
+
+Loaded suite test/core/integer/test_even
+Started
+EE
+Finished in 0.000703 seconds.
+
+  1) Error:
+test_even?(TC_Integer):
+NoMethodError: undefined method `even?' for -100:Fixnum
+    test/core/integer/test_even.rb:8:in `test_even?'
+    test/core/integer/test_even.rb:7:in `step'
+    test/core/integer/test_even.rb:7:in `test_even?'
+
+  2) Error:
+test_odd?(TC_Integer):
+NoMethodError: undefined method `odd?' for -101:Fixnum
+    test/core/integer/test_even.rb:17:in `test_odd?'
+    test/core/integer/test_even.rb:16:in `step'
+    test/core/integer/test_even.rb:16:in `test_odd?'
+
+2 tests, 0 assertions, 0 failures, 2 errors
+Loaded suite test/more/test_metaid
+Started
+..EE
+Finished in 0.000881 seconds.
+
+  1) Error:
+test_singleton(TestMetaid):
+NoMethodError: undefined method `singleton' for #<Object:0x7f091f178bd8>
+    test/more/test_metaid.rb:18:in `test_singleton'
+
+  2) Error:
+test_singleton_class(TestMetaid):
+NoMethodError: undefined method `singleton_class' for #<Object:0x7f091f175ca8>
+    test/more/test_metaid.rb:36:in `test_singleton_class'
+
+4 tests, 2 assertions, 0 failures, 2 errors
+Loaded suite test/more/test_opencascade
+Started
+.E.....
+Finished in 0.011009 seconds.
+
+  1) Error:
+test_1_02(TestOpenCascade1):
+NoMethodError: undefined method `x' for {:x=>9}:Hash
+    test/more/test_opencascade.rb:16:in `test_1_02'
+
+7 tests, 108 assertions, 0 failures, 1 errors
+
+

@@ -1,0 +1,11 @@
+=error_messages_for @campaign
+%h2.guide Step 1 of 3 : Basic Info
+%hr
+=form_for :campaign, :action => url(:campaigns), :id => "campaignBuilder" do
+  %div
+    %label{ :for => "campaign_name"} Name
+    .hint What you want to call it
+    =text_field :name
+    %div=select :publish_group_id, :collection => session.user.publish_groups, :text_method => "name", :value_method => "id", :label => "Your Existing Areas", :multiple => true, :class => "comboselect"
+    .clear=submit "Next &raquo;"
+=partial :publish_group_builder 

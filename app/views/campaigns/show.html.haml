@@ -1,0 +1,40 @@
+=request.message
+%h2
+  =@campaign.name
+  /Unfortunately it looks like edit has been broken signifcantly. So I am commenting out the link to it  ~Aaron 3/6/2009
+  /=link_to "edit", url(:edit_campaign, @campaign)
+#analytics
+  .menu
+    .dateRange=text_field :name => "date_range", :id => "dateRange"
+    .data
+      =select :name => "data_type", :collection => [["user_rotation","User Rotation"],["link", "Link Clicks"],["auto_rotation", "Automatic Rotation"],["touch","Touches"]], :id => "dataType"
+  #analyticsGraph
+%ul
+  -@campaign.content_items.each do |ci|
+    %li[ci]
+      %a{ :href => url(:content_item, ci) }
+        -ci.pages.each do |page|
+          =image_tag page.thumb.path
+.new_content=link_to 'Add New Content', url(:campaign_new_content, @campaign), :class => "button"
+%h3 Publish Area
+%ul
+  -@campaign.publish_groups.each do |publish_group|
+    %li=link_to publish_group.name, url(:publish_group, publish_group)
+-if session.user.corporation.advertiser
+  %p=link_to "Purchase Ad Space", url(:campaign_new_contract, @campaign), :class => "button"
+-else
+  %p=link_to "Schedule Display Time", url(:campaign_new_contract, @campaign), :class => "button"
+-unless @campaign.contracts.empty?
+  %table#contractsTable.tablesorter
+    %caption Contracts
+    %thead
+      %tr
+        %th Start Date
+        %th End Date
+        %th Price
+    %tbody
+      -@campaign.contracts.each do |contract|
+        %tr
+          %td.start=contract.start_at.strftime('%D')
+          %td.end=contract.end_at.strftime('%D')
+          %td.price=contract.price

@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Module: Numeric::Multipliers</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "+"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "-"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Module</span><br />Numeric::Multipliers</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../../files/lib/more/facets/multipliers_rb.html">lib/more/facets/multipliers.rb</a>
+        </td>
+      </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><h1><a href="Multipliers.html">Multipliers</a></h1>
+<p>
+Adds methods to Numeric to make working with magnitudes (<a
+href="Multipliers.html#M000510">kilo</a>, <a
+href="Multipliers.html#M000511">mega</a>, <a
+href="Multipliers.html#M000512">giga</a>, <a
+href="Multipliers.html#M000518">milli</a>, <a
+href="Multipliers.html#M000519">micro</a>, etc.)
+</p>
+<pre>
+  1.kilo               #=&gt; 1000
+  1.milli              #=&gt; 0.001
+  1.kibi               #=&gt; 1024
+</pre>
+<p>
+To display a value in a certain denomination, simply perform the inverse
+operation by placing the multiplier called on unit (1) in the denominator.
+</p>
+<pre>
+  1000 / 1.kilo        #=&gt; 1
+  1024 / 1.kibi        #=&gt; 1
+</pre>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <span style="padding-right: 5px;"><a href="#M000523">atto</a></span>
+  <span style="padding-right: 5px;"><a href="#M000517">centi</a></span>
+  <span style="padding-right: 5px;"><a href="#M000516">deci</a></span>
+  <span style="padding-right: 5px;"><a href="#M000508">deka</a></span>
+  <span style="padding-right: 5px;"><a href="#M000515">exa</a></span>
+  <span style="padding-right: 5px;"><a href="#M000529">exbi</a></span>
+  <span style="padding-right: 5px;"><a href="#M000522">femto</a></span>
+  <span style="padding-right: 5px;"><a href="#M000526">gibi</a></span>
+  <span style="padding-right: 5px;"><a href="#M000512">giga</a></span>
+  <span style="padding-right: 5px;"><a href="#M000509">hecto</a></span>
+  <span style="padding-right: 5px;"><a href="#M000524">kibi</a></span>
+  <span style="padding-right: 5px;"><a href="#M000510">kilo</a></span>
+  <span style="padding-right: 5px;"><a href="#M000525">mebi</a></span>
+  <span style="padding-right: 5px;"><a href="#M000511">mega</a></span>
+  <span style="padding-right: 5px;"><a href="#M000519">micro</a></span>
+  <span style="padding-right: 5px;"><a href="#M000518">milli</a></span>
+  <span style="padding-right: 5px;"><a href="#M000520">nano</a></span>
+  <span style="padding-right: 5px;"><a href="#M000528">pebi</a></span>
+  <span style="padding-right: 5px;"><a href="#M000514">peta</a></span>
+  <span style="padding-right: 5px;"><a href="#M000521">pico</a></span>
+  <span style="padding-right: 5px;"><a href="#M000527">tebi</a></span>
+  <span style="padding-right: 5px;"><a href="#M000513">tera</a></span>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000523"></a><b>atto</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000523_source')" id="l_M000523_source">+</a> ]</p>
+  <div id="M000523_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multipliers.rb, line 76</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">atto</span>  ; <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-value">1000000000000000000</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000517"></a><b>centi</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000517_source')" id="l_M000517_source">+</a> ]</p>
+  <div id="M000517_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multipliers.rb, line 70</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">centi</span> ; <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-value">100</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000516"></a><b>deci</b>()
+  </div>
+  <div class="description">
+  <p>
+SI Fractional
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000516_source')" id="l_M000516_source">+</a> ]</p>
+  <div id="M000516_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multipliers.rb, line 69</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">deci</span>  ; <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-value">10</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000508"></a><b>deka</b>()
+  </div>
+  <div class="description">
+  <p>
+SI <a href="Multipliers.html">Multipliers</a>
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000508_source')" id="l_M000508_source">+</a> ]</p>
+  <div id="M000508_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multipliers.rb, line 58</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">deka</span>  ; <span class="ruby-keyword kw">self</span> <span class="ruby-operator">*</span> <span class="ruby-value">10</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000515"></a><b>exa</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000515_source')" id="l_M000515_source">+</a> ]</p>
+  <div id="M000515_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multipliers.rb, line 65</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">exa</span>   ; <span class="ruby-keyword kw">self</span> <span class="ruby-operator">*</span> <span class="ruby-value">1000000000000000000</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000529"></a><b>exbi</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000529_source')" id="l_M000529_source">+</a> ]</p>
+  <div id="M000529_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multipliers.rb, line 85</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">exbi</span> ; <span class="ruby-keyword kw">self</span> <span class="ruby-operator">*</span> <span class="ruby-value">1024</span><span class="ruby-operator">**</span><span class="ruby-value">6</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000522"></a><b>femto</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000522_source')" id="l_M000522_source">+</a> ]</p>
+  <div id="M000522_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multipliers.rb, line 75</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">femto</span> ; <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-value">1000000000000000</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000526"></a><b>gibi</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000526_source')" id="l_M000526_source">+</a> ]</p>
+  <div id="M000526_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multipliers.rb, line 82</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">gibi</span> ; <span class="ruby-keyword kw">self</span> <span class="ruby-operator">*</span> <span class="ruby-value">1024</span><span class="ruby-operator">**</span><span class="ruby-value">3</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000512"></a><b>giga</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000512_source')" id="l_M000512_source">+</a> ]</p>
+  <div id="M000512_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multipliers.rb, line 62</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">giga</span>  ; <span class="ruby-keyword kw">self</span> <span class="ruby-operator">*</span> <span class="ruby-value">1000000000</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000509"></a><b>hecto</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000509_source')" id="l_M000509_source">+</a> ]</p>
+  <div id="M000509_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multipliers.rb, line 59</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hecto</span> ; <span class="ruby-keyword kw">self</span> <span class="ruby-operator">*</span> <span class="ruby-value">100</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000524"></a><b>kibi</b>()
+  </div>
+  <div class="description">
+  <p>
+SI Binary
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000524_source')" id="l_M000524_source">+</a> ]</p>
+  <div id="M000524_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multipliers.rb, line 80</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">kibi</span> ; <span class="ruby-keyword kw">self</span> <span class="ruby-operator">*</span> <span class="ruby-value">1024</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000510"></a><b>kilo</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000510_source')" id="l_M000510_source">+</a> ]</p>
+  <div id="M000510_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multipliers.rb, line 60</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">kilo</span>  ; <span class="ruby-keyword kw">self</span> <span class="ruby-operator">*</span> <span class="ruby-value">1000</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000525"></a><b>mebi</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000525_source')" id="l_M000525_source">+</a> ]</p>
+  <div id="M000525_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multipliers.rb, line 81</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">mebi</span> ; <span class="ruby-keyword kw">self</span> <span class="ruby-operator">*</span> <span class="ruby-value">1024</span><span class="ruby-operator">**</span><span class="ruby-value">2</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000511"></a><b>mega</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000511_source')" id="l_M000511_source">+</a> ]</p>
+  <div id="M000511_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multipliers.rb, line 61</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">mega</span>  ; <span class="ruby-keyword kw">self</span> <span class="ruby-operator">*</span> <span class="ruby-value">1000000</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000519"></a><b>micro</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000519_source')" id="l_M000519_source">+</a> ]</p>
+  <div id="M000519_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multipliers.rb, line 72</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">micro</span> ; <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-value">1000000</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000518"></a><b>milli</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000518_source')" id="l_M000518_source">+</a> ]</p>
+  <div id="M000518_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multipliers.rb, line 71</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">milli</span> ; <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-value">1000</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000520"></a><b>nano</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000520_source')" id="l_M000520_source">+</a> ]</p>
+  <div id="M000520_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multipliers.rb, line 73</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">nano</span>  ; <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-value">1000000000</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000528"></a><b>pebi</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000528_source')" id="l_M000528_source">+</a> ]</p>
+  <div id="M000528_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multipliers.rb, line 84</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pebi</span> ; <span class="ruby-keyword kw">self</span> <span class="ruby-operator">*</span> <span class="ruby-value">1024</span><span class="ruby-operator">**</span><span class="ruby-value">5</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000514"></a><b>peta</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000514_source')" id="l_M000514_source">+</a> ]</p>
+  <div id="M000514_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multipliers.rb, line 64</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">peta</span>  ; <span class="ruby-keyword kw">self</span> <span class="ruby-operator">*</span> <span class="ruby-value">1000000000000000</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000521"></a><b>pico</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000521_source')" id="l_M000521_source">+</a> ]</p>
+  <div id="M000521_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multipliers.rb, line 74</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pico</span>  ; <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-value">1000000000000</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000527"></a><b>tebi</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000527_source')" id="l_M000527_source">+</a> ]</p>
+  <div id="M000527_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multipliers.rb, line 83</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">tebi</span> ; <span class="ruby-keyword kw">self</span> <span class="ruby-operator">*</span> <span class="ruby-value">1024</span><span class="ruby-operator">**</span><span class="ruby-value">4</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000513"></a><b>tera</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000513_source')" id="l_M000513_source">+</a> ]</p>
+  <div id="M000513_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multipliers.rb, line 63</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">tera</span>  ; <span class="ruby-keyword kw">self</span> <span class="ruby-operator">*</span> <span class="ruby-value">1000000000000</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

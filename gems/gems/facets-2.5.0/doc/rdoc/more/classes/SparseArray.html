@@ -1,0 +1,1397 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: SparseArray</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "+"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "-"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />SparseArray</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/more/facets/sparse_array_rb.html">lib/more/facets/sparse_array.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+        <a href="Hash.html">
+Hash
+         </a>
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><p>
+<a href="SparseArray.html">SparseArray</a> is an implemenation of the Array
+class using only Hashes. Regular Arrays are never used except once to
+delegate the <a href="SparseArray.html#M000355">pack</a> method, and for
+*args parameters (since there is no way around those is some cases). <a
+href="SparseArray.html">SparseArray</a> is for all practical purposes 100%
+compatible with Array.
+</p>
+<p>
+<a href="SparseArray.html">SparseArray</a> is slower then the built in
+Array class, but not as slow as one might expect, since a <a
+href="Hash.html">Hash</a> in general is faster than an Array. <a
+href="It.html">It</a> might be interesting to see how this would perform if
+it were written in c. Not all that useful, but an interesting example.
+</p>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <span style="padding-right: 5px;"><a href="#M000322">&amp;</a></span>
+  <span style="padding-right: 5px;"><a href="#M000323">*</a></span>
+  <span style="padding-right: 5px;"><a href="#M000324">+</a></span>
+  <span style="padding-right: 5px;"><a href="#M000325">-</a></span>
+  <span style="padding-right: 5px;"><a href="#M000326">&lt;&lt;</a></span>
+  <span style="padding-right: 5px;"><a href="#M000327">&lt;=&gt;</a></span>
+  <span style="padding-right: 5px;"><a href="#M000328">===</a></span>
+  <span style="padding-right: 5px;"><a href="#M000319">[]</a></span>
+  <span style="padding-right: 5px;"><a href="#M000329">[]</a></span>
+  <span style="padding-right: 5px;"><a href="#M000330">[]=</a></span>
+  <span style="padding-right: 5px;"><a href="#M000332">assoc</a></span>
+  <span style="padding-right: 5px;"><a href="#M000333">at</a></span>
+  <span style="padding-right: 5px;"><a href="#M000334">collect</a></span>
+  <span style="padding-right: 5px;"><a href="#M000335">collect!</a></span>
+  <span style="padding-right: 5px;"><a href="#M000336">compact</a></span>
+  <span style="padding-right: 5px;"><a href="#M000337">compact!</a></span>
+  <span style="padding-right: 5px;"><a href="#M000338">concat</a></span>
+  <span style="padding-right: 5px;"><a href="#M000339">count</a></span>
+  <span style="padding-right: 5px;"><a href="#M000340">delete</a></span>
+  <span style="padding-right: 5px;"><a href="#M000341">delete_at</a></span>
+  <span style="padding-right: 5px;"><a href="#M000342">delete_if</a></span>
+  <span style="padding-right: 5px;"><a href="#M000343">each</a></span>
+  <span style="padding-right: 5px;"><a href="#M000344">each_index</a></span>
+  <span style="padding-right: 5px;"><a href="#M000345">eql?</a></span>
+  <span style="padding-right: 5px;"><a href="#M000346">fill</a></span>
+  <span style="padding-right: 5px;"><a href="#M000347">first</a></span>
+  <span style="padding-right: 5px;"><a href="#M000348">flatten</a></span>
+  <span style="padding-right: 5px;"><a href="#M000349">flatten!</a></span>
+  <span style="padding-right: 5px;"><a href="#M000350">include?</a></span>
+  <span style="padding-right: 5px;"><a href="#M000351">join</a></span>
+  <span style="padding-right: 5px;"><a href="#M000352">last</a></span>
+  <span style="padding-right: 5px;"><a href="#M000353">map!</a></span>
+  <span style="padding-right: 5px;"><a href="#M000321">new</a></span>
+  <span style="padding-right: 5px;"><a href="#M000320">new_h</a></span>
+  <span style="padding-right: 5px;"><a href="#M000354">nitems</a></span>
+  <span style="padding-right: 5px;"><a href="#M000355">pack</a></span>
+  <span style="padding-right: 5px;"><a href="#M000356">pop</a></span>
+  <span style="padding-right: 5px;"><a href="#M000357">push</a></span>
+  <span style="padding-right: 5px;"><a href="#M000370">qsort</a></span>
+  <span style="padding-right: 5px;"><a href="#M000358">rassoc</a></span>
+  <span style="padding-right: 5px;"><a href="#M000359">reindex</a></span>
+  <span style="padding-right: 5px;"><a href="#M000360">reindex!</a></span>
+  <span style="padding-right: 5px;"><a href="#M000361">reject!</a></span>
+  <span style="padding-right: 5px;"><a href="#M000362">reverse</a></span>
+  <span style="padding-right: 5px;"><a href="#M000363">reverse!</a></span>
+  <span style="padding-right: 5px;"><a href="#M000364">reverse_each</a></span>
+  <span style="padding-right: 5px;"><a href="#M000365">rindex</a></span>
+  <span style="padding-right: 5px;"><a href="#M000366">shift</a></span>
+  <span style="padding-right: 5px;"><a href="#M000367">slice</a></span>
+  <span style="padding-right: 5px;"><a href="#M000368">slice!</a></span>
+  <span style="padding-right: 5px;"><a href="#M000369">sort</a></span>
+  <span style="padding-right: 5px;"><a href="#M000371">sort!</a></span>
+  <span style="padding-right: 5px;"><a href="#M000372">to_a</a></span>
+  <span style="padding-right: 5px;"><a href="#M000373">to_ary</a></span>
+  <span style="padding-right: 5px;"><a href="#M000374">to_h</a></span>
+  <span style="padding-right: 5px;"><a href="#M000375">to_s</a></span>
+  <span style="padding-right: 5px;"><a href="#M000376">uniq</a></span>
+  <span style="padding-right: 5px;"><a href="#M000377">uniq!</a></span>
+  <span style="padding-right: 5px;"><a href="#M000378">unshift</a></span>
+  <span style="padding-right: 5px;"><a href="#M000379">values_at</a></span>
+  <span style="padding-right: 5px;"><a href="#M000331">|</a></span>
+
+
+
+
+
+
+<div class="sectiontitle">Public Class methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000319"></a><b>[]</b>(*args)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000319_source')" id="l_M000319_source">+</a> ]</p>
+  <div id="M000319_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 40</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-operator">[]</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-identifier">nha</span> = <span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">args</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nha</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">nha</span>.<span class="ruby-identifier">length</span>,<span class="ruby-identifier">a</span>) }
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000321"></a><b>new</b>(i=0,e=nil)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000321_source')" id="l_M000321_source">+</a> ]</p>
+  <div id="M000321_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 52</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">i</span>=<span class="ruby-value">0</span>,<span class="ruby-identifier">e</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+      <span class="ruby-identifier">i</span>.<span class="ruby-identifier">times</span> { <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>,<span class="ruby-identifier">e</span>) }
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000320"></a><b>new_h</b>(hsh)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000320_source')" id="l_M000320_source">+</a> ]</p>
+  <div id="M000320_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 46</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new_h</span>(<span class="ruby-identifier">hsh</span>)
+    <span class="ruby-identifier">nha</span> = <span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">nha</span>.<span class="ruby-identifier">replace</span>(<span class="ruby-identifier">hsh</span>)
+    <span class="ruby-comment cmt">#nha.reindex!</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000322"></a><b>&amp;</b>(ha)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000322_source')" id="l_M000322_source">+</a> ]</p>
+  <div id="M000322_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 58</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&amp;</span>(<span class="ruby-identifier">ha</span>)
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ha</span>.<span class="ruby-identifier">has_value?</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)) <span class="ruby-keyword kw">and</span> <span class="ruby-operator">!</span><span class="ruby-identifier">nha</span>.<span class="ruby-identifier">has_value?</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>))
+        <span class="ruby-identifier">nha</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">nha</span>.<span class="ruby-identifier">length</span>,<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>))
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000323"></a><b>*</b>(j)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000323_source')" id="l_M000323_source">+</a> ]</p>
+  <div id="M000323_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 68</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">*</span>(<span class="ruby-identifier">j</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">j</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">String</span>)
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">j</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>
+      <span class="ruby-identifier">j</span>.<span class="ruby-identifier">times</span> { (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nha</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">nha</span>.<span class="ruby-identifier">length</span>,<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)) } }
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">nha</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000324"></a><b>+</b>(ha)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000324_source')" id="l_M000324_source">+</a> ]</p>
+  <div id="M000324_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 78</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">+</span>(<span class="ruby-identifier">ha</span>)
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">dup</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">ha</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nha</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">nha</span>.<span class="ruby-identifier">length</span>,<span class="ruby-identifier">ha</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)) }
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000325"></a><b>-</b>(ha)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000325_source')" id="l_M000325_source">+</a> ]</p>
+  <div id="M000325_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 84</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">-</span>(<span class="ruby-identifier">ha</span>)
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nha</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">v</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">ha</span>.<span class="ruby-identifier">has_value?</span>(<span class="ruby-identifier">v</span>) }
+    <span class="ruby-comment cmt">#ha.each { |v| nha &lt;&lt; i if !self.include?(v) }</span>
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000326"></a><b>&lt;&lt;</b>(e)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000326_source')" id="l_M000326_source">+</a> ]</p>
+  <div id="M000326_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 91</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">e</span>)
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>,<span class="ruby-identifier">e</span>)
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000327"></a><b>&lt;=&gt;</b>(ha)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000327_source')" id="l_M000327_source">+</a> ]</p>
+  <div id="M000327_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 96</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&lt;=&gt;</span>(<span class="ruby-identifier">ha</span>)
+    (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">ieq</span> = (<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>) <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">ha</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>))
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">ieq</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ieq</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">ha</span>.<span class="ruby-identifier">length</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000328"></a><b>===</b>(ha)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000328_source')" id="l_M000328_source">+</a> ]</p>
+  <div id="M000328_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 104</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">===</span>(<span class="ruby-identifier">ha</span>)
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-operator">==</span>(<span class="ruby-identifier">ha</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000329"></a><b>[]</b>(i,l=nil)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000329_source')" id="l_M000329_source">+</a> ]</p>
+  <div id="M000329_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 111</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">l</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">l</span>
+      <span class="ruby-identifier">i</span> = <span class="ruby-identifier">i</span><span class="ruby-operator">...</span><span class="ruby-identifier">i</span><span class="ruby-operator">+</span><span class="ruby-identifier">l</span>
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Range</span>)
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">at</span>(<span class="ruby-identifier">i</span>)
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">i</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nha</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">nha</span>.<span class="ruby-identifier">length</span>,<span class="ruby-identifier">get</span>(<span class="ruby-identifier">j</span>)) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">j</span>) }
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000330"></a><b>[]=</b>(i,b,c=nil)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000330_source')" id="l_M000330_source">+</a> ]</p>
+  <div id="M000330_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 123</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">b</span>,<span class="ruby-identifier">c</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">c</span>
+      <span class="ruby-identifier">rng</span> = (<span class="ruby-constant">Integer</span>(<span class="ruby-identifier">i</span>)<span class="ruby-operator">..</span><span class="ruby-constant">Integer</span>(<span class="ruby-identifier">i</span><span class="ruby-operator">+</span><span class="ruby-identifier">b</span>))
+      <span class="ruby-identifier">b</span> = <span class="ruby-identifier">c</span>
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">Range</span>
+      <span class="ruby-identifier">rng</span> = <span class="ruby-identifier">i</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set</span>(<span class="ruby-constant">Integer</span>(<span class="ruby-identifier">i</span>),<span class="ruby-identifier">b</span>)
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">b</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">b</span> <span class="ruby-operator">==</span> <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-identifier">rng</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">qdelete</span>(<span class="ruby-identifier">i</span>) }
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">reindex!</span>
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Array</span>) <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>)
+      <span class="ruby-identifier">j</span> = <span class="ruby-value">0</span>
+      <span class="ruby-identifier">rng</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">b</span>[<span class="ruby-identifier">j</span>]; <span class="ruby-identifier">j</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span> }
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">rng</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">qdelete</span>(<span class="ruby-identifier">i</span>) }
+      <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">rng</span>.<span class="ruby-identifier">fist</span>] = <span class="ruby-identifier">b</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">reindex!</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000332"></a><b>assoc</b>(k)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000332_source')" id="l_M000332_source">+</a> ]</p>
+  <div id="M000332_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 152</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assoc</span>(<span class="ruby-identifier">k</span>)
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">k</span> }
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000333"></a><b>at</b>(i)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000333_source')" id="l_M000333_source">+</a> ]</p>
+  <div id="M000333_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 157</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">at</span>(<span class="ruby-identifier">i</span>)
+    <span class="ruby-identifier">i</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">-1</span>
+    <span class="ruby-identifier">get</span>(<span class="ruby-identifier">i</span>)
+    <span class="ruby-comment cmt">#return nil if i &lt; 0 or i &gt;= self.length</span>
+    <span class="ruby-comment cmt">#return self.fetch(i)</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000334"></a><b>collect</b>() {|self.fetch(i)| ...}
+  </div>
+  <div class="description">
+  <p>
+clear okay
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000334_source')" id="l_M000334_source">+</a> ]</p>
+  <div id="M000334_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 166</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">collect</span>
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nha</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)) }
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000335"></a><b>collect!</b>() {|self.fetch(i)| ...}
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="SparseArray.html#M000353">map!</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000335_source')" id="l_M000335_source">+</a> ]</p>
+  <div id="M000335_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 172</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">collect!</span>
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nha</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)) }
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">replace</span>(<span class="ruby-identifier">nha</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000336"></a><b>compact</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000336_source')" id="l_M000336_source">+</a> ]</p>
+  <div id="M000336_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 178</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">compact</span>
+    <span class="ruby-identifier">nha</span>, <span class="ruby-identifier">j</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>, <span class="ruby-value">0</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>) <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">nil</span>
+        <span class="ruby-identifier">nha</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">j</span>,<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>))
+        <span class="ruby-identifier">j</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000337"></a><b>compact!</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000337_source')" id="l_M000337_source">+</a> ]</p>
+  <div id="M000337_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 189</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">compact!</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">has_value?</span>(<span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">nha</span>, <span class="ruby-identifier">j</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>, <span class="ruby-value">0</span>
+      (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>) <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">nil</span>
+          <span class="ruby-identifier">nha</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">j</span>,<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>))
+          <span class="ruby-identifier">j</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">replace</span>(<span class="ruby-identifier">nha</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000338"></a><b>concat</b>(ha)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000338_source')" id="l_M000338_source">+</a> ]</p>
+  <div id="M000338_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 204</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">concat</span>(<span class="ruby-identifier">ha</span>)
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">ha</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>,<span class="ruby-identifier">ha</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)) }
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000339"></a><b>count</b>(e=nil) {|self.fetch(i)| ...}
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000339_source')" id="l_M000339_source">+</a> ]</p>
+  <div id="M000339_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 209</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">count</span>(<span class="ruby-identifier">e</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-identifier">cnt</span> = <span class="ruby-value">0</span>
+      (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">cnt</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)) }
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">cnt</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">cnt</span> = <span class="ruby-value">0</span>
+      (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">cnt</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">e</span> }
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">cnt</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000340"></a><b>delete</b>(e) {|if block_given?| ...}
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000340_source')" id="l_M000340_source">+</a> ]</p>
+  <div id="M000340_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 224</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">e</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">has_value?</span>(<span class="ruby-identifier">e</span>)
+      <span class="ruby-identifier">qdelete_if</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">e</span> }
+      <span class="ruby-identifier">reindex!</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">e</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000341"></a><b>delete_at</b>(i)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000341_source')" id="l_M000341_source">+</a> ]</p>
+  <div id="M000341_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 235</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_at</span>(<span class="ruby-identifier">i</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">i</span>)
+      <span class="ruby-identifier">e</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)
+      <span class="ruby-identifier">qdelete</span>(<span class="ruby-identifier">i</span>)
+      <span class="ruby-identifier">reindex!</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">e</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000342"></a><b>delete_if</b>() {|v| ...}
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000342_source')" id="l_M000342_source">+</a> ]</p>
+  <div id="M000342_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 249</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_if</span>
+    <span class="ruby-identifier">qdelete_if</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">v</span>) }
+    <span class="ruby-identifier">reindex!</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000343"></a><b>each</b>() {|self.fetch(i)| ...}
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000343_source')" id="l_M000343_source">+</a> ]</p>
+  <div id="M000343_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 254</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)) }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000344"></a><b>each_index</b>() {|i| ...}
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000344_source')" id="l_M000344_source">+</a> ]</p>
+  <div id="M000344_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 258</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_index</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">i</span>) }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000345"></a><b>eql?</b>(ha)
+  </div>
+  <div class="description">
+  <p>
+empty? okay as is
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000345_source')" id="l_M000345_source">+</a> ]</p>
+  <div id="M000345_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 264</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">ha</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">ha</span>.<span class="ruby-identifier">length</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">if</span> (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">all?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>).<span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">ha</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)) }
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000346"></a><b>fill</b>(f,s=nil,l=nil)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000346_source')" id="l_M000346_source">+</a> ]</p>
+  <div id="M000346_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 270</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fill</span>(<span class="ruby-identifier">f</span>,<span class="ruby-identifier">s</span>=<span class="ruby-keyword kw">nil</span>,<span class="ruby-identifier">l</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Range</span>)
+      <span class="ruby-identifier">r</span> = <span class="ruby-identifier">s</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">s</span> = <span class="ruby-value">0</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">s</span>
+      <span class="ruby-identifier">l</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">s</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">l</span>
+      <span class="ruby-identifier">r</span> = <span class="ruby-identifier">s</span><span class="ruby-operator">...</span>(<span class="ruby-identifier">s</span><span class="ruby-operator">+</span><span class="ruby-identifier">l</span>)
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">r</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">f</span>) }
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000347"></a><b>first</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000347_source')" id="l_M000347_source">+</a> ]</p>
+  <div id="M000347_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 282</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">first</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">0</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000348"></a><b>flatten</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000348_source')" id="l_M000348_source">+</a> ]</p>
+  <div id="M000348_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 287</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">flatten</span>
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">sfi</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">sfi</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>) <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">sfi</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Array</span>)
+        <span class="ruby-identifier">nha</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">sfi</span>.<span class="ruby-identifier">flatten</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">nha</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">nha</span>.<span class="ruby-identifier">length</span>,<span class="ruby-identifier">sfi</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000349"></a><b>flatten!</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000349_source')" id="l_M000349_source">+</a> ]</p>
+  <div id="M000349_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 300</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">flatten!</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>) <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Array</span>) }
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">replace</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">flatten</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000350"></a><b>include?</b>(v)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000350_source')" id="l_M000350_source">+</a> ]</p>
+  <div id="M000350_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 305</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">include?</span>(<span class="ruby-identifier">v</span>)
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">has_value?</span>(<span class="ruby-identifier">v</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000351"></a><b>join</b>(sep='')
+  </div>
+  <div class="description">
+  <p>
+index okay
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000351_source')" id="l_M000351_source">+</a> ]</p>
+  <div id="M000351_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 311</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">join</span>(<span class="ruby-identifier">sep</span>=<span class="ruby-value str">''</span>)
+    <span class="ruby-identifier">s</span> = <span class="ruby-value str">''</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{self.fetch(i)}#{sep}&quot;</span> }
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-identifier">sep</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000352"></a><b>last</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000352_source')" id="l_M000352_source">+</a> ]</p>
+  <div id="M000352_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 317</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">last</span>
+    <span class="ruby-keyword kw">self</span>[<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>]
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000353"></a><b>map!</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="SparseArray.html#M000334">collect</a>!
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000354"></a><b>nitems</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000354_source')" id="l_M000354_source">+</a> ]</p>
+  <div id="M000354_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 325</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">nitems</span>
+    <span class="ruby-identifier">cnt</span> = <span class="ruby-value">0</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">cnt</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>) <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">nil</span> }
+    <span class="ruby-identifier">cnt</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000355"></a><b>pack</b>(*args)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000355_source')" id="l_M000355_source">+</a> ]</p>
+  <div id="M000355_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 331</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pack</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">pack</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000356"></a><b>pop</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000356_source')" id="l_M000356_source">+</a> ]</p>
+  <div id="M000356_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 335</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pop</span>
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">delete_at</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000357"></a><b>push</b>(*e)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000357_source')" id="l_M000357_source">+</a> ]</p>
+  <div id="M000357_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 339</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">push</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">e</span>)
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">e</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000370"></a><b>qsort</b>(ha, l, r)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000370_source')" id="l_M000370_source">+</a> ]</p>
+  <div id="M000370_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 438</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">qsort</span>(<span class="ruby-identifier">ha</span>, <span class="ruby-identifier">l</span>, <span class="ruby-identifier">r</span>)
+    <span class="ruby-identifier">l_hold</span> = <span class="ruby-identifier">l</span>
+    <span class="ruby-identifier">r_hold</span> = <span class="ruby-identifier">r</span>
+    <span class="ruby-identifier">pivot</span> = <span class="ruby-identifier">ha</span>[<span class="ruby-identifier">l</span>]
+    <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">l</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">r</span>
+      <span class="ruby-identifier">r</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">while</span> (<span class="ruby-identifier">ha</span>[<span class="ruby-identifier">r</span>] <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">pivot</span>) <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">l</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">r</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">l</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">r</span>
+        <span class="ruby-identifier">ha</span>[<span class="ruby-identifier">l</span>] = <span class="ruby-identifier">ha</span>[<span class="ruby-identifier">r</span>]
+        <span class="ruby-identifier">l</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">l</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">while</span> (<span class="ruby-identifier">ha</span>[<span class="ruby-identifier">l</span>] <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">pivot</span>) <span class="ruby-operator">&lt;=</span> <span class="ruby-value">0</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">l</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">r</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">l</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">r</span>
+        <span class="ruby-identifier">ha</span>[<span class="ruby-identifier">r</span>] = <span class="ruby-identifier">ha</span>[<span class="ruby-identifier">l</span>]
+        <span class="ruby-identifier">r</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">ha</span>[<span class="ruby-identifier">l</span>] = <span class="ruby-identifier">pivot</span>
+    <span class="ruby-identifier">pivot</span> = <span class="ruby-identifier">l</span>
+    <span class="ruby-identifier">l</span> = <span class="ruby-identifier">l_hold</span>
+    <span class="ruby-identifier">r</span> = <span class="ruby-identifier">r_hold</span>
+    <span class="ruby-identifier">qsort</span>(<span class="ruby-identifier">ha</span>,<span class="ruby-identifier">l</span>,<span class="ruby-identifier">pivot</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">l</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">pivot</span>
+    <span class="ruby-identifier">qsort</span>(<span class="ruby-identifier">ha</span>,<span class="ruby-identifier">pivot</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>,<span class="ruby-identifier">r</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">r</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">pivot</span>
+    <span class="ruby-identifier">ha</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000358"></a><b>rassoc</b>(k)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000358_source')" id="l_M000358_source">+</a> ]</p>
+  <div id="M000358_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 343</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rassoc</span>(<span class="ruby-identifier">k</span>)
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">k</span> }
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000359"></a><b>reindex</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000359_source')" id="l_M000359_source">+</a> ]</p>
+  <div id="M000359_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 348</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reindex</span>
+    <span class="ruby-identifier">nha</span>, <span class="ruby-identifier">j</span>, <span class="ruby-identifier">k</span>, <span class="ruby-identifier">tl</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>
+    <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">k</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">tl</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">j</span>)
+        <span class="ruby-identifier">nha</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">k</span>,<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">j</span>))
+        <span class="ruby-identifier">j</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>; <span class="ruby-identifier">k</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">j</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000360"></a><b>reindex!</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000360_source')" id="l_M000360_source">+</a> ]</p>
+  <div id="M000360_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 361</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reindex!</span>
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">replace</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">reindex</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000361"></a><b>reject!</b>() {|v| ...}
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000361_source')" id="l_M000361_source">+</a> ]</p>
+  <div id="M000361_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 365</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reject!</span>
+    <span class="ruby-identifier">chg</span>=<span class="ruby-keyword kw">nil</span>
+    <span class="ruby-identifier">qdelete_if</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">r</span>=<span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">v</span>); <span class="ruby-identifier">chg</span>=<span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">r</span>; <span class="ruby-identifier">r</span> }
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">chg</span>
+    <span class="ruby-identifier">reindex!</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000362"></a><b>reverse</b>()
+  </div>
+  <div class="description">
+  <p>
+def replace(ha)
+</p>
+<pre>
+  if ha.length &lt; self.length
+    (ha.length..self.length-1).each { |i| self.delete(i) }
+    (0..ha.length-1).each { |i| self.set(i,ha[i]) }
+  end
+</pre>
+<p>
+end
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000362_source')" id="l_M000362_source">+</a> ]</p>
+  <div id="M000362_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 379</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reverse</span>
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nha</span>.<span class="ruby-identifier">set</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span><span class="ruby-operator">-</span><span class="ruby-identifier">i</span>,<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)) }
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000363"></a><b>reverse!</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000363_source')" id="l_M000363_source">+</a> ]</p>
+  <div id="M000363_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 385</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reverse!</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">/</span><span class="ruby-value">2</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">ri</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span><span class="ruby-operator">-</span><span class="ruby-identifier">i</span>
+      <span class="ruby-identifier">tmp</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">ri</span>)
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">ri</span>,<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>))
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">tmp</span>)
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000364"></a><b>reverse_each</b>() {|self.fetch(i)| ...}
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000364_source')" id="l_M000364_source">+</a> ]</p>
+  <div id="M000364_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 395</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reverse_each</span>
+    <span class="ruby-identifier">i</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>
+      <span class="ruby-keyword kw">yield</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>))
+      <span class="ruby-identifier">i</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000365"></a><b>rindex</b>(e)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000365_source')" id="l_M000365_source">+</a> ]</p>
+  <div id="M000365_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 403</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rindex</span>(<span class="ruby-identifier">e</span>)
+    <span class="ruby-identifier">i</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">e</span>
+      <span class="ruby-identifier">i</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000366"></a><b>shift</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000366_source')" id="l_M000366_source">+</a> ]</p>
+  <div id="M000366_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 412</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shift</span>
+    <span class="ruby-identifier">e1</span> = <span class="ruby-keyword kw">self</span>[<span class="ruby-value">0</span>]
+    <span class="ruby-identifier">tl</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+    (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">tl</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">i</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>,<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>)) }
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">delete_at</span>(<span class="ruby-identifier">tl</span>)
+    <span class="ruby-identifier">e1</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000367"></a><b>slice</b>(*args)
+  </div>
+  <div class="description">
+  <p>
+size okay
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000367_source')" id="l_M000367_source">+</a> ]</p>
+  <div id="M000367_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 422</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">slice</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-keyword kw">self</span>[<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>]
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000368"></a><b>slice!</b>(*args)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000368_source')" id="l_M000368_source">+</a> ]</p>
+  <div id="M000368_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 426</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">slice!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-identifier">result</span> = <span class="ruby-keyword kw">self</span>[<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>]
+    <span class="ruby-keyword kw">self</span>[<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>] = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-identifier">result</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000369"></a><b>sort</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000369_source')" id="l_M000369_source">+</a> ]</p>
+  <div id="M000369_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 432</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sort</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;SparseArray does not currently support sorting with blocks&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">dup</span>
+    <span class="ruby-identifier">qsort</span>(<span class="ruby-identifier">nha</span>,<span class="ruby-value">0</span>,<span class="ruby-identifier">nha</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000371"></a><b>sort!</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000371_source')" id="l_M000371_source">+</a> ]</p>
+  <div id="M000371_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 463</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sort!</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;SparseArray does not currently support sorting with blocks&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+    <span class="ruby-identifier">qsort</span>(<span class="ruby-keyword kw">self</span>,<span class="ruby-value">0</span>,<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000372"></a><b>to_a</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000372_source')" id="l_M000372_source">+</a> ]</p>
+  <div id="M000372_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 468</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_a</span>
+    <span class="ruby-identifier">a</span> = []
+    (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>) }
+    <span class="ruby-identifier">a</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000373"></a><b>to_ary</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000373_source')" id="l_M000373_source">+</a> ]</p>
+  <div id="M000373_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 474</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_ary</span>
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000374"></a><b>to_h</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000374_source')" id="l_M000374_source">+</a> ]</p>
+  <div id="M000374_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 478</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_h</span>
+   <span class="ruby-identifier">h</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+   <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span> }
+   <span class="ruby-identifier">h</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000375"></a><b>to_s</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000375_source')" id="l_M000375_source">+</a> ]</p>
+  <div id="M000375_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 484</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+   <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">join</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000376"></a><b>uniq</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000376_source')" id="l_M000376_source">+</a> ]</p>
+  <div id="M000376_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 488</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">uniq</span>
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">nha</span>[<span class="ruby-identifier">nha</span>.<span class="ruby-identifier">length</span>] = <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">i</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">nha</span>.<span class="ruby-identifier">has_value?</span>(<span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">i</span>])
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000377"></a><b>uniq!</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000377_source')" id="l_M000377_source">+</a> ]</p>
+  <div id="M000377_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 496</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">uniq!</span>
+    <span class="ruby-identifier">j</span> = <span class="ruby-value">0</span>
+    (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-keyword kw">self</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">j</span>].<span class="ruby-identifier">has_value?</span>(<span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">i</span>])
+        <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">j</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>] = <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">i</span>]
+        <span class="ruby-identifier">j</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    (<span class="ruby-identifier">j</span><span class="ruby-operator">+</span><span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">qdelete</span>(<span class="ruby-identifier">i</span>) }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000378"></a><b>unshift</b>(e)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000378_source')" id="l_M000378_source">+</a> ]</p>
+  <div id="M000378_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 507</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unshift</span>(<span class="ruby-identifier">e</span>)
+    <span class="ruby-identifier">i</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">i</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>,<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>))
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">e</span>
+      <span class="ruby-identifier">i</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set</span>(<span class="ruby-value">0</span>,<span class="ruby-identifier">e</span>)
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000379"></a><b>values_at</b>(*ix)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000379_source')" id="l_M000379_source">+</a> ]</p>
+  <div id="M000379_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 518</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">values_at</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">ix</span>)
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">ix</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nha</span>[<span class="ruby-identifier">nha</span>.<span class="ruby-identifier">length</span>] = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">at</span>(<span class="ruby-identifier">i</span>)}
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000331"></a><b>|</b>(ha)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000331_source')" id="l_M000331_source">+</a> ]</p>
+  <div id="M000331_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/sparse_array.rb, line 146</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">|</span>(<span class="ruby-identifier">ha</span>)
+    <span class="ruby-identifier">nha</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">dup</span>
+    <span class="ruby-identifier">ha</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nha</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">v</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">nha</span>.<span class="ruby-identifier">has_value?</span>(<span class="ruby-identifier">v</span>) }
+    <span class="ruby-identifier">nha</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

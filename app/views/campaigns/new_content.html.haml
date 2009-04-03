@@ -1,0 +1,40 @@
+=error_messages_for @content_item
+%h2.guide Step 2 of 3: Add Content
+%h3 Exisiting Content
+.contentItems
+  -@campaign.content_items.each do |ci|
+    %div
+      %h4=ci.name
+      -ci.pages.each do |page|
+        =image_tag page.thumb.path
+#publish
+  =link_to "+ New Content","#", :class => "hiddenSection button"
+  .section
+    =form_for :content_item, :action => url(:content_items), :class => "contentItem", :id => "campaignBuilder" do
+      =hidden_field :name => "content_item[campaign_id]", :value => params[:id]
+      .input
+        %label{ :for => "content_item_name"} Name
+        .hint What you want to call it
+        =text_field :name
+      .input
+        %label{:for => "content_item_layout"} Layout
+        .hint (Will it be full screen or will it accepts ads on the sides?)
+        =select :layout, :collection => ContentItem.layouts, :value_method => "to_s"
+      .input
+        %label{ :for => "content_item_tags"} Tags
+        .hint Keywords to help us place it
+        =text_field :tags, :value => @content_item.tags.map {|t| t.name} * ', '
+      .input
+        %label{:for => "content_item_resolution"} Resolution
+        .hint (width x height)
+        =select :resolution, :collection => Resolution.all, :value_method => "id", :text_method => "humanize"
+      %hr
+      .hint Hint: If you want to do A/B testing, just add 2 pages to test with. If you want to test several pages at the same time, add several pages. We take care of the details.
+      %p=link_to "+ New Page", url(:new_root_page), :class => "button"
+      =hidden_field :pages, :id => "pages"
+      %ul.pages.available
+        -Page.all_root_for_user(session.user).each do |page|
+          %li[page]=image_tag(page.thumb.path)
+      %div=submit "Create"
+      =link_to "Cancel", "#", :class => "cancel"
+  =link_to "Next &raquo;", url(:campaign, @campaign), :class => "button"

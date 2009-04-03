@@ -1,0 +1,13 @@
+#user.span-18.colborder
+  %h2="Contract for #{@contract.campaign.name}"
+  %dl
+    %dt Status 
+    %dd=@contract.state == :approved ? "Approved" : "Pending Approval"
+    %dt Start Date
+    %dd=@contract.start_at.strftime('%b %d')
+    %dt End Date
+    %dd=@contract.end_at.strftime('%b %d')
+    %dt Price
+    %dd="$%.2f" % @contract.price
+.span-5.last
+  =link_to "Edit", url(:edit_contract, @contract), :class => "button"

@@ -1,0 +1,12 @@
+%h2.guide New Venue
+=error_messages_for @venue
+=form_for :venue, :action => url(:venues) do
+  .span-12
+    %div=text_field :name, :label => "Name"
+    %div=select :corporation_id, :label => Corporation, :collection => Corporation.all, :text_method => :name, :value_method => :id
+  .span-12.last
+    %div=text_field :street, :label => "Street"
+    %div=text_field :city, :label => "City", :value => (@venue.city.nil? ? '' : @venue.city.name)
+    %div=select :state_id, :label => "State", :collection => State.all(:order => [:name]), :text_method => "name", :value_method => "id"
+    %div=text_field :zipcode, :label => "Zip Code", :value => (@venue.zipcode.nil? ? '' : @venue.zipcode.code)
+  .clear=submit "Add"

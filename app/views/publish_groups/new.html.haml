@@ -1,0 +1,6 @@
+%h2.guide New Publish Group
+=error_messages_for @publish_group
+=form_for @publish_group, :action => url(:new_publish_group), :id => "campaignBuilder" do
+  %div=text_field :name, :label => "Name"
+  =partial :publish_group_builder
+  %div=submit "Create"

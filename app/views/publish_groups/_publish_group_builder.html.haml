@@ -1,0 +1,8 @@
+.include 
+  %h3 Include
+  -%w(state city zipcode venue).each do |area|    
+    .pg{ :class => "#{area}" }=select :"#{area}_ids", :collection => (area == 'state') ? State.all : [] , :text_method => "name", :value_method => "id", :multiple => true, :size => 6, :label => area.plural, :class => "comboselect"
+.exclude 
+  %h3 Exclude
+  -%w(state city zipcode venue).each do |area|    
+    .pg{ :class => "not_#{area}" }=select :"not_#{area}_ids", :collection => (area == 'state') ? State.all : [] , :text_method => "name", :value_method => "id", :multiple => true, :size => 6, :label => area.plural, :class => "comboselect"

@@ -1,0 +1,77 @@
+=ui-state-default
+  border: 1px solid #cccccc
+  background: #e6e6e6 url(/images/ui/e6e6e6_40x100_textures_02_glass_80.png) 50% 50% repeat-x 
+  font-weight: normal
+  color: #444444
+  outline: none
+=ui-state-default-a
+  color: #444444
+  text-decoration: none
+  outline: none
+=ui-state-hover
+  border: 1px solid #b2c7d7
+  background: #f0f0f0 url(/images/ui/f0f0f0_40x100_textures_02_glass_100.png) 50% 50% repeat-x
+  font-weight: normal
+  color: #0b5b98
+  outline: none
+=ui-state-hover-a
+  color: #0b5b98
+  text-decoration: none
+  outline: none
+=ui-state-active
+  border: 1px solid #2694e8
+  background: #99c2ff url(/images/ui/99c2ff_40x100_textures_02_glass_50.png) 50% 50% repeat-x
+  font-weight: normal
+  color: #000000
+  outline: none
+=ui-state-active-a
+  color: #000000
+  outline: none
+  text-decoration: none
+
+=ui-state-highlight
+  border: 1px solid #FFD324
+  background: #FFF6BF url(/images/ui/FFF6BF_40x100_textures_01_flat_100.png) 50% 50% repeat-x
+  color: #514721
+=ui-state-error
+  border: 1px solid #FBC2C4
+  background: #FBE3E4 url(/images/ui/FBE3E4_40x100_textures_01_flat_100.png) 50% 50% repeat-x
+  color: #8a1f11
+=ui-state-error-text
+  color: #8a1f11
+=ui-state-disabled
+  opacity: .35
+  filter:Alpha(Opacity=35)
+  background-image: none
+=ui-priority-primary
+  font-weight: bold
+=ui-priority-secondary
+  opacity: .7
+  filter:Alpha(Opacity=70)
+  font-weight: normal
+
+.ui-state-default, .ui-widget-content .ui-state-default
+  +ui-state-default
+.ui-state-default a
+  +ui-state-default-a
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus
+  +ui-state-hover
+.ui-state-hover a
+  +ui-state-hover-a
+.ui-state-active, .ui-widget-content .ui-state-active
+  +ui-state-active
+.ui-state-active a
+  +ui-state-active-a
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight
+  +ui-state-highlight
+.ui-state-error, .ui-widget-content .ui-state-error
+  +ui-state-error
+.ui-state-error-text, .ui-widget-content .ui-state-error-text
+  +ui-state-error-text
+.ui-state-disabled, .ui-widget-content .ui-state-disabled
+  +ui-state-disabled
+.ui-priority-primary, .ui-widget-content .ui-priority-primary
+  +ui-priority-primary
+.ui-priority-secondary, .ui-widget-content .ui-priority-secondary
+  +ui-priority-secondary

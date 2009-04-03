@@ -1,0 +1,10 @@
+class Home < Application
+  before :ensure_authenticated
+
+  # ...and remember, everything returned from an action
+  # goes to the client...
+  def index
+    render
+  end
+  
+end

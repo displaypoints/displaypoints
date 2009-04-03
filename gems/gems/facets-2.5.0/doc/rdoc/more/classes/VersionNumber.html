@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: VersionNumber</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "+"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "-"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />VersionNumber</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/more/facets/version_rb.html">lib/more/facets/version.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+Object
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><h1><a href="VersionNumber.html">VersionNumber</a></h1>
+<p>
+<a href="VersionNumber.html">VersionNumber</a> is a simplified form of a <a
+href="Tuple.html">Tuple</a> class desgined specifically for dealing with
+version numbers.
+</p>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <span style="padding-right: 5px;"><a href="#M000194">&lt;=&gt;</a></span>
+  <span style="padding-right: 5px;"><a href="#M000195">=~</a></span>
+  <span style="padding-right: 5px;"><a href="#M000193">[]</a></span>
+  <span style="padding-right: 5px;"><a href="#M000199">bump</a></span>
+  <span style="padding-right: 5px;"><a href="#M000201">constraint_lambda</a></span>
+  <span style="padding-right: 5px;"><a href="#M000192">inspect</a></span>
+  <span style="padding-right: 5px;"><a href="#M000196">major</a></span>
+  <span style="padding-right: 5px;"><a href="#M000200">method_missing</a></span>
+  <span style="padding-right: 5px;"><a href="#M000197">minor</a></span>
+  <span style="padding-right: 5px;"><a href="#M000189">new</a></span>
+  <span style="padding-right: 5px;"><a href="#M000202">parse_constraint</a></span>
+  <span style="padding-right: 5px;"><a href="#M000198">teeny</a></span>
+  <span style="padding-right: 5px;"><a href="#M000190">to_s</a></span>
+  <span style="padding-right: 5px;"><a href="#M000191">to_str</a></span>
+
+<div class="sectiontitle">Included Modules</div>
+<ul>
+  <li>Comparable</li>
+</ul>
+
+
+
+
+
+<div class="sectiontitle">Public Class methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000201"></a><b>constraint_lambda</b>( constraint )
+  </div>
+  <div class="description">
+  <p>
+Parses a string constraint returning the operation as a lambda.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000201_source')" id="l_M000201_source">+</a> ]</p>
+  <div id="M000201_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/version.rb, line 113</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">constraint_lambda</span>( <span class="ruby-identifier">constraint</span> )
+    <span class="ruby-identifier">op</span>, <span class="ruby-identifier">val</span> = <span class="ruby-operator">*</span><span class="ruby-identifier">parse_constraint</span>( <span class="ruby-identifier">constraint</span> )
+    <span class="ruby-identifier">lambda</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">op</span>, <span class="ruby-identifier">val</span>) }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000189"></a><b>new</b>( *args )
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000189_source')" id="l_M000189_source">+</a> ]</p>
+  <div id="M000189_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/version.rb, line 40</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>( <span class="ruby-operator">*</span><span class="ruby-identifier">args</span> )
+    <span class="ruby-identifier">args</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'.'</span>).<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/\W+/</span>)
+    <span class="ruby-ivar">@self</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">to_i</span> }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000202"></a><b>parse_constraint</b>( constraint )
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000202_source')" id="l_M000202_source">+</a> ]</p>
+  <div id="M000202_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/version.rb, line 118</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">parse_constraint</span>( <span class="ruby-identifier">constraint</span> )
+    <span class="ruby-identifier">constraint</span> = <span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">strip</span>
+    <span class="ruby-identifier">re</span> = <span class="ruby-regexp re">%r{^(=~|~&gt;|&lt;=|&gt;=|==|=|&lt;|&gt;)?\s*(\d+(:?[-.]\d+)*)$}</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">md</span> = <span class="ruby-identifier">re</span>.<span class="ruby-identifier">match</span>( <span class="ruby-identifier">constraint</span> )
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">op</span> = <span class="ruby-identifier">md</span>[<span class="ruby-value">1</span>]
+        <span class="ruby-identifier">op</span> = <span class="ruby-value str">'=~'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">op</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'~&gt;'</span>
+        <span class="ruby-identifier">op</span> = <span class="ruby-value str">'=='</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">op</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'='</span>
+        <span class="ruby-identifier">val</span> = <span class="ruby-identifier">new</span>( <span class="ruby-operator">*</span><span class="ruby-identifier">md</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/\W+/</span>) )
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">op</span> = <span class="ruby-value str">'=='</span>
+        <span class="ruby-identifier">val</span> = <span class="ruby-identifier">new</span>( <span class="ruby-operator">*</span><span class="ruby-identifier">constraint</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/\W+/</span>) )
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;invalid constraint&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">op</span>, <span class="ruby-identifier">val</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000194"></a><b>&lt;=&gt;</b>( other )
+  </div>
+  <div class="description">
+  <p>
+&quot;Spaceship&quot; comparsion operator.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000194_source')" id="l_M000194_source">+</a> ]</p>
+  <div id="M000194_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/version.rb, line 61</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&lt;=&gt;</span>( <span class="ruby-identifier">other</span> )
+    <span class="ruby-comment cmt">#other = other.to_t</span>
+    [<span class="ruby-ivar">@self</span>.<span class="ruby-identifier">size</span>, <span class="ruby-identifier">other</span>.<span class="ruby-identifier">size</span>].<span class="ruby-identifier">max</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">c</span> = <span class="ruby-ivar">@self</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">other</span>[<span class="ruby-identifier">i</span>]
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">c</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">c</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-value">0</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000195"></a><b>=~</b>( other )
+  </div>
+  <div class="description">
+  <p>
+For pessimistic constraint (like &#8217;~&gt;&#8217; in gems)
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000195_source')" id="l_M000195_source">+</a> ]</p>
+  <div id="M000195_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/version.rb, line 72</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">=~</span>( <span class="ruby-identifier">other</span> )
+    <span class="ruby-comment cmt">#other = other.to_t</span>
+    <span class="ruby-identifier">upver</span> = <span class="ruby-identifier">other</span>.<span class="ruby-identifier">dup</span>
+    <span class="ruby-identifier">upver</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-ivar">@self</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">other</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@self</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">upver</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000193"></a><b>[]</b>(i)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000193_source')" id="l_M000193_source">+</a> ]</p>
+  <div id="M000193_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/version.rb, line 55</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">i</span>)
+    <span class="ruby-ivar">@self</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">i</span>,<span class="ruby-value">0</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000199"></a><b>bump</b>(which=:teeny)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000199_source')" id="l_M000199_source">+</a> ]</p>
+  <div id="M000199_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/version.rb, line 92</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">bump</span>(<span class="ruby-identifier">which</span>=<span class="ruby-identifier">:teeny</span>)
+    <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">which</span>
+    <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:major</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">major</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>)
+    <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:minor</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">major</span>, <span class="ruby-identifier">minor</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>)
+    <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:teeny</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">major</span>, <span class="ruby-identifier">minor</span>, <span class="ruby-identifier">teeny</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-comment cmt"># ???</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000192"></a><b>inspect</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000192_source')" id="l_M000192_source">+</a> ]</p>
+  <div id="M000192_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/version.rb, line 51</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>
+    <span class="ruby-ivar">@self</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000196"></a><b>major</b>()
+  </div>
+  <div class="description">
+  <p>
+Major is the first number in the version series.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000196_source')" id="l_M000196_source">+</a> ]</p>
+  <div id="M000196_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/version.rb, line 81</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">major</span> ; <span class="ruby-ivar">@self</span>[<span class="ruby-value">0</span>] ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000200"></a><b>method_missing</b>( sym, *args, &amp;blk )
+  </div>
+  <div class="description">
+  <p>
+Delegate to the array.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000200_source')" id="l_M000200_source">+</a> ]</p>
+  <div id="M000200_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/version.rb, line 107</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>( <span class="ruby-identifier">sym</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span> )
+    <span class="ruby-ivar">@self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">sym</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span> ) <span class="ruby-keyword kw">rescue</span> <span class="ruby-keyword kw">super</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000197"></a><b>minor</b>()
+  </div>
+  <div class="description">
+  <p>
+Minor is the second number in the version series.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000197_source')" id="l_M000197_source">+</a> ]</p>
+  <div id="M000197_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/version.rb, line 85</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">minor</span> ; <span class="ruby-ivar">@self</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">||</span> <span class="ruby-value">0</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000198"></a><b>teeny</b>()
+  </div>
+  <div class="description">
+  <p>
+Teeny is third number in the version series.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000198_source')" id="l_M000198_source">+</a> ]</p>
+  <div id="M000198_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/version.rb, line 89</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">teeny</span> ; <span class="ruby-ivar">@self</span>[<span class="ruby-value">2</span>] <span class="ruby-operator">||</span> <span class="ruby-value">0</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000190"></a><b>to_s</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000190_source')" id="l_M000190_source">+</a> ]</p>
+  <div id="M000190_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/version.rb, line 45</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span> ; <span class="ruby-ivar">@self</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'.'</span>) ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000191"></a><b>to_str</b>()
+  </div>
+  <div class="description">
+  <p>
+This is here only becuase File.join calls it instead of <a
+href="VersionNumber.html#M000190">to_s</a>.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000191_source')" id="l_M000191_source">+</a> ]</p>
+  <div id="M000191_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/version.rb, line 49</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_str</span> ; <span class="ruby-ivar">@self</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'.'</span>) ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

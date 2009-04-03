@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Module: Random::Hash</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "+"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "-"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Module</span><br />Random::Hash</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../../files/lib/more/facets/random_rb.html">lib/more/facets/random.rb</a>
+        </td>
+      </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <span style="padding-right: 5px;"><a href="#M000801">at_rand</a></span>
+  <span style="padding-right: 5px;"><a href="#M000802">at_rand!</a></span>
+  <span style="padding-right: 5px;"><a href="#M000800">pick</a></span>
+  <span style="padding-right: 5px;"><a href="#M000794">pick_key</a></span>
+  <span style="padding-right: 5px;"><a href="#M000797">pick_pair</a></span>
+  <span style="padding-right: 5px;"><a href="#M000792">rand_key</a></span>
+  <span style="padding-right: 5px;"><a href="#M000793">rand_key!</a></span>
+  <span style="padding-right: 5px;"><a href="#M000795">rand_pair</a></span>
+  <span style="padding-right: 5px;"><a href="#M000796">rand_pair!</a></span>
+  <span style="padding-right: 5px;"><a href="#M000798">rand_value</a></span>
+  <span style="padding-right: 5px;"><a href="#M000799">rand_value!</a></span>
+  <span style="padding-right: 5px;"><a href="#M000803">shuffle</a></span>
+  <span style="padding-right: 5px;"><a href="#M000804">shuffle!</a></span>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000801"></a><b>at_rand</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="Hash.html#M000798">rand_value</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000802"></a><b>at_rand!</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="Hash.html#M000798">rand_value</a>!
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000800"></a><b>pick</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="Hash.html#M000798">rand_value</a>!
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000794"></a><b>pick_key</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="Hash.html#M000792">rand_key</a>!
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000797"></a><b>pick_pair</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="Hash.html#M000795">rand_pair</a>!
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000792"></a><b>rand_key</b>()
+  </div>
+  <div class="description">
+  <p>
+Returns a random key.
+</p>
+<pre>
+  {:one =&gt; 1, :two =&gt; 2, :three =&gt; 3}.pick_key  #=&gt; :three
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000792_source')" id="l_M000792_source">+</a> ]</p>
+  <div id="M000792_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/random.rb, line 224</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rand_key</span>
+      <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">at</span>(<span class="ruby-constant">Random</span>.<span class="ruby-identifier">number</span>(<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">size</span>))
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000793"></a><b>rand_key!</b>()
+  </div>
+  <div class="description">
+  <p>
+Delete a random key-value pair, returning the key.
+</p>
+<pre>
+  a = {:one =&gt; 1, :two =&gt; 2, :three =&gt; 3}
+  a.pick_key!  #=&gt; :two
+  a            #=&gt; {:one =&gt; 1, :three =&gt; 3}
+</pre>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="Hash.html#M000794">pick_key</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000793_source')" id="l_M000793_source">+</a> ]</p>
+  <div id="M000793_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/random.rb, line 234</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rand_key!</span>
+      <span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span> = <span class="ruby-identifier">rand_pair</span>
+      <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">k</span>)
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">k</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000795"></a><b>rand_pair</b>()
+  </div>
+  <div class="description">
+  <p>
+Returns a random key-value pair.
+</p>
+<pre>
+  {:one =&gt; 1, :two =&gt; 2, :three =&gt; 3}.pick  #=&gt; [:one, 1]
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000795_source')" id="l_M000795_source">+</a> ]</p>
+  <div id="M000795_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/random.rb, line 246</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rand_pair</span>
+      <span class="ruby-identifier">k</span> = <span class="ruby-identifier">rand_key</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">k</span>, <span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">k</span>)
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000796"></a><b>rand_pair!</b>()
+  </div>
+  <div class="description">
+  <p>
+Deletes a random key-value pair and returns that pair.
+</p>
+<pre>
+  a = {:one =&gt; 1, :two =&gt; 2, :three =&gt; 3}
+  a.rand_pair!  #=&gt; [:two, 2]
+  a             #=&gt; {:one =&gt; 1, :three =&gt; 3}
+</pre>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="Hash.html#M000797">pick_pair</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000796_source')" id="l_M000796_source">+</a> ]</p>
+  <div id="M000796_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/random.rb, line 257</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rand_pair!</span>
+      <span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span> = <span class="ruby-identifier">rand_pair</span>
+      <span class="ruby-identifier">delete</span>( <span class="ruby-identifier">k</span> )
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000798"></a><b>rand_value</b>()
+  </div>
+  <div class="description">
+  <p>
+Returns a random hash value.
+</p>
+<pre>
+  {:one =&gt; 1, :two =&gt; 2, :three =&gt; 3}.rand_value  #=&gt; 2
+  {:one =&gt; 1, :two =&gt; 2, :three =&gt; 3}.rand_value  #=&gt; 1
+</pre>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="Hash.html#M000801">at_rand</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000798_source')" id="l_M000798_source">+</a> ]</p>
+  <div id="M000798_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/random.rb, line 270</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rand_value</span>
+      <span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">rand_key</span>)
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000799"></a><b>rand_value!</b>()
+  </div>
+  <div class="description">
+  <p>
+Deletes a random key-value pair and returns the value.
+</p>
+<pre>
+  a = {:one =&gt; 1, :two =&gt; 2, :three =&gt; 3}
+  a.at_rand!  #=&gt; 2
+  a           #=&gt; {:one =&gt; 1, :three =&gt; 3}
+</pre>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="Hash.html#M000800">pick</a>
+  <a href="Hash.html#M000802">at_rand!</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000799_source')" id="l_M000799_source">+</a> ]</p>
+  <div id="M000799_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/random.rb, line 280</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rand_value!</span>
+      <span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span> = <span class="ruby-identifier">rand_pair</span>
+      <span class="ruby-identifier">delete</span>( <span class="ruby-identifier">k</span> )
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">v</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000803"></a><b>shuffle</b>()
+  </div>
+  <div class="description">
+  <p>
+Returns a copy of the hash with <em>values</em> arranged in new random
+order.
+</p>
+<pre>
+  h = {:a=&gt;1, :b=&gt;2, :c=&gt;3}
+  h.shuffle_hash  #=&gt; {:b=&gt;2, :c=&gt;1, :a&gt;3}
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000803_source')" id="l_M000803_source">+</a> ]</p>
+  <div id="M000803_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/random.rb, line 297</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shuffle</span>
+      <span class="ruby-operator">::</span><span class="ruby-constant">Hash</span>.<span class="ruby-identifier">zipnew</span>( <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">sort_by</span>{<span class="ruby-constant">Random</span>.<span class="ruby-identifier">number</span>}, <span class="ruby-identifier">values</span>.<span class="ruby-identifier">sort_by</span>{<span class="ruby-constant">Random</span>.<span class="ruby-identifier">number</span>} )
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000804"></a><b>shuffle!</b>()
+  </div>
+  <div class="description">
+  <p>
+Destructive shuffle_hash. Arrange the values in a new random order.
+</p>
+<pre>
+  h = {:a =&gt; 1, :b =&gt; 2, :c =&gt; 3}
+  h.shuffle_hash!
+  h  #=&gt; {:b=&gt;2, :c=&gt;1, :a=&gt;3}
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000804_source')" id="l_M000804_source">+</a> ]</p>
+  <div id="M000804_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/random.rb, line 308</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shuffle!</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">replace</span>(<span class="ruby-identifier">shuffle</span>)
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

@@ -1,0 +1,26 @@
+.filter.hide
+  =form :action => "", :method => :get do
+    .span-6
+      %label{:for => :state } State
+      .hint Where the venue is located
+      =select :name => :state , :collection => State.all.map{|s| s.name}.zip, :include_blank => true
+    .span-15
+      %label{:for => :terms} Terms
+      .hint Additional terms to filter the results by
+      =text_field :name => :terms
+    .span-3.last=submit "Filter"
+.span-21
+  %table#tableCorporations.tablesorter
+    %caption Corporations
+    %thead
+      %tr
+        %th Name
+    %tbody
+      -@corporations.each do |corp|
+        %tr
+          %td.name=link_to corp.name, url(:corporation, corp)
+    %tfoot
+      %tr{ :style => "display: none;"}
+        %td{ :colspan => 1} No rows match the filter...
+.span-3.last
+  =link_to "+ New", url(:new_corporation), :class => "new_button"

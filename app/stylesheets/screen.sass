@@ -1,0 +1,277 @@
+@import base.sass
+@import ui/all.sass
+@import ui/daterangepicker.sass
+@import ui/themes/enterprise_blue.sass
+@import analytics.sass
+@import form.sass
+@import table.sass
+@import comboselect.sass
+@import pages.sass
+@import activity_feed.sass
+@import publish_group.sass
+
+html
+  +blueprint
+body
+  +blueprint-typography
+  +blueprint-interaction
+  color: #111
+  margin: 0
+  a
+    color: #6792AB
+  img.block
+    display: block
+    float: left
+  .hide
+    display: none
+  .title
+    float: right
+    h2
+      font-size: 2em
+      color: #fff
+      font-weight: bold
+      margin: 0
+  ul
+    overflow: hidden
+  #header
+    overflow: hidden
+    background: #ccc
+    ul
+      overflow: hidden
+      padding: 0 1em
+      margin: 2em 0 0 0
+      float: left
+      list-style: none
+      li
+        float: left
+        margin: 0 4px 0 0
+        &>span
+          background: #fff
+          color: #004860
+          display: block
+          padding: 6px 7px 4px
+          font-weight: bold
+        a
+          padding: 5px 7px 3px 7px
+          color: #fff
+          text-decoration: none
+          display: block
+          font-weight: bold
+          background: #6792AB
+          font-size: 1.1em
+          +ui-corner-top
+          &:hover
+            color: #666
+            background-color: #E7EEF3
+  #body
+    margin: 25px 0
+    background: #fff
+    min-height: 400px
+    .venues 
+      li 
+        a
+          font-size: 1.5em
+          color: #111
+          text-decoration: none
+          font-weight: bold
+          line-height: 1em
+          &:hover
+            background: #ddd
+            color: #666
+          &.edit
+            font-size: .7em
+            text-decoration: underline
+        h3
+          margin: 0
+        p
+          text-indent: 1em
+          margin: 0
+    #venue 
+      h2
+        font-weight: bold
+        margin: 0
+        font-size: 2.5em
+      h3
+        text-indent: 1em
+      h4
+        margin-bottom: 5px
+        font-size: 1.7em
+      addr
+        float: right
+        font-size: 1.3em
+        color: #999
+
+    #asset 
+      h2
+        font-weight: bold
+        margin: 0
+        font-size: 2.5em
+      dl
+        margin: .5em 0 0 2em
+        font-size: 1.2em
+      label, select
+        display: block
+        float: none
+
+    .corps 
+      li 
+        a
+          font-size: 1.7em
+          text-decoration: none
+          color: #111
+          line-height: 1.1em
+          &:hover
+            background: #ddd
+            color: #666
+          &.edit
+            font-size: 1em
+    #corp
+      h2
+        font-weight: bold
+        margin: 0
+        font-size: 2.5em
+      h3
+        text-indent: 1em
+      .list 
+        a
+          font-size: 1.3em
+          text-decoration: none
+          color: #111
+          line-height: 1.1em
+          display: block
+          padding: 3px 5px
+          &:hover
+            background: #E8EBCC
+            color: #666
+
+    #user
+      h2
+        font-weight: bold
+        margin: 0
+        font-size: 2.5em
+      dl 
+        dt
+          font-size: 1.5em
+          font-weight: normal
+          line-height: 1em
+        dd
+          color: #999
+          margin: 0
+
+  #footer
+    background: #ccc
+    color: #fff
+    overflow: hidden
+    ul
+      overflow: hidden
+      padding: 0 25px
+      float: left
+      margin: 5px 0 20px 37%
+      list-style: none
+      li
+        float: left
+        a
+          display: block
+          color: #fff
+          text-decoration: none
+          font-size: .9em
+          padding: 0 5px 3px
+          margin-top: 3px
+          &:hover
+            text-decoration: underline
+      &.last a
+        border-right: none
+
+.ui-resizable-knob
+  border: 1px dashed #fff
+
+ul.library
+  height: 360px
+  padding: 4px 0 0
+  overflow-y: scroll
+  border: 1px solid #ccc
+  margin: 0
+  list-style-type: none
+  list-style-image: none
+  list-style-position: outside
+  cursor: default
+  +ui-corner-all
+  li
+    border: 1px solid #bbb
+    margin: 3px 0 3px 7px
+    padding: 5px 5px 1px
+    float: left
+    background: none
+    +ui-corner-all
+    &.selected
+      background: #bbb
+#new_image 
+  form
+    margin: 0
+    label
+      margin-top: 0
+
+h2.guide
+  text-transform: uppercase
+  font-weight: bold
+  font-family: Gill Sans,Verdana,sans
+.hint
+  font-size: .9em
+  color: #666
+  margin: 0
+form div .hint
+  &+input.text
+    margin-top: 0
+  &+select
+    margin-top: 0
+.section hr
+  margin: 0
+  & + .hint
+    margin-bottom: 1em
+
+.contentItems
+  margin-bottom: 2em
+  overflow: hidden
+  div
+    border: 2px solid #ccc
+    padding: 10px
+    float: left
+    margin: 0 5px 5px 0
+    h4
+      font-family: Verdana,sans-serif
+      margin-bottom: 10px
+.content_item
+  float: left
+  list-style-type: none
+  a
+    border: 1px solid #ccc
+    display: block
+    overflow: hidden
+    text-decoration: none
+    color: #111
+    font-size: 1.5em
+    padding: 5px
+    &:hover
+      background: #ccc
+      border-color: #666
+  span
+    display: block
+li.content_item a
+  margin: 0 0 10px 10px
+  +ui-corner-all
+  
+.new_content
+  margin-top: 1em
+  padding-bottom: 2em
+  clear: left
+
+.period
+  overflow: hidden
+  margin-bottom: 3em
+  .calendar
+    float: left
+    margin: 0
+    label
+      margin-bottom: 1em
+  .time
+    margin-bottom: 20px

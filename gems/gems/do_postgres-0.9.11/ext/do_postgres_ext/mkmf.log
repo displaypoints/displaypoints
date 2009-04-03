@@ -1,0 +1,134 @@
+have_library: checking for main() in -lpq... -------------------- yes
+
+"cc -o conftest -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC conftest.c  -L"." -L"/usr/lib" -L"/usr/lib" -L.  -rdynamic -Wl,-export-dynamic     -lruby1.8-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
+/* end */
+
+--------------------
+
+have_header: checking for libpq-fe.h... -------------------- yes
+
+"cc -E -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <libpq-fe.h>
+/* end */
+
+--------------------
+
+have_header: checking for libpq/libpq-fs.h... -------------------- yes
+
+"cc -E -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <libpq/libpq-fs.h>
+/* end */
+
+--------------------
+
+have_header: checking for postgres.h... -------------------- yes
+
+"cc -E -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <postgres.h>
+/* end */
+
+--------------------
+
+have_header: checking for mb/pg_wchar.h... -------------------- yes
+
+"cc -E -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <mb/pg_wchar.h>
+/* end */
+
+--------------------
+
+have_header: checking for catalog/pg_type.h... -------------------- yes
+
+"cc -E -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <catalog/pg_type.h>
+/* end */
+
+--------------------
+
+have_func: checking for PQsetClientEncoding()... -------------------- yes
+
+"cc -o conftest -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC conftest.c  -L"." -L"/usr/lib" -L"/usr/lib" -L.  -rdynamic -Wl,-export-dynamic    -lpq  -lruby1.8-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘PQsetClientEncoding’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))PQsetClientEncoding; return 0; }
+/* end */
+
+"cc -o conftest -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC conftest.c  -L"." -L"/usr/lib" -L"/usr/lib" -L.  -rdynamic -Wl,-export-dynamic    -lpq  -lruby1.8-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { PQsetClientEncoding(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for pg_encoding_to_char()... -------------------- yes
+
+"cc -o conftest -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC conftest.c  -L"." -L"/usr/lib" -L"/usr/lib" -L.  -rdynamic -Wl,-export-dynamic    -lpq  -lruby1.8-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘pg_encoding_to_char’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))pg_encoding_to_char; return 0; }
+/* end */
+
+"cc -o conftest -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC conftest.c  -L"." -L"/usr/lib" -L"/usr/lib" -L.  -rdynamic -Wl,-export-dynamic    -lpq  -lruby1.8-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { pg_encoding_to_char(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for PQfreemem()... -------------------- yes
+
+"cc -o conftest -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC conftest.c  -L"." -L"/usr/lib" -L"/usr/lib" -L.  -rdynamic -Wl,-export-dynamic    -lpq  -lruby1.8-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘PQfreemem’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))PQfreemem; return 0; }
+/* end */
+
+"cc -o conftest -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC conftest.c  -L"." -L"/usr/lib" -L"/usr/lib" -L.  -rdynamic -Wl,-export-dynamic    -lpq  -lruby1.8-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { PQfreemem(); return 0; }
+/* end */
+
+--------------------
+

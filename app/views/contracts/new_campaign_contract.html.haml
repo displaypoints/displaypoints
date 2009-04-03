@@ -1,0 +1,15 @@
+=error_messages_for @contract
+=form_for @contract, :action => url(:campaign_add_contract,params[:campaign_id]), :id => "newContract" do
+  %h2.guide="New Contract for Campaign: #{@campaign.name}"
+  %h3 Length of Contract
+  .period.span-12
+    .calendar
+      %label{ :for => "contract_start_date"} Start Date
+      =hidden_field :start_at, :label => "Start Date"
+      %div
+  .period.span-12.last
+    .calendar
+      %label{ :for => "contract_end_date"} End Date
+      =hidden_field :end_at, :label => "End Date"
+      %div
+  %div=submit "Schedule"

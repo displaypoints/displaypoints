@@ -1,0 +1,33 @@
+#venue.span-18.colborder
+  .span-10
+    %h2=@venue.name
+  .span-8.last
+    %addr
+      =@venue.street
+      %br
+      ="#{@venue.city.name if @venue.city}, #{@venue.state.name if @venue.state} #{@venue.zipcode.code if @venue.zipcode}"
+  .clear
+    %h3="Part of #{link_to(@venue.corp.name, url(:corporation,@venue.corp))}"
+    %h4 Current Content
+    %ul
+      -if not @venue_content.nil?
+        -@venue_content.content_items.each do |ci|
+          %li[ci]
+            %a{ :href => url(:content_item, ci) }
+              -ci.pages.each do |page|
+                =image_tag page.thumb.path
+
+    -unless @venue.router.nil?
+      %h4 Router
+      %ul
+        %li=link_to @venue.router.identifier, url(:asset, @venue.router)
+    %h4 Chargers
+    %ul
+      -@venue.chargers.each do |charger|
+        %li=link_to charger.identifier, url(:asset, charger)
+    %h4 Displays
+    %ul
+      -@venue.displays.each do |display|
+        %li=link_to display.identifier, url(:asset, display)
+.span-5.last
+  =link_to "Edit", url(:edit_venue, @venue), :class => "button"

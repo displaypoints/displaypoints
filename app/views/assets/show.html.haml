@@ -1,0 +1,16 @@
+#asset.span-18.colborder
+  %h2=@asset.type
+  %dl
+    %dt Identifier
+    %dd="#{@asset.identifier}"
+    -if @asset.inuse?
+      %dt Currently at 
+      %dd=link_to(@asset.venue.name,url(:venue,@asset.venue))
+    -else
+      %dt Available
+  %h3 History
+  %ul
+    -@asset.history do |trans|
+      %li="#{trans.created_at.strftime("%B %d, %Y %H:%m")} - #{trans.venue.name}"
+.span-5.last
+  =link_to "Edit", url(:edit_asset, @asset), :class => "button"

@@ -1,0 +1,43 @@
+<% data_max = 0 %>
+{
+  "title": {
+    "text":"<%= "Activity from #{@data.values[0][0][0].strftime('%b %d')} to #{@data.values[0].last[0].strftime('%b %d')}" %>",
+    "style":"{font-size: 14px; color: #666666; text-align: center;}"
+  },
+  "elements": [
+    <% @data.each do |k,v| %>
+      {
+        "halo-size":1,
+        "fill-alpha":0.35,
+        "type":"area_hollow",
+        "colour":"#72a7cf",
+        "values": <%= v.map{|d| d.last }.to_json %>,
+        "dot-size":4
+        <% data_max = [data_max, v.map{|d| d.last }.max].max %>
+      }<%= (k == @data.keys.last) ? '' : ',' %>
+    <% end %>
+  ],
+  "y_axis": {
+    "steps": <%= PageAnalytic.horiz_grid(4, data_max) %>,
+    "max": <%= data_max %>,
+    "colour":"#999999",
+    "grid-colour":"#e7eef3"
+    
+  },
+  "tooltip": {
+    "shadow":true,
+    "body":"{font-size: 10px; font-weight: bold; color: #666666;}",
+    "title":"{font-size: 14px; color: #666666;}",
+    "background":"#ffffff",
+    "colour":"#72a7cf"
+  },
+  "x_axis": {
+    "colour":"#999999",
+    "grid-colour":"#e7eef3",
+    "labels": {
+      "steps":1,
+      "labels": <%= @data.values.first.map{|d| d.first.strftime('%b %d')}.to_json %>
+      }
+  },
+  "bg_colour":"#FFFFFF"
+}

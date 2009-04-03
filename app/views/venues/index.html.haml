@@ -1,0 +1,34 @@
+.filter.hide
+  =form :action => "", :method => :get do
+    .span-6
+      %label{ :for => :state } State
+      .hint The state its located in
+      =select :name => :state, :collection => State.all(:order => [:name]), :text_method => "name", :value_method => "code", :selected => params[:state], :include_blank => true
+    .span-6
+      %label{ :for => :corporation } Corporation
+      .hint Who owns the venue?
+      =select :name => :corporation, :collection => Corporation.all, :text_method => "name", :value_method => "slug", :selected => params[:corp], :include_blank => true
+    .span-9
+      %label{ :for => :tems } Terms
+      .hint Additional terms to filter the results by
+      =text_field :name => :terms, :value => params[:terms]
+    .span-3.last=submit "Filter"
+.span-21
+  %table#tableVenues.tablesorter
+    %caption Venues
+    %thead
+      %tr
+        %th Name
+        %th Location
+        %th Corpartion
+    %tbody
+      -@venues.each do |venue|
+        %tr
+          %td.name=link_to venue.name, url(:venue, venue)
+          %td.location="#{venue.street} #{venue.city.name}, #{venue.state.code}"
+          %td.corporation=link_to venue.corp.name, url(:corporation, venue.corp)
+    %tfoot
+      %tr{ :style => "display: none;"}
+        %td{ :colspan => 3} No rows match the filter...
+.span-3.last
+  =link_to "+ New", url(:new_venue), :class => "new_button"

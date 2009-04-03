@@ -1,0 +1,41 @@
+/usr/bin/ruby1.8 extconf.rb install do_postgres
+extconf.rb:8: command not found: pg_config --includedir-server
+extconf.rb:21: command not found: pg_config --libdir
+extconf.rb:21: command not found: pg_config --includedir
+extconf.rb:21: command not found: pg_config --libdir
+checking for main() in -lpq... no
+checking for main() in -llibpq... no
+*** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of
+necessary libraries and/or headers.  Check the mkmf.log file for more
+details.  You may need configuration options.
+
+Provided configuration options:
+	--with-opt-dir
+	--without-opt-dir
+	--with-opt-include
+	--without-opt-include=${opt-dir}/include
+	--with-opt-lib
+	--without-opt-lib=${opt-dir}/lib
+	--with-make-prog
+	--without-make-prog
+	--srcdir=.
+	--curdir
+	--ruby=/usr/bin/ruby1.8
+	--with-pgsql-server-dir
+	--without-pgsql-server-dir
+	--with-pgsql-server-include
+	--without-pgsql-server-include=${pgsql-server-dir}/include
+	--with-pgsql-server-lib
+	--without-pgsql-server-lib=${pgsql-server-dir}/lib
+	--with-pgsql-client-dir
+	--without-pgsql-client-dir
+	--with-pgsql-client-include
+	--without-pgsql-client-include=${pgsql-client-dir}/include
+	--with-pgsql-client-lib
+	--without-pgsql-client-lib=${pgsql-client-dir}/lib
+	--with-pqlib
+	--without-pqlib
+	--with-libpqlib
+	--without-libpqlib
+Could not find PostgreSQL build environment (libraries & headers): Makefile not created

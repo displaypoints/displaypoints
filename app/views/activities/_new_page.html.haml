@@ -1,0 +1,9 @@
+%li.activity
+  %h3
+    -if activity.user == session.user
+      You
+    -else
+      =link_to activity.user.name, url(:user, activity.user)
+    Created A New Page
+  .deets.img
+    =link_to image_tag(activity.page.thumb.path), url(:page, activity.page)

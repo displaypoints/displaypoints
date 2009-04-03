@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: Hash</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "+"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "-"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />Hash</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/more/facets/xmlhash_rb.html">lib/more/facets/xmlhash.rb</a>
+<a href="../files/lib/more/facets/snapshot_rb.html">lib/more/facets/snapshot.rb</a>
+<a href="../files/lib/more/facets/openobject_rb.html">lib/more/facets/openobject.rb</a>
+<a href="../files/lib/more/facets/random_rb.html">lib/more/facets/random.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+Object
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <span style="padding-right: 5px;"><a href="#M000231">restore_snapshot</a></span>
+  <span style="padding-right: 5px;"><a href="#M000230">take_snapshot</a></span>
+  <span style="padding-right: 5px;"><a href="#M000232">to_openobject</a></span>
+  <span style="padding-right: 5px;"><a href="#M000229">to_xml</a></span>
+
+<div class="sectiontitle">Included Modules</div>
+<ul>
+  <li><a href="Random.html">Random</a></li>
+</ul>
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000231"></a><b>restore_snapshot</b>(snap)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000231_source')" id="l_M000231_source">+</a> ]</p>
+  <div id="M000231_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/snapshot.rb, line 195</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">restore_snapshot</span>(<span class="ruby-identifier">snap</span>) <span class="ruby-identifier">replace</span>(<span class="ruby-identifier">snap</span>) <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000230"></a><b>take_snapshot</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000230_source')" id="l_M000230_source">+</a> ]</p>
+  <div id="M000230_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/snapshot.rb, line 194</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">take_snapshot</span>() <span class="ruby-identifier">dup</span> <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000232"></a><b>to_openobject</b>()
+  </div>
+  <div class="description">
+  <p>
+Convert a <a href="Hash.html">Hash</a> into an <a
+href="OpenObject.html">OpenObject</a>.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000232_source')" id="l_M000232_source">+</a> ]</p>
+  <div id="M000232_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/openobject.rb, line 241</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_openobject</span>
+    <span class="ruby-constant">OpenObject</span>[<span class="ruby-keyword kw">self</span>]
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000229"></a><b>to_xml</b>(root='root')
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000229_source')" id="l_M000229_source">+</a> ]</p>
+  <div id="M000229_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/xmlhash.rb, line 67</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_xml</span>(<span class="ruby-identifier">root</span>=<span class="ruby-value str">'root'</span>)
+    <span class="ruby-constant">Blow</span><span class="ruby-operator">::</span><span class="ruby-constant">Hash2Xml</span>.<span class="ruby-identifier">convert</span>(<span class="ruby-identifier">root</span>, <span class="ruby-keyword kw">self</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

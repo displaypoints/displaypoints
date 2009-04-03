@@ -1,0 +1,28 @@
+=ui-widget
+  font-family: Lucida Grande, Lucida Sans, Arial, sans-serif
+  font-size: 1.1em
+=ui-widget-input
+  font-family: Lucida Grande, Lucida Sans, Arial, sans-serif
+  font-size: 1em
+=ui-widget-header
+  border: 1px solid #b2c7d7
+  background: #e7eef3 url(/images/ui/e7eef3_40x100_textures_03_highlight_soft_100.png) 50% 50% repeat-x
+  color: #222222
+  font-weight: bold
+  & a
+    color: #222222
+=ui-widget-content
+  border: 1px solid #dddddd
+  background: #f9f9f9 url(/images/ui/f9f9f9_40x100_textures_04_highlight_hard_100.png) 50% 0 repeat-x
+  color: #362b36
+  & a
+    color: #362b36
+    
+.ui-widget
+  +ui-widget
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button
+  +ui-widget-input
+.ui-widget-header
+  +ui-widget-header
+.ui-widget-content
+  +ui-widget-content

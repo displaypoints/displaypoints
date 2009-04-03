@@ -1,0 +1,25 @@
+=error_messages_for @campaign
+=form_for @campaign, :action => url(:campaign, @campaign), :id => "campaignBuilder" do
+  %h2.guide="Editing Campaign: #{@campaign.name}"
+  %h3 Basic Info
+  %div
+    %label{ :for => "campaign_name"} Name
+    .hint What you want to call it
+    =text_field :name
+  %h3 Content
+  %p.todo TODO: Add Javscript to create content items inline
+  %p=link_to "Add Content", url(:campaign_new_content, @campaign)
+  -@prev_campaigns.each do |campaign|
+    %ul.pages
+      -campaign.content_items.each do |item|
+        %li=check_box :name => 'campaign[content_items][]', :value => item.id, :label => image_tag(item.thumb.path)
+  %h3 Publish Area
+  %div
+    =select :publish_group_id, :collection => PublishGroup.all, :text_method => "name", :value_method => "id", :label => "Your Existing Areas", :class => "comboselect", :multiple => true
+    =partial :publish_groups / :publish_group_builder
+  %h3 Users
+  %h4 Administrators
+  -@admin_assignments.each do |assignment|
+    =assignment.user.name    
+  =submit "Submit Changes"
+  =link_to "Cancel", url(:campaign, @campaign)

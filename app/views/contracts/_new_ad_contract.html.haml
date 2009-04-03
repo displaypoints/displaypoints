@@ -1,0 +1,27 @@
+=error_messages_for @contract
+=form_for @contract, :action => url(:campaign_add_contract) do
+  %h2="New Contract for Campaign: #{@campaign.name}"
+  %hr
+  %ul
+    %li 
+      %p.todo Fill in with features selected for each content item (i.e. list the individual content items and their options; such as linked pages, number of time periods it runs in the day (breakfast, lunch, dinner, etc...), limitations (don't run with alcohol), number of venues requested, etc...)
+  %div=text_field :name => "price_per_day", :label => "Price Per Day", :value => "$#{@campaign.price_per_day}", :readonly => "readonly"
+  %hr
+  %h3 Length of Contract
+  /%p.todo This only applies to contracts that are time based. Needs to be hidden and null for impression based campaigns.
+  /%p.todo Add Javascript date selector
+  .period
+    .calendar
+      %label{ :for => "contract_start_date"} Start Date
+      =hidden_field :name => "contract[start][date]", :label => "Start Date"
+      %span
+    .time=text_field :name => "contract[start][time]", :label => "Start Time", :id => "contract_start_time"
+  .period
+    .calendar
+      %label{ :for => "contract_end_date"} End Date
+      =hidden_field :name => "contract[end][date]", :label => "End Date"
+      %span
+    .time=text_field :name => "contract[end][time]", :label => "End Time", :id => "contract_end_time"
+
+  %div=text_field :price, :label => "Total Cost"
+  %div=submit "Buy"

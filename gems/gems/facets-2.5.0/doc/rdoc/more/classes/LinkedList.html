@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: LinkedList</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "+"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "-"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />LinkedList</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/more/facets/linkedlist_rb.html">lib/more/facets/linkedlist.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+Object
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><h1><a href="LinkedList.html">LinkedList</a></h1>
+<p>
+<a href="LinkedList.html">LinkedList</a> implements a simple doubly linked
+list with efficient hash-like element access.
+</p>
+<p>
+This is a simple linked list implementation with efficient random access of
+data elements. <a href="It.html">It</a> was inspired by George
+Moscovitis&#8217; <a href="LRUCache.html">LRUCache</a> implementation found
+in Facets 1.7.30, but unlike the linked list in that cache, this one does
+not require the use of a mixin on any class to be stored. The linked list
+provides the <a href="LinkedList.html#M000251">push</a>, <a
+href="LinkedList.html#M000250">pop</a>, <a
+href="LinkedList.html#M000248">shift</a>, <a
+href="LinkedList.html#M000249">unshift</a>, <a
+href="LinkedList.html#M000246">first</a>, <a
+href="LinkedList.html#M000247">last</a>, <a
+href="LinkedList.html#M000245">delete</a> and <a
+href="LinkedList.html#M000254">length</a> methods which work just like
+their namesakes in the Array class, but it also supports setting and
+retrieving values by key, just like a hash.
+</p>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <span style="padding-right: 5px;"><a href="#M000242">[]</a></span>
+  <span style="padding-right: 5px;"><a href="#M000243">[]=</a></span>
+  <span style="padding-right: 5px;"><a href="#M000245">delete</a></span>
+  <span style="padding-right: 5px;"><a href="#M000255">each</a></span>
+  <span style="padding-right: 5px;"><a href="#M000244">empty?</a></span>
+  <span style="padding-right: 5px;"><a href="#M000246">first</a></span>
+  <span style="padding-right: 5px;"><a href="#M000247">last</a></span>
+  <span style="padding-right: 5px;"><a href="#M000254">length</a></span>
+  <span style="padding-right: 5px;"><a href="#M000241">new</a></span>
+  <span style="padding-right: 5px;"><a href="#M000250">pop</a></span>
+  <span style="padding-right: 5px;"><a href="#M000251">push</a></span>
+  <span style="padding-right: 5px;"><a href="#M000252">queue</a></span>
+  <span style="padding-right: 5px;"><a href="#M000248">shift</a></span>
+  <span style="padding-right: 5px;"><a href="#M000253">to_a</a></span>
+  <span style="padding-right: 5px;"><a href="#M000249">unshift</a></span>
+
+<div class="sectiontitle">Included Modules</div>
+<ul>
+  <li><a href="Enumerable.html">Enumerable</a></li>
+</ul>
+
+
+  <div class="sectiontitle">Classes and Modules</div>
+  Class <a href="LinkedList/Node.html" class="link">LinkedList::Node</a><br />
+
+
+
+
+<div class="sectiontitle">Public Class methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000241"></a><b>new</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000241_source')" id="l_M000241_source">+</a> ]</p>
+  <div id="M000241_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/linkedlist.rb, line 87</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>
+                <span class="ruby-ivar">@head</span> = <span class="ruby-constant">Node</span>.<span class="ruby-identifier">new</span>
+                <span class="ruby-ivar">@tail</span> = <span class="ruby-constant">Node</span>.<span class="ruby-identifier">new</span>
+                <span class="ruby-ivar">@lookup</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+                <span class="ruby-identifier">node_join</span>(<span class="ruby-ivar">@head</span>,<span class="ruby-ivar">@tail</span>)
+        <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000242"></a><b>[]</b>(v)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000242_source')" id="l_M000242_source">+</a> ]</p>
+  <div id="M000242_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/linkedlist.rb, line 94</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">v</span>)
+                <span class="ruby-ivar">@lookup</span>[<span class="ruby-identifier">v</span>].<span class="ruby-identifier">value</span>
+        <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000243"></a><b>[]=</b>(k,v)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000243_source')" id="l_M000243_source">+</a> ]</p>
+  <div id="M000243_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/linkedlist.rb, line 98</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>)
+                <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@lookup</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">k</span>)
+                        <span class="ruby-ivar">@lookup</span>[<span class="ruby-identifier">k</span>].<span class="ruby-identifier">value</span> = <span class="ruby-identifier">v</span>
+                <span class="ruby-keyword kw">else</span>
+                        <span class="ruby-identifier">n</span> = <span class="ruby-constant">Node</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>,<span class="ruby-ivar">@head</span>,<span class="ruby-ivar">@head</span>.<span class="ruby-identifier">next_node</span>)
+                        <span class="ruby-identifier">node_join</span>(<span class="ruby-identifier">n</span>,<span class="ruby-ivar">@head</span>.<span class="ruby-identifier">next_node</span>)
+                        <span class="ruby-identifier">node_join</span>(<span class="ruby-ivar">@head</span>,<span class="ruby-identifier">n</span>)
+                        <span class="ruby-ivar">@lookup</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">n</span>
+                <span class="ruby-keyword kw">end</span>
+                <span class="ruby-identifier">v</span>
+        <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000245"></a><b>delete</b>(k)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000245_source')" id="l_M000245_source">+</a> ]</p>
+  <div id="M000245_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/linkedlist.rb, line 114</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">k</span>)
+                <span class="ruby-identifier">n</span> = <span class="ruby-ivar">@lookup</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">k</span>)
+                <span class="ruby-identifier">v</span> = <span class="ruby-identifier">n</span> <span class="ruby-value">? </span><span class="ruby-identifier">node_purge</span>(<span class="ruby-identifier">n</span>) <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>
+                <span class="ruby-identifier">v</span>
+        <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000255"></a><b>each</b>() {|n.key,n.value| ...}
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000255_source')" id="l_M000255_source">+</a> ]</p>
+  <div id="M000255_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/linkedlist.rb, line 192</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>
+                <span class="ruby-identifier">n</span> = <span class="ruby-ivar">@head</span>
+                <span class="ruby-keyword kw">while</span> (<span class="ruby-identifier">n</span> = <span class="ruby-identifier">n</span>.<span class="ruby-identifier">next_node</span>) <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">n</span> <span class="ruby-operator">!=</span> <span class="ruby-ivar">@tail</span>
+                        <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">n</span>.<span class="ruby-identifier">key</span>,<span class="ruby-identifier">n</span>.<span class="ruby-identifier">value</span>)
+                <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000244"></a><b>empty?</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000244_source')" id="l_M000244_source">+</a> ]</p>
+  <div id="M000244_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/linkedlist.rb, line 110</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">empty?</span>
+                <span class="ruby-ivar">@lookup</span>.<span class="ruby-identifier">empty?</span>
+        <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000246"></a><b>first</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000246_source')" id="l_M000246_source">+</a> ]</p>
+  <div id="M000246_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/linkedlist.rb, line 120</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">first</span>
+                <span class="ruby-ivar">@head</span>.<span class="ruby-identifier">next_node</span>.<span class="ruby-identifier">value</span>
+        <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000247"></a><b>last</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000247_source')" id="l_M000247_source">+</a> ]</p>
+  <div id="M000247_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/linkedlist.rb, line 124</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">last</span>
+                <span class="ruby-ivar">@tail</span>.<span class="ruby-identifier">prev_node</span>.<span class="ruby-identifier">value</span>
+        <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000254"></a><b>length</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000254_source')" id="l_M000254_source">+</a> ]</p>
+  <div id="M000254_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/linkedlist.rb, line 188</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">length</span>
+                <span class="ruby-ivar">@lookup</span>.<span class="ruby-identifier">length</span>
+        <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000250"></a><b>pop</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000250_source')" id="l_M000250_source">+</a> ]</p>
+  <div id="M000250_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/linkedlist.rb, line 149</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pop</span>
+                <span class="ruby-identifier">k</span> = <span class="ruby-ivar">@tail</span>.<span class="ruby-identifier">prev_node</span>.<span class="ruby-identifier">key</span>
+                <span class="ruby-identifier">n</span> = <span class="ruby-ivar">@lookup</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">k</span>)
+                <span class="ruby-identifier">node_delete</span>(<span class="ruby-identifier">n</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">n</span>
+        <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000251"></a><b>push</b>(v)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000251_source')" id="l_M000251_source">+</a> ]</p>
+  <div id="M000251_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/linkedlist.rb, line 155</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">push</span>(<span class="ruby-identifier">v</span>)
+                <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@lookup</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">v</span>)
+                        <span class="ruby-identifier">n</span> = <span class="ruby-ivar">@lookup</span>[<span class="ruby-identifier">v</span>]
+                        <span class="ruby-identifier">node_delete</span>(<span class="ruby-identifier">n</span>)
+                        <span class="ruby-identifier">node_join</span>(<span class="ruby-ivar">@tail</span>.<span class="ruby-identifier">prev_node</span>,<span class="ruby-identifier">n</span>)
+                        <span class="ruby-identifier">node_join</span>(<span class="ruby-identifier">n</span>,<span class="ruby-ivar">@tail</span>)
+                <span class="ruby-keyword kw">else</span>
+                        <span class="ruby-identifier">n</span> = <span class="ruby-constant">Node</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">v</span>,<span class="ruby-identifier">v</span>,<span class="ruby-ivar">@tail</span>.<span class="ruby-identifier">prev_node</span>,<span class="ruby-ivar">@tail</span>)
+                        <span class="ruby-identifier">node_join</span>(<span class="ruby-ivar">@tail</span>.<span class="ruby-identifier">prev_node</span>,<span class="ruby-identifier">n</span>)
+                        <span class="ruby-identifier">node_join</span>(<span class="ruby-identifier">n</span>,<span class="ruby-ivar">@tail</span>)
+                        <span class="ruby-ivar">@lookup</span>[<span class="ruby-identifier">v</span>] = <span class="ruby-identifier">n</span>
+                <span class="ruby-keyword kw">end</span>
+                <span class="ruby-identifier">v</span>
+        <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000252"></a><b>queue</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000252_source')" id="l_M000252_source">+</a> ]</p>
+  <div id="M000252_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/linkedlist.rb, line 170</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">queue</span>
+                <span class="ruby-identifier">r</span> = []
+                <span class="ruby-identifier">n</span> = <span class="ruby-ivar">@head</span>
+                <span class="ruby-keyword kw">while</span> (<span class="ruby-identifier">n</span> = <span class="ruby-identifier">n</span>.<span class="ruby-identifier">next_node</span>) <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">n</span> <span class="ruby-operator">!=</span> <span class="ruby-ivar">@tail</span>
+                        <span class="ruby-identifier">r</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">key</span>
+                <span class="ruby-keyword kw">end</span>
+                <span class="ruby-identifier">r</span>
+        <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000248"></a><b>shift</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000248_source')" id="l_M000248_source">+</a> ]</p>
+  <div id="M000248_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/linkedlist.rb, line 128</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shift</span>
+                <span class="ruby-identifier">k</span> = <span class="ruby-ivar">@head</span>.<span class="ruby-identifier">next_node</span>.<span class="ruby-identifier">key</span>
+                <span class="ruby-identifier">n</span> = <span class="ruby-ivar">@lookup</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">k</span>)
+                <span class="ruby-identifier">node_delete</span>(<span class="ruby-identifier">n</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">n</span>
+        <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000253"></a><b>to_a</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000253_source')" id="l_M000253_source">+</a> ]</p>
+  <div id="M000253_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/linkedlist.rb, line 179</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_a</span>
+                <span class="ruby-identifier">r</span> = []
+                <span class="ruby-identifier">n</span> = <span class="ruby-ivar">@head</span>
+                <span class="ruby-keyword kw">while</span> (<span class="ruby-identifier">n</span> = <span class="ruby-identifier">n</span>.<span class="ruby-identifier">next_node</span>) <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">n</span> <span class="ruby-operator">!=</span> <span class="ruby-ivar">@tail</span>
+                        <span class="ruby-identifier">r</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">value</span>
+                <span class="ruby-keyword kw">end</span>
+                <span class="ruby-identifier">r</span>
+        <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000249"></a><b>unshift</b>(v)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000249_source')" id="l_M000249_source">+</a> ]</p>
+  <div id="M000249_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/linkedlist.rb, line 134</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unshift</span>(<span class="ruby-identifier">v</span>)
+                <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@lookup</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">v</span>)
+                        <span class="ruby-identifier">n</span> = <span class="ruby-ivar">@lookup</span>[<span class="ruby-identifier">v</span>]
+                        <span class="ruby-identifier">node_delete</span>(<span class="ruby-identifier">n</span>)
+                        <span class="ruby-identifier">node_join</span>(<span class="ruby-identifier">n</span>,<span class="ruby-ivar">@head</span>.<span class="ruby-identifier">next_node</span>)
+                        <span class="ruby-identifier">node_join</span>(<span class="ruby-ivar">@head</span>,<span class="ruby-identifier">n</span>)
+                <span class="ruby-keyword kw">else</span>
+                        <span class="ruby-identifier">n</span> = <span class="ruby-constant">Node</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">v</span>,<span class="ruby-identifier">v</span>,<span class="ruby-ivar">@head</span>,<span class="ruby-ivar">@head</span>.<span class="ruby-identifier">next_node</span>)
+                        <span class="ruby-identifier">node_join</span>(<span class="ruby-identifier">n</span>,<span class="ruby-ivar">@head</span>.<span class="ruby-identifier">next_node</span>)
+                        <span class="ruby-identifier">node_join</span>(<span class="ruby-ivar">@head</span>,<span class="ruby-identifier">n</span>)
+                        <span class="ruby-ivar">@lookup</span>[<span class="ruby-identifier">v</span>] = <span class="ruby-identifier">n</span>
+                <span class="ruby-keyword kw">end</span>
+                <span class="ruby-identifier">v</span>
+        <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

@@ -1,0 +1,16 @@
+=request.message
+.span-21
+  %table#tablePublishGroups.tablesorter
+    %caption Publish Areas
+    %thead
+      %tr
+        %th Name
+    %tbody    
+      -@publish_groups.each do |group|
+        %tr
+          %td.name=link_to group.name, url(:publish_group, group)
+    %tfoot
+      %tr{ :style => "display: none;"}
+        %td{ :colspan => 1} No rows match the filter...
+.span-3.last
+  =link_to "+ New", url(:new_publish_group), :class => "new_button"

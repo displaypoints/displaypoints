@@ -1,0 +1,36 @@
+fieldset.comboselect
+  border: 0
+  display: block
+  padding: 0
+  margin: 1em 0
+  *
+    display: block
+    float: left
+    width:440px
+  select
+    height: 150px
+    background: #fff
+    border: 1px solid #bbb
+    margin: 0
+    padding: 0
+    width: 430px
+    +ui-corner-all
+    &:focus
+      border: 1px solid #666
+    option
+      width: 100% !important
+      border: 0
+      border-bottom: 1px dotted #ccc
+      padding: 3px
+    &.comboselect
+      display: none
+  fieldset
+    border: 0
+    width: 50px
+    padding: 10px
+    padding-top: 25px
+    margin: 0
+    input
+      width: 100%
+      clear: left
+      margin: 0

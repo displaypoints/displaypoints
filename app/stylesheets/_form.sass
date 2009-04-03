@@ -1,0 +1,122 @@
+form
+  margin: 0
+  overflow: hidden
+  label
+    font-weight: bold
+    margin-bottom: 0.3em
+    text-transform: uppercase
+    display: block
+    margin: 0
+    line-height: .9em
+    font-size: 1.5em
+  &.contentItem div.input
+    float: left
+    margin: 0 25px 0 0
+  form div
+    margin-bottom: 1em
+  .right
+    float: left
+    padding: 0 10px 10px
+  fieldset>div
+    margin-bottom: 10px
+    overflow: hidden
+  legend
+    font-size: 1.5em
+    color: #333
+  div button
+    margin-left: 200px
+  .images
+    border: 2px solid #004860
+    img
+      padding: 7px
+      &:hover
+        background: url(/images/img_bg.png) no-repeat top left
+  select
+    width: 312px
+    padding: 4px
+  input.radio + label
+    display: inline
+    float: none
+    margin: 0 15px 0 5px
+  .check_box
+    margin-bottom: 2em
+    overflow: hidden
+    padding: 27px 0 0
+    input.checkbox
+      float: left
+      margin-right: 2em
+      &+label
+        float: left
+  label.block
+    display: block
+    float: none
+    margin-bottom: .5em
+  textarea
+    border: 2px solid #004860
+    width: 464px
+    padding: 3px
+    height: 100px
+    clear: both
+  .buttons
+    margin-top: 2em
+    clear: both
+    margin-bottom: 0
+    & *
+      margin-bottom: 0
+  .new_inputs
+    overflow: hidden
+  a.new_input
+    display: block
+    border: 1px solid #ccc
+    float: left
+    margin: 0 0 5px 5px
+    padding: 3px 13px 3px 3px
+    background: #dedede url(/images/plus_small_circle.png) no-repeat 18px 50%
+    &:hover
+      background-color: #efefef
+      border-color: #dedede
+select
+  +ui-corner-all
+a.button
+  +ui-state-default
+  +ui-corner-all
+  font-size: 1.2em
+  font-weight: bold !important
+  padding: 3px 5px
+  color: #444 !important
+  &:hover
+    +ui-state-hover
+    font-weight: bold
+    padding: 5px 7px !important
+    color: #0B5B98 !important
+input.text
+  +ui-corner-all
+input[type='submit']
+  +ui-state-default
+  +ui-corner-all
+  font-size: 1.2em
+  font-weight: bold
+  padding: 3px 5px
+  &:hover
+    +ui-state-hover
+    font-weight: bold
+    padding: 3px 5px
+button
+  +ui-state-default
+  +ui-corner-all
+  &:hover
+    +ui-state-hover
+a.new_button
+  +ui-state-default
+  +ui-corner-all
+  &:hover
+    +ui-state-hover
+a.button,a.new_button
+  padding: 5px 7px
+  text-decoration: none
+  font-weight: normal
+  position: relative
+  top: 5px
+  color: #fff
+button[type]
+  padding:3px 15px

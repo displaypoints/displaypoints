@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: Enumerable::Enumerator</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "+"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "-"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />Enumerable::Enumerator</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../../files/lib/lore/facets/enumerator_rb.html">lib/lore/facets/enumerator.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+Object
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <span style="padding-right: 5px;"><a href="#M000131">new</a></span>
+
+
+
+
+
+
+<div class="sectiontitle">Public Class methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000131"></a><b>new</b>(*args, &amp;block)
+  </div>
+  <div class="description">
+  <p>
+Provides the ruby-1.9 block form of <a
+href="Enumerator.html">Enumerator</a>, where you can write:
+</p>
+<pre>
+   obj = Enumerator.new do |yielder|
+      .. do stuff
+      yielder.yield data      # or: yielder &lt;&lt; data
+      .. etc
+   end
+</pre>
+<p>
+When obj.each is called, the block is run once. It should call
+yielder.yield with each item it wishes to generate.
+</p>
+<p>
+Example:
+</p>
+<pre>
+  fib = Enumerator.new { |y|
+    a = b = 1
+    loop {
+      y &lt;&lt; a
+      a, b = b, a + b
+    }
+  }
+
+  assert_equal [1, 1, 2, 3, 5, 8, 13, 21, 34, 55], fib.take(10)
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000131_source')" id="l_M000131_source">+</a> ]</p>
+  <div id="M000131_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/lore/facets/enumerator.rb, line 34</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+          <span class="ruby-ivar">@body</span> = <span class="ruby-identifier">block</span>
+          <span class="ruby-identifier">old_initialize</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">:_start</span>)
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">old_initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

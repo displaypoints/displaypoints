@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Module: ZipUtils::DryRun</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "+"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "-"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Module</span><br />ZipUtils::DryRun</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../../files/lib/more/facets/ziputils_rb.html">lib/more/facets/ziputils.rb</a>
+        </td>
+      </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><p>
+Dry-run verions of <a href="../ZipUtils.html">ZipUtils</a>.
+</p>
+<p>
+This is the same as passing the :dryrun flag to <a
+href="../ZipUtils.html">ZipUtils</a>. Which is also equivalent to passing
+:noop and :verbose together.
+</p>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <span style="padding-right: 5px;"><a href="#M001020">bzip</a></span>
+  <span style="padding-right: 5px;"><a href="#M001019">bzip2</a></span>
+  <span style="padding-right: 5px;"><a href="#M001016">compress</a></span>
+  <span style="padding-right: 5px;"><a href="#M001017">gzip</a></span>
+  <span style="padding-right: 5px;"><a href="#M001023">tar</a></span>
+  <span style="padding-right: 5px;"><a href="#M001028">tar_bzip</a></span>
+  <span style="padding-right: 5px;"><a href="#M001027">tar_bzip2</a></span>
+  <span style="padding-right: 5px;"><a href="#M001025">tar_gzip</a></span>
+  <span style="padding-right: 5px;"><a href="#M001022">unbzip</a></span>
+  <span style="padding-right: 5px;"><a href="#M001021">unbzip2</a></span>
+  <span style="padding-right: 5px;"><a href="#M001018">ungzip</a></span>
+  <span style="padding-right: 5px;"><a href="#M001024">untar</a></span>
+  <span style="padding-right: 5px;"><a href="#M001030">untar_bzip</a></span>
+  <span style="padding-right: 5px;"><a href="#M001029">untar_bzip2</a></span>
+  <span style="padding-right: 5px;"><a href="#M001026">untar_gzip</a></span>
+  <span style="padding-right: 5px;"><a href="#M001032">unzip</a></span>
+  <span style="padding-right: 5px;"><a href="#M001031">zip</a></span>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M001020"></a><b>bzip</b>(file, options={})
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="DryRun.html#M001019">bzip2</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001019"></a><b>bzip2</b>(file, options={})
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="DryRun.html#M001020">bzip</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001019_source')" id="l_M001019_source">+</a> ]</p>
+  <div id="M001019_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ziputils.rb, line 378</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">bzip2</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>={})
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:dryrun</span>] = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-constant">ZipUtils</span>.<span class="ruby-identifier">bzip2</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001016"></a><b>compress</b>(format_extension, folder, file=nil, options={})
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001016_source')" id="l_M001016_source">+</a> ]</p>
+  <div id="M001016_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ziputils.rb, line 363</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">compress</span>(<span class="ruby-identifier">format_extension</span>, <span class="ruby-identifier">folder</span>, <span class="ruby-identifier">file</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">options</span>={})
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:dryrun</span>] = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-constant">ZipUtils</span>.<span class="ruby-identifier">tar_gzip</span>(<span class="ruby-identifier">format_extension</span>, <span class="ruby-identifier">folder</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001017"></a><b>gzip</b>(file, options={})
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001017_source')" id="l_M001017_source">+</a> ]</p>
+  <div id="M001017_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ziputils.rb, line 368</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">gzip</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>={})
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:dryrun</span>] = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-constant">ZipUtils</span>.<span class="ruby-identifier">gzip</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001023"></a><b>tar</b>(folder, file=nil, options={})
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001023_source')" id="l_M001023_source">+</a> ]</p>
+  <div id="M001023_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ziputils.rb, line 392</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">tar</span>(<span class="ruby-identifier">folder</span>, <span class="ruby-identifier">file</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">options</span>={})
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:dryrun</span>] = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-constant">ZipUtils</span>.<span class="ruby-identifier">tar</span>(<span class="ruby-identifier">folder</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001028"></a><b>tar_bzip</b>(folder, file=nil, options={})
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="DryRun.html#M001027">tar_bzip2</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001027"></a><b>tar_bzip2</b>(folder, file=nil, options={})
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="DryRun.html#M001028">tar_bzip</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001027_source')" id="l_M001027_source">+</a> ]</p>
+  <div id="M001027_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ziputils.rb, line 412</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">tar_bzip2</span>(<span class="ruby-identifier">folder</span>, <span class="ruby-identifier">file</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">options</span>={})
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:dryrun</span>] = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-constant">ZipUtils</span>.<span class="ruby-identifier">untar_bzip2</span>(<span class="ruby-identifier">folder</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001025"></a><b>tar_gzip</b>(folder, file=nil, options={})
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001025_source')" id="l_M001025_source">+</a> ]</p>
+  <div id="M001025_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ziputils.rb, line 402</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">tar_gzip</span>(<span class="ruby-identifier">folder</span>, <span class="ruby-identifier">file</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">options</span>={})
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:dryrun</span>] = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-constant">ZipUtils</span>.<span class="ruby-identifier">tar_gzip</span>(<span class="ruby-identifier">folder</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001022"></a><b>unbzip</b>(file, options={})
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="DryRun.html#M001021">unbzip2</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001021"></a><b>unbzip2</b>(file, options={})
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="DryRun.html#M001022">unbzip</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001021_source')" id="l_M001021_source">+</a> ]</p>
+  <div id="M001021_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ziputils.rb, line 385</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unbzip2</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>={})
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:dryrun</span>] = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-constant">ZipUtils</span>.<span class="ruby-identifier">unbzip2</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001018"></a><b>ungzip</b>(file, options={})
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001018_source')" id="l_M001018_source">+</a> ]</p>
+  <div id="M001018_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ziputils.rb, line 373</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ungzip</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>={})
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:dryrun</span>] = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-constant">ZipUtils</span>.<span class="ruby-identifier">ungzip</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001024"></a><b>untar</b>(file, options={})
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001024_source')" id="l_M001024_source">+</a> ]</p>
+  <div id="M001024_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ziputils.rb, line 397</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">untar</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>={})
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:dryrun</span>] = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-constant">ZipUtils</span>.<span class="ruby-identifier">untar</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001030"></a><b>untar_bzip</b>(file, options={})
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="DryRun.html#M001029">untar_bzip2</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001029"></a><b>untar_bzip2</b>(file, options={})
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="DryRun.html#M001030">untar_bzip</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001029_source')" id="l_M001029_source">+</a> ]</p>
+  <div id="M001029_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ziputils.rb, line 419</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">untar_bzip2</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>={})
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:dryrun</span>] = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-constant">ZipUtils</span>.<span class="ruby-identifier">untar_bzip2</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001026"></a><b>untar_gzip</b>(file, options={})
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001026_source')" id="l_M001026_source">+</a> ]</p>
+  <div id="M001026_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ziputils.rb, line 407</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">untar_gzip</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>={})
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:dryrun</span>] = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-constant">ZipUtils</span>.<span class="ruby-identifier">untar_gzip</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001032"></a><b>unzip</b>(file, options={})
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001032_source')" id="l_M001032_source">+</a> ]</p>
+  <div id="M001032_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ziputils.rb, line 431</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">unzip</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>={})
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:dryrun</span>] = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-constant">ZipUtils</span>.<span class="ruby-identifier">unzip</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001031"></a><b>zip</b>(folder, file=nil, options={})
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001031_source')" id="l_M001031_source">+</a> ]</p>
+  <div id="M001031_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ziputils.rb, line 426</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">zip</span>(<span class="ruby-identifier">folder</span>, <span class="ruby-identifier">file</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">options</span>={})
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:dryrun</span>] = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-constant">ZipUtils</span>.<span class="ruby-identifier">unzip</span>(<span class="ruby-identifier">folder</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

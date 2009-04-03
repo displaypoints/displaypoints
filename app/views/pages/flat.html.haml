@@ -1,0 +1,59 @@
+=request.message
+.span-13.colborder
+  -if @page.root?
+    %h2 Root Page
+    #page
+      =image_tag @page.media.path, :class => "root"
+      -@page.outgoing_links.each do |link|
+        .rect{:style => "top:#{link.y_coord - 4}px;left:#{link.x_coord - 4}px;", :id => "rect_#{link.id}"}
+          %span{:style =>"width:#{link.width}px;height:#{link.height}px;"}
+  -else
+    %h2 Child Page
+    #page
+      =image_tag @page.media.path, :class => "root"
+      -@page.outgoing_links.each do |link|
+        .rect{:style => "top:#{link.y_coord}px;left:#{link.x_coord}px;", :id => "rect_#{link.id}"}
+          %span{:style =>"width:#{link.width}px;height:#{link.height}px;"}
+    %hr
+    %h2 Parent Page
+    =link_to image_tag(@page.parent.thumb.path), url(:page, @page.parent)
+  -unless @page.children.empty?
+    %fieldset
+      %legend Child Page(s)
+      %ul.pages
+        -@page.children.each do |page|
+          %li=link_to image_tag(page.thumb.path), url(:page, page)
+.span-11.last
+  #links
+    %ul.pages
+      -@page.outgoing_links.each do |link|
+        %li[link]=link_to image_tag(link.destination_page.thumb.path), url(:page, link.destination_page)
+  %div=link_to "+ New Child Page", url(:new_child_page, @page), :class => "button child_page"
+  =form_for Link.new,:action => url(:links, :parent_id => @page.id), :multipart => true, :id => "child_page", :class => "clear hide" do
+    .ui-widget-content.ui-tabs.ui-corner-all
+      =hidden_field :x_coord, :id => "link_x", :value => 0
+      =hidden_field :y_coord, :id => "link_y", :value => 0
+      =hidden_field :width, :id => "link_width", :value => 100
+      =hidden_field :height, :id => "link_height", :value => 100
+      %ul.tabs
+        %li=link_to "New Image","#new_image"
+        %li=link_to "Image Library", "#img_library"
+      #new_image
+        %div
+          %label{ :for => "page_content_type" } Content Type
+          .hint What type of page are you creating?
+          =select :name => "link[dest_attrs[content_type]]", :collection => [["flat", "normal"], ["rss", "rss"], ["input", "form"], ["flash", "flash"]]
+        %div=file_field :name => "link[dest_attrs[media_data]]", :label => "File"
+        %br
+      #img_library
+        %div
+          %label{ :for => "page_content_type" } Content Type
+          .hint What type of page are you creating?
+          =select :name => "link[dest_attrs[content_type]]", :collection => [["flat", "normal"], ["rss", "rss"], ["input", "form"], ["flash", "flash"]]
+        %ul.library
+          -session.user.library.each do |k, v|
+            %li.image{:id => "image_#{k}"}=image_tag v
+        =hidden_field :name => "link[dest_attrs[asset_id]]"
+      .new_content
+        =submit "Add"
+        =link_to "Cancel", "#", :class => "cancel"

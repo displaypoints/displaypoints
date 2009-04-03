@@ -1,0 +1,6 @@
+{
+  "update_available" : <%= @display.has_update? %><% if @display.has_update? %>,
+  "download_path" : "<%= @display.update_path %>",
+  "filename" : "<%= @update_rpm.filename %>"
+  <% end %>
+}

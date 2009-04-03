@@ -1,0 +1,8 @@
+=error_messages_for @asset
+
+=form_for :page, :action => url(:new_child_page, @parent) do
+  %fieldset
+    %legend New Child Page
+    %div=file_field :media_data, :label => "File"
+    %div=select :content_type, :label => "Content Type", :collection => Page.content_types, :value_method => :to_s
+    %div=submit "Create"

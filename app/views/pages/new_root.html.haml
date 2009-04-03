@@ -1,0 +1,29 @@
+=error_messages_for @page
+.ui-widget-content.ui-tabs.ui-corner-all
+  %ul.tabs
+    %li=link_to "New Image","#new_image"
+    %li=link_to "Image Library", "#img_library"
+  #new_image
+    =form_for :page, :action => url(:new_root_page) do
+      %div
+        %label{ :for => "page_content_type" } Content Type
+        .hint What type of page are you creating?
+        =select :content_type, :collection => [["flat", "normal"], ["rss", "rss"], ["input", "form"], ["flash", "flash"]]
+      %div
+        %label{ :for => "page_media_data" } Image
+        .hint The background image for the page
+        =file_field :media_data
+      .new_content=submit "Create"
+  #img_library.ui-tabs-hide
+    =form_for :page, :action => url(:new_root_page) do
+      %div
+        %label{ :for => "page_content_type" } Content Type
+        .hint What type of page are you creating?
+        =select :content_type, :collection => [["flat", "normal"], ["rss", "rss"], ["input", "form"], ["flash", "flash"]]
+      %label Image
+      .hint The background image for the page
+      %ul.library
+        -session.user.library.each do |k,v|
+          %li.image{:id => "image_#{k}"}=image_tag v
+      =hidden_field :asset_id
+      .new_content=submit "Create"

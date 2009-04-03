@@ -1,0 +1,31 @@
+=request.message
+.span-21
+  %table#tableUsers.tablesorter
+    %caption Users
+    %thead
+      %tr
+        %th Name
+        %th Email
+        %th Corpartion
+        %th Role
+        %th Admin
+        -if session.user.root?
+          %th Action
+    %tbody
+      -@users.each do |user|
+        %tr
+          %td.name=link_to user.name, url(:user, user)
+          %td.email=link_to user.email, url(:user, user)
+          %td.corporation=link_to user.corporation.name, url(:corporation, user.corporation)
+          %td.role=user.corp_role.role
+          %td.admin=user.corp_role.admin
+          - if session.user.root?
+            %td.action
+              -unless user.root?
+                =link_to "Hijack!", url(:hijack_user, user)
+    %tfoot
+      %tr{ :style => "display: none;"}
+        %td{ :colspan => session.user.root? ? 5 : 6 } No rows match the filter...
+.span-3.last
+  -if session.user.admin? || session.user.role == :dp
+    =link_to "+ New", url(:new_user), :class => "new_button"

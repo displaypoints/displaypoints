@@ -1,0 +1,20 @@
+%h2.guide Update Asset
+=error_messages_for @asset
+=form_for :asset, :action => url(:asset, @asset), :method => :put do
+  .span-6
+    %label{:for => :asset_type} Type
+    .hint What type of device is it?
+    =select :type, :collection => Asset.subclasses.map{|a| a.to_s}, :style => "width:200px"
+  .span-8
+    %label{:for => :asset_identifier} Identifier
+    .hint What's the id of the device?
+    =text_field :identifier, :style => "width:250px"
+  .span-6
+    %label{:for => :asset_venue_id} Venue
+    .hint Where is the device located?
+    =select :venue_id, :collection => Venue.all, :text_method => "name", :value_method => "id", :include_blank => true, :style => 'width:310px'
+  .clear
+    =submit "Update"
+%br
+=form :action => url(:asset, @asset), :method => :delete do
+  =submit "Delete"

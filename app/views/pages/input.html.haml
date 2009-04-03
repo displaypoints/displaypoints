@@ -1,0 +1,21 @@
+=request.message
+.span-12.colborder
+  %h2 Root Page
+  #page
+    =image_tag @page.media.path, :class => "root"
+    %ul.survey{:style => "margin-top:#{@page.survey.top_margin}px"}
+      -@page.survey.inquiries.each_with_index do |input, i|
+        =partial :input, :input => input, :i => i
+#form_builder.span-11.last
+  =form_for @page.survey, :action => url(:update_survey, @page), :method => :put, :class => "margin" do
+    %div
+      %label{ :for => "survey_top_margin" } Top Margin
+      .hint The space between the form's top and the page's top
+      =text_field :top_margin
+    =submit "Save"
+  .new_inputs
+    =link_to image_tag('textfield.png'), "", :class => "new_input", :title => "text"
+    =link_to image_tag('text_list_bullets.png'), "", :class => "new_input", :title => "radio"
+    =link_to image_tag('timeline_marker.png'), "", :class => "new_input", :title => "slider"
+    =link_to image_tag('calendar_day.png'), "", :class => "new_input", :title => "date"
+    =link_to image_tag('mail.png'), "", :class => "new_input", :title => "email"

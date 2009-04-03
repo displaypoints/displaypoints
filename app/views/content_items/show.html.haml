@@ -1,0 +1,12 @@
+=request.message
+#analytics
+  .menu
+    .dateRange=text_field :name => "date_range", :id => "dateRange"
+    .data
+      =select :name => "data_type", :collection => [["user_rotation","User Rotation"],["link", "Link Clicks"],["auto_rotation", "Automatic Rotation"],["touch","Touches"]], :id => "dataType"
+  #analyticsGraph
+%h4=@content_item.resolution.humanize
+%hr
+%ul.pages
+  -@content_item.pages.each do |page|
+    %li=link_to image_tag(page.thumb.path), url(:page, page)

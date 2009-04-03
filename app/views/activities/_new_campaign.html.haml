@@ -1,0 +1,20 @@
+%li.activity
+  %h3
+    -if activity.user == session.user
+      You
+    -else
+      =link_to activity.user.name, url(:user, activity.user)
+    created the
+    =link_to activity.campaign.name, url(:campaign, activity.campaign)
+  .deets
+    %dl.span-4
+      %dt Publish Areas:
+      %dd=activity.campaign.publish_groups.count
+      %dt Content Items:
+      %dd=activity.campaign.content_items.count
+    %dl.span-8
+      -activity.campaign.contracts.each do | contract|
+        %dt Start Date:
+        %dd=contract.start_at.strftime("%B %d, %Y %H:%m%p")
+        %dt End Date:
+        %dd=contract.end_at.strftime("%B %d, %Y %H:%m%p")

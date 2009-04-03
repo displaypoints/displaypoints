@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+export INLINEDIR="/tmp/inline_<%= application %>"
+mkdir -p $INLINEDIR
+
+<%= current_path %>/bin/merb -u app -G app -d -p $1 -n <%= application %> -h 127.0.0.1 -m <%= current_path %> \
+ -a mongrel -l <%= log_level %> -L <%= shared_path %>/log/<%= application %>.log -e <%= stage %> -X off

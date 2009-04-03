@@ -1,0 +1,5 @@
+%div
+  =form :action => url(:"perform_login"), :method => :put do
+    %div=text_field :name => "login", :label => "Email"
+    %div=password_field :name => "password", :label => "Password", :class => 'text'
+    %div=submit "Log In", :class => "submit"

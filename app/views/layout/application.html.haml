@@ -1,0 +1,62 @@
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en-us", :lang => "en-us"}
+  %head
+    %title Display Points
+    %meta{ "http-equiv" => "content-type", :content => "text/html; charset=utf-8"}
+    =css_include_tag "compiled/screen"
+  %body
+    #header
+      .container
+        .title
+          %h2 DisplayPoints Portal
+        -if session.authenticated?
+          %ul
+            /All User Tabs
+            %li=link_to "Home", url(:home)
+            %li=link_to "Campaigns", url(:campaigns)
+            / %li=link_to "Publish Areas", url(:publish_groups)
+            %li=link_to "Ads", url(:pages)
+
+            -if session.user.role == :ad and session.user.admin?
+              %li=link_to "Contracts", url(:contracts)
+              %li=link_to "Users", url(:users)
+
+            -if session.user.role == :venue and session.user.admin?
+              %li=link_to "Users", url(:users)
+              %li=link_to "Venues", url(:venues)
+           
+            -if session.user.role == :venue and not session.user.admin?
+              %li=link_to "Venues", url(:venues)
+
+            -if session.user.role == :dp and session.user.admin?
+              %li=link_to "Equipment", url(:assets)
+              %li=link_to "Contracts", url(:contracts)
+              %li=link_to "Company", url(:corporations)
+              %li=link_to "Users", url(:users)
+              %li=link_to "Venues", url(:venues)
+              %li=link_to "Administration", url(:admin_dash)
+            
+            -if session.user.role == :dp and not session.user.admin?
+              %li=link_to "Company", url(:corporations)
+              %li=link_to "Contracts", url(:contracts)
+              %li=link_to "Users", url(:users)
+
+            %li=link_to "Logout", url(:logout)
+
+    #body
+      .container
+        =catch_content :for_layout
+    #footer
+      .container
+        %ul
+          %li=link_to "About"
+          %li=link_to "Help"
+          %li=link_to "Legal"
+          %li.last=link_to "Contact"
+    =js_include_tag "lib/jquery", "lib/jquery.ui.all", "lib/jquery.json"
+    / jquery_plugins
+    =js_include_tag "plugins/jquery.cookie", "plugins/cookiejar", "plugins/jquery.livequery", "plugins/jquery.form", "plugins/swfobject", "plugins/daterangepicker","plugins/jquery.selso", "plugins/jquery.comboselect", "plugins/swfobject", "plugins/jquery.tablesorter", "plugins/quicksilver"
+    / custom_stuff
+    =js_include_tag "custom/html", "custom/tableSearch"
+    / application
+    =js_include_tag "application"

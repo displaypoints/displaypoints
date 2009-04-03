@@ -1,0 +1,6 @@
+%h2.guide Editing Publish Group
+=error_messages_for @publish_group
+=form_for @publish_group, :action => url(:publish_group, @publish_group), :method => :put do
+  %div=text_field :name, :label => "Name"
+  =partial :publish_group_builder
+  %div=submit "Update"

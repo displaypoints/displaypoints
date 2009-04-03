@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: Matcher</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "+"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "-"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />Matcher</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/more/facets/matcher_rb.html">lib/more/facets/matcher.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+Object
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><h1><a href="Matcher.html">Matcher</a></h1>
+<pre>
+ Matcher derives from Ruby Quiz #103, the DictionaryMatcher quiz.
+</pre>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <span style="padding-right: 5px;"><a href="#M000567">&lt;&lt;</a></span>
+  <span style="padding-right: 5px;"><a href="#M000572">===</a></span>
+  <span style="padding-right: 5px;"><a href="#M000569">=~</a></span>
+  <span style="padding-right: 5px;"><a href="#M000566">add</a></span>
+  <span style="padding-right: 5px;"><a href="#M000568">include?</a></span>
+  <span style="padding-right: 5px;"><a href="#M000564">inspect</a></span>
+  <span style="padding-right: 5px;"><a href="#M000570">match</a></span>
+  <span style="padding-right: 5px;"><a href="#M000565">new</a></span>
+  <span style="padding-right: 5px;"><a href="#M000571">scan</a></span>
+
+
+
+  <div class="sectiontitle">Classes and Modules</div>
+  Class <a href="Matcher/MatchData.html" class="link">Matcher::MatchData</a><br />
+
+
+
+  <div class="sectiontitle">Attributes</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[R]
+    </td>
+    <td class='attr-name'>word_count</td>
+    <td class='attr-desc'></td>
+  </tr>
+  </table>
+
+<div class="sectiontitle">Public Class methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000565"></a><b>new</b>()
+  </div>
+  <div class="description">
+  <p>
+Create a DictionaryMatcher with no words in it
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000565_source')" id="l_M000565_source">+</a> ]</p>
+  <div id="M000565_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/matcher.rb, line 20</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>
+    <span class="ruby-ivar">@trie</span> = {}
+    <span class="ruby-ivar">@word_count</span> = <span class="ruby-value">0</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000567"></a><b>&lt;&lt;</b>(word)
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="Matcher.html#M000566">add</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000572"></a><b>===</b>(text)
+  </div>
+  <div class="description">
+  <p>
+Alias for #=~
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000569"></a><b>=~</b>(text)
+  </div>
+  <div class="description">
+  <p>
+Determines whether one of the words in the DictionaryMatcher is a substring
+of <tt>string</tt>. Returns the index of the <a
+href="Matcher.html#M000570">match</a> if found, <tt>nil</tt> if not found.
+</p>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="Matcher.html#M000572">===</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000569_source')" id="l_M000569_source">+</a> ]</p>
+  <div id="M000569_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/matcher.rb, line 83</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">text</span>
+    <span class="ruby-identifier">internal_match</span>(<span class="ruby-identifier">text</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">md</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">md</span>.<span class="ruby-identifier">index</span>}
+    <span class="ruby-keyword kw">nil</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000566"></a><b>add</b>(word)
+  </div>
+  <div class="description">
+  <p>
+Add a word to the DictionaryMatcher
+</p>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="Matcher.html#M000567"><<</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000566_source')" id="l_M000566_source">+</a> ]</p>
+  <div id="M000566_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/matcher.rb, line 26</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add</span>(<span class="ruby-identifier">word</span>)
+    <span class="ruby-ivar">@word_count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-identifier">container</span> = <span class="ruby-ivar">@trie</span>
+    <span class="ruby-identifier">containers</span>=[]
+
+    <span class="ruby-identifier">i</span>=<span class="ruby-value">0</span>
+    <span class="ruby-identifier">word</span>.<span class="ruby-identifier">each_byte</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">b</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">container</span>[<span class="ruby-identifier">b</span>] = {} <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">container</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">b</span>
+      <span class="ruby-identifier">container</span>[<span class="ruby-identifier">:depth</span>]=<span class="ruby-identifier">i</span>
+      <span class="ruby-identifier">containers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">container</span>
+      <span class="ruby-identifier">container</span> = <span class="ruby-identifier">container</span>[<span class="ruby-identifier">b</span>]
+      <span class="ruby-identifier">i</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">containers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">container</span>
+
+    <span class="ruby-identifier">container</span>[<span class="ruby-value">0</span>] = <span class="ruby-keyword kw">true</span> <span class="ruby-comment cmt"># Mark end of word</span>
+    <span class="ruby-identifier">container</span>[<span class="ruby-identifier">:depth</span>]=<span class="ruby-identifier">i</span>
+
+    <span class="ruby-identifier">ff</span>=<span class="ruby-identifier">compute_failure_function</span> <span class="ruby-identifier">word</span>
+    <span class="ruby-identifier">ff</span>.<span class="ruby-identifier">zip</span>(<span class="ruby-identifier">containers</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pointto</span>,<span class="ruby-identifier">container</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">container</span>[<span class="ruby-identifier">:failure</span>]=<span class="ruby-identifier">containers</span>[<span class="ruby-identifier">pointto</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">pointto</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">self</span>
+
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000568"></a><b>include?</b>(word)
+  </div>
+  <div class="description">
+  <p>
+Determine whether <tt>string</tt> was previously <tt><a
+href="Matcher.html#M000566">add</a></tt>ed to the Trie.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000568_source')" id="l_M000568_source">+</a> ]</p>
+  <div id="M000568_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/matcher.rb, line 70</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">include?</span>(<span class="ruby-identifier">word</span>)
+    <span class="ruby-identifier">container</span> = <span class="ruby-ivar">@trie</span>
+    <span class="ruby-identifier">word</span>.<span class="ruby-identifier">each_byte</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">b</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">break</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">container</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">b</span>
+      <span class="ruby-identifier">container</span> = <span class="ruby-identifier">container</span>[<span class="ruby-identifier">b</span>]
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">container</span>[<span class="ruby-value">0</span>]
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000564"></a><b>inspect</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000564_source')" id="l_M000564_source">+</a> ]</p>
+  <div id="M000564_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/matcher.rb, line 15</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>
+    <span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000570"></a><b>match</b>(text)
+  </div>
+  <div class="description">
+  <p>
+Determine whether one of the words in the DictionaryMatcher is a substring
+of <tt>string</tt>. Returns a DictionaryMatcher::MatchData object if found,
+<tt>nil</tt> if not found.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000570_source')" id="l_M000570_source">+</a> ]</p>
+  <div id="M000570_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/matcher.rb, line 92</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">match</span> <span class="ruby-identifier">text</span>
+    <span class="ruby-identifier">internal_match</span>(<span class="ruby-identifier">text</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">md</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">md</span>}
+    <span class="ruby-keyword kw">nil</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000571"></a><b>scan</b>(text, &amp;block)
+  </div>
+  <div class="description">
+  <p>
+Scans <tt>string</tt> for all occurrances of strings in the
+DictionaryMatcher. Overlapping matches are skipped (only the first one is
+yielded), and when some strings in the DictionaryMatcher are substrings of
+others, only the shortest <a href="Matcher.html#M000570">match</a> at a
+given position is found.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000571_source')" id="l_M000571_source">+</a> ]</p>
+  <div id="M000571_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/matcher.rb, line 130</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">scan</span>(<span class="ruby-identifier">text</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-identifier">matches</span>=[]
+    <span class="ruby-identifier">block</span>= <span class="ruby-identifier">lambda</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">md</span><span class="ruby-operator">|</span> <span class="ruby-identifier">matches</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">md</span> } <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">block</span>
+    <span class="ruby-identifier">internal_match</span>(<span class="ruby-identifier">text</span>,<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-identifier">matches</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

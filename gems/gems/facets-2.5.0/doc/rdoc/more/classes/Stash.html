@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: Stash</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "+"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "-"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />Stash</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/more/facets/stash_rb.html">lib/more/facets/stash.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+        <a href="Hash.html">
+Hash
+         </a>
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><h1><a href="Hash.html">Hash</a></h1>
+<p>
+<a href="Stash.html">Stash</a> is just like <a href="Hash.html">Hash</a>,
+except that all keys are converted to Strings.
+</p>
+<p>
+This is rather fresh code, so is not yet complete. For instnace, it
+currently does not ensure that default keys are strings when using
+default_proc.
+</p>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <span style="padding-right: 5px;"><a href="#M000672">&lt;&lt;</a></span>
+  <span style="padding-right: 5px;"><a href="#M000670">[]</a></span>
+  <span style="padding-right: 5px;"><a href="#M000671">[]=</a></span>
+  <span style="padding-right: 5px;"><a href="#M000666">fetch</a></span>
+  <span style="padding-right: 5px;"><a href="#M000668">has_key?</a></span>
+  <span style="padding-right: 5px;"><a href="#M000669">key?</a></span>
+  <span style="padding-right: 5px;"><a href="#M000667">store</a></span>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000672"></a><b>&lt;&lt;</b>(other)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000672_source')" id="l_M000672_source">+</a> ]</p>
+  <div id="M000672_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/stash.rb, line 38</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">other</span>)
+    <span class="ruby-identifier">cash</span> <span class="ruby-identifier">other</span>
+    <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Hash</span>
+      <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">other</span>.<span class="ruby-identifier">rekey</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">:to_s</span>))
+    <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Array</span>
+      <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">other</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_s</span>] = <span class="ruby-identifier">other</span>[<span class="ruby-value">1</span>]
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000670"></a><b>[]</b>(k)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000670_source')" id="l_M000670_source">+</a> ]</p>
+  <div id="M000670_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/stash.rb, line 30</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">k</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_s</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000671"></a><b>[]=</b>(k,v)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000671_source')" id="l_M000671_source">+</a> ]</p>
+  <div id="M000671_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/stash.rb, line 34</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">v</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000666"></a><b>fetch</b>(k)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000666_source')" id="l_M000666_source">+</a> ]</p>
+  <div id="M000666_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/stash.rb, line 14</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">k</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_s</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000668"></a><b>has_key?</b>(k)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000668_source')" id="l_M000668_source">+</a> ]</p>
+  <div id="M000668_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/stash.rb, line 22</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">k</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_s</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000669"></a><b>key?</b>(k)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000669_source')" id="l_M000669_source">+</a> ]</p>
+  <div id="M000669_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/stash.rb, line 26</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key?</span>(<span class="ruby-identifier">k</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_s</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000667"></a><b>store</b>(k, v)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000667_source')" id="l_M000667_source">+</a> ]</p>
+  <div id="M000667_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/stash.rb, line 18</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">store</span>(<span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span>)
+    <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">v</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

@@ -1,0 +1,99 @@
+.news
+  float: left
+  margin-right: 10px
+  width: 590px
+  .info
+    background: #dedede
+    padding: 5px 10px 28px
+    position: relative
+    +ui-corner-all
+    .name
+      font-size: 1.4em
+      .email
+        position: absolute
+        bottom: 5px
+        font-weight: bold
+        color: #666
+        font-size: 1.6em
+        line-height: .9em
+      .role
+        position: absolute
+        bottom: 5px
+        right: 10px
+        text-align: right
+        color: #666
+        font-size: 1.6em
+        line-height: .9em
+        font-weight: bold
+        font-family: Verdana, sans-serif
+        text-transform: uppercase
+  ul.activities
+    margin: 25px 0 0
+  li.activity
+    border-bottom-style: solid
+    border-bottom: 1px solid #ccc
+    padding-bottom: 10px
+    margin-bottom: 15px
+    overflow: hidden
+    h3
+      float: left
+      line-height: 1.1em
+      letter-spacing: 1px
+      font-size: 1.1em
+      margin-bottom: 8px
+      font-weight: bold
+    .deets
+      clear: left
+      text-indent: 2em
+      overflow: hidden
+      a
+        color: #666
+        &:hover
+          color: #000
+      &.img
+        float: right
+        clear: none
+        overflow: hidden
+        height: 70px
+        img
+          position: relative
+          top: -20px
+      dl
+        float: left
+        margin: 0
+        dd
+          float: left
+          color: #666
+          margin: 0
+        dt
+          float: left
+          clear: left
+          color: #444
+          width: 110px
+          text-align: right
+.stuff
+  width: 310px
+  float: left
+  margin-left: 40px
+  h3
+    margin: 0 0 1px
+    padding: 5px
+    background: #86B4CF
+    font-weight: bold
+    text-transform: uppercase
+    color: #333
+    +ui-corner-top
+  ul
+    margin: 0 0 5px
+    padding: 0 0 5px 0
+    list-style: none
+    border-top: 3px double #86B4CF
+    li 
+      a
+        font-size: 1.2em
+        display: block
+        padding: 2px 5px
+        color: #333
+        text-decoration: none
+        &:hover
+          background: #efefef

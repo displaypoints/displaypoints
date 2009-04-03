@@ -1,0 +1,11 @@
+#user.span-18.colborder
+  %h2=@user.name
+  %dl
+    %dt Corporation
+    %dd="#{@user.corporation.name}"
+    %dt Email
+    %dd="#{@user.email}"
+
+.span-5.last
+  -if session.user.admin? || session.user.role == :dp
+    =link_to "Edit", url(:edit_user, @user), :class => "button"

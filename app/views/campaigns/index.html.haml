@@ -1,0 +1,15 @@
+.span-21
+  %table#tableCampaigns.tablesorter
+    %caption Campaigns
+    %thead
+      %tr
+        %th Name
+    %tbody
+      -@campaigns.each do |campaign|
+        %tr
+          %td.name=link_to campaign.name, url(:campaign, campaign)
+    %tfoot
+      %tr{ :style => "display: none;"}
+        %td{ :colspan => 2} No rows match the filter...
+.span-3.last
+  =link_to 'New', url(:new_campaign), :class => "new_button"

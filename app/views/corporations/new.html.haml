@@ -1,0 +1,20 @@
+%h2.guide New Corporation
+=error_messages_for @corporation
+=form_for @corporation, :action => url(:corporations) do
+  %div=text_field :name, :label => "Name"
+  %br
+  %div
+    %label{ :for => "corporation_master" } Is a Depot?
+    .hint A depot is a DisplayPoints or Vendor location
+    =check_box :master
+  %br
+  %div
+    %label{ :for => "corporation_advertiser" } Is an advertiser?
+    =check_box :advertiser
+  %br
+  %div
+    %label{ :for => "corporation_brand" } Venue brand 
+    .hint Only required if this corporation owns venues. 
+    =text_field :brand
+  %br
+  .clear=submit "Add"

@@ -1,0 +1,15 @@
+%h2.guide New User
+=error_messages_for @user
+=form_for :user, :action => url(:users) do 
+  .span-12   
+    %div=text_field :name, :label => "Name"
+    %div=text_field :email, :label => "Email"
+    %div=select :name =>"corp_role[corporation_id]", :collection => Corporation.all(:order => [:name]), :text_method => "name", :value_method => "id", :label => "Corporation" 
+    -if session.user.admin? || session.user.root?
+      .check_box=check_box :name => "corp_role[admin]", :label => "Administrator"
+  .span-12.last
+    %div=password_field :password, :label => "Password", :class => "text"
+    %div=password_field :password_confirmation, :label => "Confirm Password", :class => "text"
+    -if session.user.root?
+      %div=select :name => "corp_role[role]", :collection => [['dp','Display Points'],['ad','Advertiser'],['venue','Venue']], :label => "Role"
+  .clear=submit "Add"

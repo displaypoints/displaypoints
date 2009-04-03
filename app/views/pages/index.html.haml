@@ -1,0 +1,8 @@
+=request.message
+.span-20.colborder
+  %h2 Root Pages
+  %ul.pages
+    -@root_pages.each do |root|
+      %li=link_to image_tag(root.thumb.path), url(:page, root)
+.span-3.last
+  =link_to "+ New", url(:new_root_page), :class => "new_button"

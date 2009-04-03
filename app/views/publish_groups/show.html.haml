@@ -1,0 +1,41 @@
+=request.message
+#pg
+  %h2=@publish_group.name
+  %hr
+  .included
+    %h3 Included
+    =fieldset :legend => "States" do
+      %ul
+        -@publish_group.inc_states.each do |state|
+          %li=state.name
+    =fieldset :legend => "Cities" do
+      %ul
+        -@publish_group.inc_cities.each do |city|
+          %li="#{city.name}, #{city.state.code}"
+    =fieldset :legend => "Zipcodes" do
+      %ul
+        -@publish_group.inc_zipcodes.each do |zipcode|
+          %li=zipcode.code
+    =fieldset :legend => "Venues" do
+      %ul
+        -@publish_group.inc_venues.each do |venue|
+          %li=venue.name
+  .excluded
+    %h3 Excluded
+    =fieldset :legend => "States" do
+      %ul
+        -@publish_group.ex_states.each do |state|
+          %li=state.name
+    =fieldset :legend => "Cities" do
+      %ul
+        -@publish_group.ex_cities.each do |city|
+          %li="#{city.name}, #{city.state.code}"
+
+    =fieldset :legend => "Zipcodes" do
+      %ul
+        -@publish_group.ex_zipcodes.each do |zipcode|
+          %li=zipcode.code
+    =fieldset :legend => "Venues" do
+      %ul
+        -@publish_group.ex_venues.each do |venue|
+          %li=venue.name

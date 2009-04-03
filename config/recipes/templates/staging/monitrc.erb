@@ -1,0 +1,29 @@
+check process merb_<%= application %>_master
+  with pidfile <%= shared_path %>/pids/<%= application %>-<%= stage %>-merb.main.pid
+  start program = "<%= current_path %>/bin/monit_merb_mpc <%= application %> start_master -c<%= ports.to_a.size %> -n<%= ports.first %>"
+  stop program = "<%= current_path %>/bin/monit_merb_mpc <%= application %> stop_master"
+  group merb_<%= application %>
+
+<% for port in ports %>
+check process merb_<%= application %>_<%= port %>
+  with pidfile <%= shared_path %>/pids/<%= application %>-<%= stage %>-merb.<%= port %>.pid
+  start program = "<%= current_path %>/bin/monit_merb_mpc <%= application %> register_worker <%= port %>"
+  stop program = "<%= current_path %>/bin/monit_merb_mpc <%= application %> restart_worker <%= port %>"
+  if totalmem is greater than 80.0 MB for 2 cycles then restart       # eating up memory?
+  group merb_<%= application %>
+<% end %>
+
+check process haproxy
+  with pidfile /var/run/haproxy.pid
+  start program = "/etc/init.d/haproxy start"
+  stop program = "/etc/init.d/haproxy stop"
+
+check process nginx
+  with pidfile /var/run/nginx.pid
+  start program = "/etc/init.d/nginx start"
+  stop program = "/etc/init.d/nginx stop"
+
+check process postgresql
+  with pidfile /data/postgresql/data/postmaster.pid
+  start program = "/etc/init.d/postgresql start"
+  stop program = "/etc/init.d/postgresql stop"

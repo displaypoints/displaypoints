@@ -1,0 +1,6 @@
+%h2.guide="Editing #{@corporation.name}"
+=error_messages_for @corporation
+=form_for @corporation, :action => url(:corporation, @corporation), :method => :put do
+  %div=text_field :name, :label => "Name"
+  %hr.space
+  .clear=submit "Update"

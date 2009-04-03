@@ -1,0 +1,23 @@
+#corp.span-18.colborder
+  %h2=@corporation.name
+  %hr
+  -if @corporation.master
+    %div Is a Depot
+  -if @corporation.advertiser
+    %div Is an Advertiser
+  %hr
+  -if @corporation.has_venues?
+    .list.span-8
+      %h3 Venues
+      %hr
+      -@corporation.venues.each do |venue|
+        =link_to venue.name, url(:venue,venue)
+  -unless @corporation.contracts.nil?
+    .list.span-8
+      %h3 Contracts
+      %hr
+      -@corporation.contracts.each do |contract|
+        =link_to "#{contract.campaign.name}: #{contract.start_at.strftime('%D')}-#{contract.start_at.strftime('%D')}", url(:contract, contract)
+      
+.span-5.last
+  =link_to "Edit", url(:edit_corporation, @corporation), :class => "button"

@@ -1,0 +1,21 @@
+%li.input{:id => "inquiry_#{input.id}", :class => input.type.to_s}
+  =link_to "X", url(:inquiry,@page,input), :class => "delete"
+  =link_to image_tag("pencil.png"), "", :class => "edit"
+  %label=input.question
+  -case input.type
+  -when :text then
+    %div Sample text
+  -when :radio then
+    -input.choices.each do |choice|
+      %div=choice
+  -when :slider then
+    %div
+  -when :date then
+    %div
+      .month=Date.today.month
+      /
+      .day=Date.today.day
+      /
+      .year=Date.today.year
+  -when :email then
+    %div bob@email.com

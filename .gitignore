@@ -1,0 +1,15 @@
+*.db
+*.swp
+*.swo
+config/environments/development.rb
+log/*
+public/uploads/*
+tmp/*
+!tmp
+.DS_Store
+gems/*
+!gems/cache/*
+script/log/*
+doc/*
+.original_gems
+test_data/*

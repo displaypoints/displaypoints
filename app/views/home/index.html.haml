@@ -1,0 +1,45 @@
+.news
+  .info
+    .name
+      =session.user.name
+      of
+      =link_to session.user.corporation.name, url(:corporation, session.user.corporation)
+    .email=session.user.email
+    .role
+      -if session.user.root?
+        Root
+      -elsif session.user.admin?
+        Admin
+      -else
+        User
+  =partial 'activities/feed'
+.stuff
+  -if session.user.root?
+    .corporations
+      %h3 Corporations
+      %ul
+        -Corporation.all.each do |corporation|
+          %li.corporation.clear=link_to corporation.name, url(:corporation, corporation)
+  .campaigns
+    %h3 Campaigns
+    %ul
+      -session.user.campaigns.each do |campaign|
+        %li.campaign.clear=link_to campaign.name, url(:campaign, campaign)
+  -if session.user.admin?
+    .users
+      %h3 Users
+      %ul
+        -session.user.corporation.users.each do |user|
+          %li.user.clear=link_to user.name, url(:user, user)
+  -if session.user.corporation.has_venues?
+    .venues
+      %h3 Venues
+      %ul.venues
+        -session.user.corporation.venues.each do |venue|
+          %li.venue.clear=link_to venue.name, url(:venue, venue)
+  -else
+    .publish_groups
+      %h3 Publish Areas
+      %ul.publish_groups
+        -session.user.publish_groups.each do |publish_group|
+          %li.publish_group.clear=link_to publish_group.name, url(:publish_group, publish_group)

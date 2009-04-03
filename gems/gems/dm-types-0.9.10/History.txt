@@ -1,0 +1,12 @@
+=== 0.9.9 / 2009-01-04
+
+* 1 bug fix:
+
+  * Updated DM::Json.typecast to handle nil values
+
+=== 0.9.8 / 2008-12-07
+
+* 2 bug fixes:
+
+  * Corrected BCryptHash type behavior (previously, value would be repeated saved
+  * tightened uuidtools requirement for the uuid type

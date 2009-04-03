@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Module: Duration::Numeric</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "+"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "-"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Module</span><br />Duration::Numeric</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../../files/lib/more/facets/duration_rb.html">lib/more/facets/duration.rb</a>
+        </td>
+      </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><h1><a href="Numeric.html">Numeric</a> Extensions for Durations</h1>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <span style="padding-right: 5px;"><a href="#M000481">day</a></span>
+  <span style="padding-right: 5px;"><a href="#M000480">days</a></span>
+  <span style="padding-right: 5px;"><a href="#M000485">fortnight</a></span>
+  <span style="padding-right: 5px;"><a href="#M000484">fortnights</a></span>
+  <span style="padding-right: 5px;"><a href="#M000479">hour</a></span>
+  <span style="padding-right: 5px;"><a href="#M000478">hours</a></span>
+  <span style="padding-right: 5px;"><a href="#M000477">minute</a></span>
+  <span style="padding-right: 5px;"><a href="#M000476">minutes</a></span>
+  <span style="padding-right: 5px;"><a href="#M000487">month</a></span>
+  <span style="padding-right: 5px;"><a href="#M000486">months</a></span>
+  <span style="padding-right: 5px;"><a href="#M000475">second</a></span>
+  <span style="padding-right: 5px;"><a href="#M000474">seconds</a></span>
+  <span style="padding-right: 5px;"><a href="#M000483">week</a></span>
+  <span style="padding-right: 5px;"><a href="#M000482">weeks</a></span>
+  <span style="padding-right: 5px;"><a href="#M000489">year</a></span>
+  <span style="padding-right: 5px;"><a href="#M000488">years</a></span>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000481"></a><b>day</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="Numeric.html#M000480">days</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000480"></a><b>days</b>()
+  </div>
+  <div class="description">
+  <p>
+Converts <a href="Numeric.html#M000480">days</a> into <a
+href="Numeric.html#M000474">seconds</a>.
+</p>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="Numeric.html#M000481">day</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000480_source')" id="l_M000480_source">+</a> ]</p>
+  <div id="M000480_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/duration.rb, line 236</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">days</span> ; <span class="ruby-constant">Duration</span>[<span class="ruby-keyword kw">self</span> <span class="ruby-operator">*</span> <span class="ruby-value">86400</span>] ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000485"></a><b>fortnight</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="Numeric.html#M000484">fortnights</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000484"></a><b>fortnights</b>()
+  </div>
+  <div class="description">
+  <p>
+Converts <a href="Numeric.html#M000484">fortnights</a> into <a
+href="Numeric.html#M000474">seconds</a>. (A <a
+href="Numeric.html#M000485">fortnight</a> is 2 <a
+href="Numeric.html#M000482">weeks</a>)
+</p>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="Numeric.html#M000485">fortnight</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000484_source')" id="l_M000484_source">+</a> ]</p>
+  <div id="M000484_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/duration.rb, line 245</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fortnights</span> ; <span class="ruby-constant">Duration</span>[<span class="ruby-keyword kw">self</span> <span class="ruby-operator">*</span> <span class="ruby-value">1209600</span>] ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000479"></a><b>hour</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="Numeric.html#M000478">hours</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000478"></a><b>hours</b>()
+  </div>
+  <div class="description">
+  <p>
+Converts <a href="Numeric.html#M000478">hours</a> into <a
+href="Numeric.html#M000474">seconds</a>.
+</p>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="Numeric.html#M000479">hour</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000478_source')" id="l_M000478_source">+</a> ]</p>
+  <div id="M000478_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/duration.rb, line 231</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hours</span> ; <span class="ruby-constant">Duration</span>[<span class="ruby-keyword kw">self</span> <span class="ruby-operator">*</span> <span class="ruby-value">3600</span>] ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000477"></a><b>minute</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="Numeric.html#M000476">minutes</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000476"></a><b>minutes</b>()
+  </div>
+  <div class="description">
+  <p>
+Converts <a href="Numeric.html#M000476">minutes</a> into <a
+href="Numeric.html#M000474">seconds</a>.
+</p>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="Numeric.html#M000477">minute</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000476_source')" id="l_M000476_source">+</a> ]</p>
+  <div id="M000476_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/duration.rb, line 227</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">minutes</span> ; <span class="ruby-constant">Duration</span>[<span class="ruby-keyword kw">self</span> <span class="ruby-operator">*</span> <span class="ruby-value">60</span>] ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000487"></a><b>month</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="Numeric.html#M000486">months</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000486"></a><b>months</b>()
+  </div>
+  <div class="description">
+  <p>
+Converts <a href="Numeric.html#M000486">months</a> into <a
+href="Numeric.html#M000474">seconds</a>. WARNING: This is not exact as it
+assumes 30 <a href="Numeric.html#M000480">days</a> to a <a
+href="Numeric.html#M000487">month</a>.
+</p>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="Numeric.html#M000487">month</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000486_source')" id="l_M000486_source">+</a> ]</p>
+  <div id="M000486_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/duration.rb, line 250</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">months</span> ; <span class="ruby-constant">Duration</span>[<span class="ruby-keyword kw">self</span> <span class="ruby-operator">*</span> <span class="ruby-value">30</span> <span class="ruby-operator">*</span> <span class="ruby-value">86400</span>] ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000475"></a><b>second</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="Numeric.html#M000474">seconds</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000474"></a><b>seconds</b>()
+  </div>
+  <div class="description">
+  <p>
+Enables the use of time calculations and declarations, like 45.minutes +
+2.hours + 4.years. The base unit for all of these <a
+href="Numeric.html">Numeric</a> time methods is <a
+href="Numeric.html#M000474">seconds</a>.
+</p>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="Numeric.html#M000475">second</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000474_source')" id="l_M000474_source">+</a> ]</p>
+  <div id="M000474_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/duration.rb, line 223</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">seconds</span> ; <span class="ruby-constant">Duration</span>[<span class="ruby-keyword kw">self</span>] ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000483"></a><b>week</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="Numeric.html#M000482">weeks</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000482"></a><b>weeks</b>()
+  </div>
+  <div class="description">
+  <p>
+Converts <a href="Numeric.html#M000482">weeks</a> into <a
+href="Numeric.html#M000474">seconds</a>.
+</p>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="Numeric.html#M000483">week</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000482_source')" id="l_M000482_source">+</a> ]</p>
+  <div id="M000482_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/duration.rb, line 240</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">weeks</span> ; <span class="ruby-constant">Duration</span>[<span class="ruby-keyword kw">self</span> <span class="ruby-operator">*</span> <span class="ruby-value">604800</span>] ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000489"></a><b>year</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="Numeric.html#M000488">years</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000488"></a><b>years</b>()
+  </div>
+  <div class="description">
+  <p>
+Converts <a href="Numeric.html#M000488">years</a> into <a
+href="Numeric.html#M000474">seconds</a>. WARNING: This is not exact as it
+assumes 365 <a href="Numeric.html#M000480">days</a> to a <a
+href="Numeric.html#M000489">year</a>.
+</p>
+<pre>
+         ie. It doesn not account for leap years.
+</pre>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="Numeric.html#M000489">year</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000488_source')" id="l_M000488_source">+</a> ]</p>
+  <div id="M000488_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/duration.rb, line 256</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">years</span> ; <span class="ruby-constant">Duration</span>[<span class="ruby-keyword kw">self</span> <span class="ruby-operator">*</span> <span class="ruby-value">365</span> <span class="ruby-operator">*</span> <span class="ruby-value">86400</span>, <span class="ruby-identifier">:years</span>] ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

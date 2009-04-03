@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: Memoizer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "+"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "-"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />Memoizer</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/more/facets/memoizer_rb.html">lib/more/facets/memoizer.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+Object
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><h1><a href="Memoizer.html">Memoizer</a></h1>
+<h2>Synopsis</h2>
+<p>
+<a href="Memoizer.html">Memoizer</a> wraps objects to provide cached method
+calls.
+</p>
+<pre>
+  class X
+    def initialize ; @tick = 0 ; end
+    def tick; @tick + 1; end
+    def memo; @memo ||= Memoizer.new(self) ; end
+  end
+
+  x = X.new
+  x.tick       #=&gt; 1
+  x.memo.tick  #=&gt; 2
+  x.tick       #=&gt; 3
+  x.memo.tick  #=&gt; 2
+  x.tick       #=&gt; 4
+  x.memo.tick  #=&gt; 2
+</pre>
+<p>
+You can also use to <a href="Memoizer.html#M000701">cache</a> a collections
+of objects to gain code speed ups.
+</p>
+<pre>
+  points = points.collect{|point| Memoizer.cache(point)}
+</pre>
+<p>
+After our algorithm has finished using points, we want to get rid of these
+<a href="Memoizer.html">Memoizer</a> objects. That&#8216;s easy:
+</p>
+<pre>
+   points = points.collect{|point| point.self }
+</pre>
+<p>
+Or if you prefer (it is ever so slightly safer):
+</p>
+<pre>
+   points = points.collect{|point| Memoizer.uncache(point)}
+</pre>
+<h2>References</h2>
+<p>
+See <a
+href="http://javathink.blogspot.com/2008/09/what-is-memoizer-and-why-should-you.html">javathink.blogspot.com/2008/09/what-is-memoizer-and-why-should-you.html</a>
+</p>
+<h2>Authors</h2>
+<ul>
+<li>Erik Veenstra
+
+</li>
+<li>Thomas Sawyer
+
+</li>
+</ul>
+<h2>Copying</h2>
+<p>
+Copyright (c) 2006 Erik Veenstra
+</p>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <span style="padding-right: 5px;"><a href="#M000701">cache</a></span>
+  <span style="padding-right: 5px;"><a href="#M000699">method_missing</a></span>
+  <span style="padding-right: 5px;"><a href="#M000698">new</a></span>
+  <span style="padding-right: 5px;"><a href="#M000700">self</a></span>
+  <span style="padding-right: 5px;"><a href="#M000702">uncache</a></span>
+
+
+
+
+
+
+<div class="sectiontitle">Public Class methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000701"></a><b>cache</b>(object)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000701_source')" id="l_M000701_source">+</a> ]</p>
+  <div id="M000701_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/memoizer.rb, line 65</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">cache</span>(<span class="ruby-identifier">object</span>)
+    <span class="ruby-identifier">new</span>(<span class="ruby-identifier">object</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000698"></a><b>new</b>(object)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000698_source')" id="l_M000698_source">+</a> ]</p>
+  <div id="M000698_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/memoizer.rb, line 53</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">object</span>)
+    <span class="ruby-ivar">@self</span>  = <span class="ruby-identifier">object</span>
+    <span class="ruby-ivar">@cache</span> = {}
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000702"></a><b>uncache</b>(cached_object)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000702_source')" id="l_M000702_source">+</a> ]</p>
+  <div id="M000702_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/memoizer.rb, line 69</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">uncache</span>(<span class="ruby-identifier">cached_object</span>)
+    <span class="ruby-identifier">cached_object</span>.<span class="ruby-identifier">self</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000699"></a><b>method_missing</b>(method_name, *args, &amp;block)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000699_source')" id="l_M000699_source">+</a> ]</p>
+  <div id="M000699_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/memoizer.rb, line 58</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-comment cmt"># Not thread-safe! Speed is important in caches... ;]</span>
+    <span class="ruby-ivar">@cache</span>[[<span class="ruby-identifier">method_name</span>, <span class="ruby-identifier">args</span>, <span class="ruby-identifier">block</span>]] <span class="ruby-operator">||=</span> <span class="ruby-ivar">@self</span>.<span class="ruby-identifier">__send__</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000700"></a><b>self</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000700_source')" id="l_M000700_source">+</a> ]</p>
+  <div id="M000700_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/memoizer.rb, line 63</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>; <span class="ruby-ivar">@self</span>; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

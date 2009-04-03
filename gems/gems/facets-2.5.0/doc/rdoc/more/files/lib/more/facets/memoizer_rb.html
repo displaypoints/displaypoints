@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>File: memoizer.rb</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "+"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "-"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table border='0' cellpadding='0' cellspacing='0' width="100%" class='banner'>
+  <tr><td>
+    <table width="100%" border='0' cellpadding='0' cellspacing='0'><tr>
+      <td class="file-title" colspan="2"><span class="file-title-prefix">File</span><br />memoizer.rb</td>
+      <td align="right">
+        <table border='0' cellspacing="0" cellpadding="2">
+          <tr>
+            <td>Path:</td>
+            <td>lib/more/facets/memoizer.rb
+            </td>
+          </tr>
+          <tr>
+            <td>Modified:</td>
+            <td>Sun Nov 16 20:31:35 -0500 2008</td>
+          </tr>
+        </table>
+      </td></tr>
+    </table>
+  </td></tr>
+</table><br />
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><h1><a href="../../../../classes/Memoizer.html">Memoizer</a></h1>
+<h2>Synopsis</h2>
+<p>
+<a href="../../../../classes/Memoizer.html">Memoizer</a> wraps objects to
+provide cached method calls.
+</p>
+<pre>
+  class X
+    def initialize ; @tick = 0 ; end
+    def tick; @tick + 1; end
+    def memo; @memo ||= Memoizer.new(self) ; end
+  end
+
+  x = X.new
+  x.tick       #=&gt; 1
+  x.memo.tick  #=&gt; 2
+  x.tick       #=&gt; 3
+  x.memo.tick  #=&gt; 2
+  x.tick       #=&gt; 4
+  x.memo.tick  #=&gt; 2
+</pre>
+<p>
+You can also use to cache a collections of objects to gain code speed ups.
+</p>
+<pre>
+  points = points.collect{|point| Memoizer.cache(point)}
+</pre>
+<p>
+After our algorithm has finished using points, we want to get rid of these
+<a href="../../../../classes/Memoizer.html">Memoizer</a> objects.
+That&#8216;s easy:
+</p>
+<pre>
+   points = points.collect{|point| point.self }
+</pre>
+<p>
+Or if you prefer (it is ever so slightly safer):
+</p>
+<pre>
+   points = points.collect{|point| Memoizer.uncache(point)}
+</pre>
+<h2>References</h2>
+<p>
+See <a
+href="http://javathink.blogspot.com/2008/09/what-is-memoizer-and-why-should-you.html">javathink.blogspot.com/2008/09/what-is-memoizer-and-why-should-you.html</a>
+</p>
+<h2>Authors</h2>
+<ul>
+<li>Erik Veenstra
+
+</li>
+<li>Thomas Sawyer
+
+</li>
+</ul>
+<h2>Copying</h2>
+<p>
+Copyright (c) 2006 Erik Veenstra
+</p>
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+  </div>
+
+    </body>
+</html>
