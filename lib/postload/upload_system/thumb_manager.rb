@@ -18,6 +18,7 @@ module ThumbManager
   def self.thumb_model_for(content_type)
     case content_type
     when /^image\// then ImageThumb
+    when /^application\/x-shockwave-flash$/ then FlashThumb
     else (raise InvalidMedia, content_type)
     end
   end
