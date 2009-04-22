@@ -12,7 +12,8 @@ class Thumb < Media
   end
   
   def filenameThumb
-    "#{digest}-thumb.png"
+    extname = ".png"
+    "#{digest}-thumb#{extname}"
   end
   
 end
