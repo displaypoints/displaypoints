@@ -2,4 +2,6 @@
   #page
     #flash
       =@page.media.path
+      =@page.thumb
+      =(Merb.dir_for(:uploads) - Merb.dir_for(:public) + "/flash_image.png")
 .span-11.last
