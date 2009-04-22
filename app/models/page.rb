@@ -88,8 +88,14 @@ class Page
   
   def asset_id=(id)
     pg = Page.get(id)
-    self.media = ImageMedia.new(pg.media.attributes.except(:id, :page_id))
-    self.thumb = ImageThumb.new(pg.thumb.attributes.except(:id, :page_id))
+    case properties[:content_type].type
+      when 1
+        self.media = ImageMedia.new(pg.media.attributes.except(:id, :page_id))
+        self.thumb = ImageThumb.new(pg.thumb.attributes.except(:id, :page_id))
+      when 4
+        self.media = FlashMedia.new(pg.media.attributes.except(:id, :page_id))
+        self.thumb = FlashThumb.new(pg.thumb.attributes.except(:id, :page_id))
+      end
   end
 
   alias_method :to_hash, :to_mash
