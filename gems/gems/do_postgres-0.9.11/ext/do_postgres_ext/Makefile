@@ -4,12 +4,12 @@ SHELL = /bin/sh
 #### Start of system configuration section. ####
 
 srcdir = .
-topdir = /usr/lib/ruby/1.8/i486-linux
+topdir = /opt/local/lib/ruby/1.8/i686-darwin9.6.0
 hdrdir = $(topdir)
 VPATH = $(srcdir):$(topdir):$(hdrdir)
-prefix = $(DESTDIR)/usr
-exec_prefix = $(DESTDIR)/usr
-sitedir = $(DESTDIR)/usr/local/lib/site_ruby
+prefix = $(DESTDIR)/opt/local
+exec_prefix = $(prefix)
+sitedir = $(prefix)/lib/ruby/site_ruby
 rubylibdir = $(libdir)/ruby/$(ruby_version)
 docdir = $(datarootdir)/doc/$(PACKAGE)
 dvidir = $(docdir)
@@ -17,45 +17,50 @@ datarootdir = $(prefix)/share
 archdir = $(rubylibdir)/$(arch)
 sbindir = $(exec_prefix)/sbin
 psdir = $(docdir)
+vendordir = $(prefix)/lib/ruby/vendor_ruby
 localedir = $(datarootdir)/locale
 htmldir = $(docdir)
 datadir = $(datarootdir)
 includedir = $(prefix)/include
-infodir = $(prefix)/share/info
-sysconfdir = $(DESTDIR)/etc
-mandir = $(prefix)/share/man
-libdir = $(DESTDIR)/usr/lib
+infodir = $(datarootdir)/info
+sysconfdir = $(prefix)/etc
+libdir = $(exec_prefix)/lib
+mandir = $(DESTDIR)/opt/local/share/man
 sharedstatedir = $(prefix)/com
 oldincludedir = $(DESTDIR)/usr/include
 pdfdir = $(docdir)
 sitearchdir = $(sitelibdir)/$(sitearch)
+vendorarchdir = $(vendorlibdir)/$(vendorarch)
+localstatedir = $(prefix)/var
 bindir = $(exec_prefix)/bin
-localstatedir = $(DESTDIR)/var
+vendorlibdir = $(vendordir)/$(ruby_version)
 sitelibdir = $(sitedir)/$(ruby_version)
-libexecdir = $(prefix)/lib/ruby1.8
+libexecdir = $(exec_prefix)/libexec
 
-CC = cc
+CC = /usr/bin/gcc-4.0
 LIBRUBY = $(LIBRUBY_SO)
 LIBRUBY_A = lib$(RUBY_SO_NAME)-static.a
 LIBRUBYARG_SHARED = -l$(RUBY_SO_NAME)
 LIBRUBYARG_STATIC = -l$(RUBY_SO_NAME)-static
 
 RUBY_EXTCONF_H = 
-CFLAGS   =  -fPIC -fno-strict-aliasing -g -O2  -fPIC -Wall  
-INCFLAGS = -I. -I. -I/usr/lib/ruby/1.8/i486-linux -I.
-CPPFLAGS = -DHAVE_LIBPQ_FE_H -DHAVE_LIBPQ_LIBPQ_FS_H -DHAVE_POSTGRES_H -DHAVE_MB_PG_WCHAR_H -DHAVE_CATALOG_PG_TYPE_H -DHAVE_PQSETCLIENTENCODING -DHAVE_PG_ENCODING_TO_CHAR -DHAVE_PQFREEMEM -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server 
+CFLAGS   =  -fno-common -O2  -fno-common -pipe -fno-common -Wall  
+INCFLAGS = -I. -I. -I/opt/local/lib/ruby/1.8/i686-darwin9.6.0 -I.
+DEFS     = 
+CPPFLAGS = -DHAVE_LIBPQ_FE_H -DHAVE_LIBPQ_LIBPQ_FS_H -DHAVE_POSTGRES_H -DHAVE_MB_PG_WCHAR_H -DHAVE_CATALOG_PG_TYPE_H -DHAVE_PQSETCLIENTENCODING -DHAVE_PG_ENCODING_TO_CHAR -DHAVE_PQFREEMEM -I/opt/local/include/postgresql83 -I/opt/local/include/postgresql83/server/ -I/opt/local/include 
 CXXFLAGS = $(CFLAGS) 
-DLDFLAGS = -L.  -rdynamic -Wl,-export-dynamic  
-LDSHARED = $(CC) -shared
+DLDFLAGS = -L. -L/opt/local/lib  
+LDSHARED = cc -dynamic -bundle -undefined suppress -flat_namespace
 AR = ar
 EXEEXT = 
 
-RUBY_INSTALL_NAME = ruby1.8
-RUBY_SO_NAME = ruby1.8
-arch = i486-linux
-sitearch = i486-linux
+RUBY_INSTALL_NAME = ruby
+RUBY_SO_NAME = ruby
+arch = i686-darwin9.6.0
+sitearch = i686-darwin9.6.0
+vendorarch = i686-darwin9.6.0
 ruby_version = 1.8
-ruby = /usr/bin/ruby1.8
+ruby = /opt/local/bin/ruby
 RUBY = $(ruby)
 RM = rm -f
 MAKEDIRS = mkdir -p
@@ -68,31 +73,31 @@ COPY = cp
 
 preload = 
 
-libpath = . $(libdir) /usr/lib
-LIBPATH =  -L"." -L"$(libdir)" -L"/usr/lib"
+libpath = . $(libdir) /opt/local/lib/postgresql83 /opt/local/lib/postgresql83/
+LIBPATH =  -L. -L$(libdir) -L/opt/local/lib/postgresql83 -L/opt/local/lib/postgresql83/
 DEFFILE = 
 
-CLEANFILES = 
+CLEANFILES = mkmf.log
 DISTCLEANFILES = 
 
 extout = 
 extout_prefix = 
 target_prefix = 
 LOCAL_LIBS = 
-LIBS = $(LIBRUBYARG_SHARED) -lpq  -lpthread -ldl -lcrypt -lm   -lc
+LIBS = $(LIBRUBYARG_SHARED) -lpq  -lpthread -ldl -lobjc  
 SRCS = do_postgres_ext.c
 OBJS = do_postgres_ext.o
 TARGET = do_postgres_ext
-DLLIB = $(TARGET).so
+DLLIB = $(TARGET).bundle
 EXTSTATIC = 
 STATIC_LIB = 
 
 RUBYCOMMONDIR = $(sitedir)$(target_prefix)
-RUBYLIBDIR = /usr/lib/ruby/gems/1.8/gems/do_postgres-0.9.11/lib$(target_prefix)
-RUBYARCHDIR = /usr/lib/ruby/gems/1.8/gems/do_postgres-0.9.11/lib$(target_prefix)
+RUBYLIBDIR    = $(sitelibdir)$(target_prefix)
+RUBYARCHDIR   = $(sitearchdir)$(target_prefix)
 
 TARGET_SO     = $(DLLIB)
-CLEANLIBS     = $(TARGET).so $(TARGET).il? $(TARGET).tds $(TARGET).map
+CLEANLIBS     = $(TARGET).bundle $(TARGET).il? $(TARGET).tds $(TARGET).map
 CLEANOBJS     = *.o *.a *.s[ol] *.pdb *.exp *.bak
 
 all:		$(DLLIB)

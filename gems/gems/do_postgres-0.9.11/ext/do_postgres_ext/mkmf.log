@@ -1,6 +1,7 @@
 have_library: checking for main() in -lpq... -------------------- yes
 
-"cc -o conftest -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC conftest.c  -L"." -L"/usr/lib" -L"/usr/lib" -L.  -rdynamic -Wl,-export-dynamic     -lruby1.8-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+"/usr/bin/gcc-4.0 -o conftest -I. -I/opt/local/lib/ruby/1.8/i686-darwin9.6.0 -I. -I/opt/local/include/postgresql83 -I/opt/local/include/postgresql83/server/ -I/opt/local/include  -O2  -fno-common -pipe -fno-common conftest.c  -L. -L/opt/local/lib -L/opt/local/lib/postgresql83 -L/opt/local/lib/postgresql83/ -L. -L/opt/local/lib     -lruby-static -lpq  -lpthread -ldl -lobjc  "
+/opt/local/lib/ruby/1.8/mkmf.rb:225: warning: Insecure world writable dir /opt/local/lib/postgresql83 in PATH, mode 040777
 checked program was:
 /* begin */
 1: /*top*/
@@ -12,7 +13,7 @@ checked program was:
 
 have_header: checking for libpq-fe.h... -------------------- yes
 
-"cc -E -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC  conftest.c -o conftest.i"
+"/usr/bin/cpp-4.0 -I. -I/opt/local/lib/ruby/1.8/i686-darwin9.6.0 -I. -I/opt/local/include/postgresql83 -I/opt/local/include/postgresql83/server/ -I/opt/local/include  -O2  -fno-common -pipe -fno-common  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include <libpq-fe.h>
@@ -22,7 +23,7 @@ checked program was:
 
 have_header: checking for libpq/libpq-fs.h... -------------------- yes
 
-"cc -E -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC  conftest.c -o conftest.i"
+"/usr/bin/cpp-4.0 -I. -I/opt/local/lib/ruby/1.8/i686-darwin9.6.0 -I. -I/opt/local/include/postgresql83 -I/opt/local/include/postgresql83/server/ -I/opt/local/include  -O2  -fno-common -pipe -fno-common  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include <libpq/libpq-fs.h>
@@ -32,7 +33,7 @@ checked program was:
 
 have_header: checking for postgres.h... -------------------- yes
 
-"cc -E -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC  conftest.c -o conftest.i"
+"/usr/bin/cpp-4.0 -I. -I/opt/local/lib/ruby/1.8/i686-darwin9.6.0 -I. -I/opt/local/include/postgresql83 -I/opt/local/include/postgresql83/server/ -I/opt/local/include  -O2  -fno-common -pipe -fno-common  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include <postgres.h>
@@ -42,7 +43,7 @@ checked program was:
 
 have_header: checking for mb/pg_wchar.h... -------------------- yes
 
-"cc -E -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC  conftest.c -o conftest.i"
+"/usr/bin/cpp-4.0 -I. -I/opt/local/lib/ruby/1.8/i686-darwin9.6.0 -I. -I/opt/local/include/postgresql83 -I/opt/local/include/postgresql83/server/ -I/opt/local/include  -O2  -fno-common -pipe -fno-common  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include <mb/pg_wchar.h>
@@ -52,7 +53,7 @@ checked program was:
 
 have_header: checking for catalog/pg_type.h... -------------------- yes
 
-"cc -E -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC  conftest.c -o conftest.i"
+"/usr/bin/cpp-4.0 -I. -I/opt/local/lib/ruby/1.8/i686-darwin9.6.0 -I. -I/opt/local/include/postgresql83 -I/opt/local/include/postgresql83/server/ -I/opt/local/include  -O2  -fno-common -pipe -fno-common  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include <catalog/pg_type.h>
@@ -62,7 +63,7 @@ checked program was:
 
 have_func: checking for PQsetClientEncoding()... -------------------- yes
 
-"cc -o conftest -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC conftest.c  -L"." -L"/usr/lib" -L"/usr/lib" -L.  -rdynamic -Wl,-export-dynamic    -lpq  -lruby1.8-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+"/usr/bin/gcc-4.0 -o conftest -I. -I/opt/local/lib/ruby/1.8/i686-darwin9.6.0 -I. -I/opt/local/include/postgresql83 -I/opt/local/include/postgresql83/server/ -I/opt/local/include  -O2  -fno-common -pipe -fno-common conftest.c  -L. -L/opt/local/lib -L/opt/local/lib/postgresql83 -L/opt/local/lib/postgresql83/ -L. -L/opt/local/lib    -lpq  -lruby-static -lpq  -lpthread -ldl -lobjc  "
 conftest.c: In function ‘t’:
 conftest.c:3: error: ‘PQsetClientEncoding’ undeclared (first use in this function)
 conftest.c:3: error: (Each undeclared identifier is reported only once
@@ -74,7 +75,7 @@ checked program was:
 3: int t() { void ((*volatile p)()); p = (void ((*)()))PQsetClientEncoding; return 0; }
 /* end */
 
-"cc -o conftest -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC conftest.c  -L"." -L"/usr/lib" -L"/usr/lib" -L.  -rdynamic -Wl,-export-dynamic    -lpq  -lruby1.8-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+"/usr/bin/gcc-4.0 -o conftest -I. -I/opt/local/lib/ruby/1.8/i686-darwin9.6.0 -I. -I/opt/local/include/postgresql83 -I/opt/local/include/postgresql83/server/ -I/opt/local/include  -O2  -fno-common -pipe -fno-common conftest.c  -L. -L/opt/local/lib -L/opt/local/lib/postgresql83 -L/opt/local/lib/postgresql83/ -L. -L/opt/local/lib    -lpq  -lruby-static -lpq  -lpthread -ldl -lobjc  "
 checked program was:
 /* begin */
 1: /*top*/
@@ -86,7 +87,7 @@ checked program was:
 
 have_func: checking for pg_encoding_to_char()... -------------------- yes
 
-"cc -o conftest -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC conftest.c  -L"." -L"/usr/lib" -L"/usr/lib" -L.  -rdynamic -Wl,-export-dynamic    -lpq  -lruby1.8-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+"/usr/bin/gcc-4.0 -o conftest -I. -I/opt/local/lib/ruby/1.8/i686-darwin9.6.0 -I. -I/opt/local/include/postgresql83 -I/opt/local/include/postgresql83/server/ -I/opt/local/include  -O2  -fno-common -pipe -fno-common conftest.c  -L. -L/opt/local/lib -L/opt/local/lib/postgresql83 -L/opt/local/lib/postgresql83/ -L. -L/opt/local/lib    -lpq  -lruby-static -lpq  -lpthread -ldl -lobjc  "
 conftest.c: In function ‘t’:
 conftest.c:3: error: ‘pg_encoding_to_char’ undeclared (first use in this function)
 conftest.c:3: error: (Each undeclared identifier is reported only once
@@ -98,7 +99,7 @@ checked program was:
 3: int t() { void ((*volatile p)()); p = (void ((*)()))pg_encoding_to_char; return 0; }
 /* end */
 
-"cc -o conftest -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC conftest.c  -L"." -L"/usr/lib" -L"/usr/lib" -L.  -rdynamic -Wl,-export-dynamic    -lpq  -lruby1.8-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+"/usr/bin/gcc-4.0 -o conftest -I. -I/opt/local/lib/ruby/1.8/i686-darwin9.6.0 -I. -I/opt/local/include/postgresql83 -I/opt/local/include/postgresql83/server/ -I/opt/local/include  -O2  -fno-common -pipe -fno-common conftest.c  -L. -L/opt/local/lib -L/opt/local/lib/postgresql83 -L/opt/local/lib/postgresql83/ -L. -L/opt/local/lib    -lpq  -lruby-static -lpq  -lpthread -ldl -lobjc  "
 checked program was:
 /* begin */
 1: /*top*/
@@ -110,7 +111,7 @@ checked program was:
 
 have_func: checking for PQfreemem()... -------------------- yes
 
-"cc -o conftest -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC conftest.c  -L"." -L"/usr/lib" -L"/usr/lib" -L.  -rdynamic -Wl,-export-dynamic    -lpq  -lruby1.8-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+"/usr/bin/gcc-4.0 -o conftest -I. -I/opt/local/lib/ruby/1.8/i686-darwin9.6.0 -I. -I/opt/local/include/postgresql83 -I/opt/local/include/postgresql83/server/ -I/opt/local/include  -O2  -fno-common -pipe -fno-common conftest.c  -L. -L/opt/local/lib -L/opt/local/lib/postgresql83 -L/opt/local/lib/postgresql83/ -L. -L/opt/local/lib    -lpq  -lruby-static -lpq  -lpthread -ldl -lobjc  "
 conftest.c: In function ‘t’:
 conftest.c:3: error: ‘PQfreemem’ undeclared (first use in this function)
 conftest.c:3: error: (Each undeclared identifier is reported only once
@@ -122,7 +123,7 @@ checked program was:
 3: int t() { void ((*volatile p)()); p = (void ((*)()))PQfreemem; return 0; }
 /* end */
 
-"cc -o conftest -I. -I/usr/lib/ruby/1.8/i486-linux -I. -I/usr/include/postgresql -I/usr/include/postgresql/8.2/server  -fno-strict-aliasing -g -O2  -fPIC conftest.c  -L"." -L"/usr/lib" -L"/usr/lib" -L.  -rdynamic -Wl,-export-dynamic    -lpq  -lruby1.8-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+"/usr/bin/gcc-4.0 -o conftest -I. -I/opt/local/lib/ruby/1.8/i686-darwin9.6.0 -I. -I/opt/local/include/postgresql83 -I/opt/local/include/postgresql83/server/ -I/opt/local/include  -O2  -fno-common -pipe -fno-common conftest.c  -L. -L/opt/local/lib -L/opt/local/lib/postgresql83 -L/opt/local/lib/postgresql83/ -L. -L/opt/local/lib    -lpq  -lruby-static -lpq  -lpthread -ldl -lobjc  "
 checked program was:
 /* begin */
 1: /*top*/
