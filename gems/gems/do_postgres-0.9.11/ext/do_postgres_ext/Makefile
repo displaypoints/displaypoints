@@ -4,63 +4,65 @@ SHELL = /bin/sh
 #### Start of system configuration section. ####
 
 srcdir = .
-topdir = /opt/local/lib/ruby/1.8/i686-darwin9.6.0
+topdir = /usr/lib/ruby/1.8/i686-linux
 hdrdir = $(topdir)
 VPATH = $(srcdir):$(topdir):$(hdrdir)
-prefix = $(DESTDIR)/opt/local
 exec_prefix = $(prefix)
-sitedir = $(prefix)/lib/ruby/site_ruby
+prefix = $(DESTDIR)/usr
+sharedstatedir = $(prefix)/com
+mandir = $(DESTDIR)/usr/share/man
+psdir = $(docdir)
+oldincludedir = $(DESTDIR)/usr/include
+localedir = $(datarootdir)/locale
+bindir = $(exec_prefix)/bin
+libexecdir = $(exec_prefix)/libexec
+sitedir = $(DESTDIR)/usr/lib/ruby/site_ruby
+htmldir = $(docdir)
+vendorarchdir = $(vendorlibdir)/$(sitearch)
+includedir = $(prefix)/include
+infodir = $(DESTDIR)/usr/share/info
+vendorlibdir = $(vendordir)/$(ruby_version)
+sysconfdir = $(DESTDIR)/etc
+libdir = $(exec_prefix)/lib
+sbindir = $(exec_prefix)/sbin
 rubylibdir = $(libdir)/ruby/$(ruby_version)
 docdir = $(datarootdir)/doc/$(PACKAGE)
 dvidir = $(docdir)
+vendordir = $(libdir)/ruby/vendor_ruby
 datarootdir = $(prefix)/share
-archdir = $(rubylibdir)/$(arch)
-sbindir = $(exec_prefix)/sbin
-psdir = $(docdir)
-vendordir = $(prefix)/lib/ruby/vendor_ruby
-localedir = $(datarootdir)/locale
-htmldir = $(docdir)
-datadir = $(datarootdir)
-includedir = $(prefix)/include
-infodir = $(datarootdir)/info
-sysconfdir = $(prefix)/etc
-libdir = $(exec_prefix)/lib
-mandir = $(DESTDIR)/opt/local/share/man
-sharedstatedir = $(prefix)/com
-oldincludedir = $(DESTDIR)/usr/include
 pdfdir = $(docdir)
+archdir = $(rubylibdir)/$(arch)
 sitearchdir = $(sitelibdir)/$(sitearch)
-vendorarchdir = $(vendorlibdir)/$(vendorarch)
-localstatedir = $(prefix)/var
-bindir = $(exec_prefix)/bin
-vendorlibdir = $(vendordir)/$(ruby_version)
+datadir = $(DESTDIR)/usr/share
+localstatedir = $(DESTDIR)/var/lib
 sitelibdir = $(sitedir)/$(ruby_version)
-libexecdir = $(exec_prefix)/libexec
 
-CC = /usr/bin/gcc-4.0
+CC = i686-pc-linux-gnu-gcc
 LIBRUBY = $(LIBRUBY_SO)
 LIBRUBY_A = lib$(RUBY_SO_NAME)-static.a
-LIBRUBYARG_SHARED = -l$(RUBY_SO_NAME)
+LIBRUBYARG_SHARED = -Wl,-R -Wl,$(libdir) -L$(libdir) -l$(RUBY_SO_NAME)
 LIBRUBYARG_STATIC = -l$(RUBY_SO_NAME)-static
 
 RUBY_EXTCONF_H = 
-CFLAGS   =  -fno-common -O2  -fno-common -pipe -fno-common -Wall  
-INCFLAGS = -I. -I. -I/opt/local/lib/ruby/1.8/i686-darwin9.6.0 -I.
-DEFS     = 
-CPPFLAGS = -DHAVE_LIBPQ_FE_H -DHAVE_LIBPQ_LIBPQ_FS_H -DHAVE_POSTGRES_H -DHAVE_MB_PG_WCHAR_H -DHAVE_CATALOG_PG_TYPE_H -DHAVE_PQSETCLIENTENCODING -DHAVE_PG_ENCODING_TO_CHAR -DHAVE_PQFREEMEM -I/opt/local/include/postgresql83 -I/opt/local/include/postgresql83/server/ -I/opt/local/include 
+CFLAGS   =  -fPIC -march=athlon-xp -O2 -pipe -mno-tls-direct-seg-refs -fno-strict-aliasing  -fPIC $(cflags) -Wall  
+INCFLAGS = -I. -I. -I/usr/lib/ruby/1.8/i686-linux -I.
+DEFS     = -D_FILE_OFFSET_BITS=64
+CPPFLAGS = -DHAVE_LIBPQ_FE_H -DHAVE_LIBPQ_LIBPQ_FS_H -DHAVE_POSTGRES_H -DHAVE_MB_PG_WCHAR_H -DHAVE_CATALOG_PG_TYPE_H -DHAVE_PQSETCLIENTENCODING -DHAVE_PG_ENCODING_TO_CHAR -DHAVE_PQFREEMEM -I/usr/include/postgresql/libpq-4 -I/usr/include/postgresql/libpq-4/server  -D_FILE_OFFSET_BITS=64 
 CXXFLAGS = $(CFLAGS) 
-DLDFLAGS = -L. -L/opt/local/lib  
-LDSHARED = cc -dynamic -bundle -undefined suppress -flat_namespace
-AR = ar
+ldflags  = -L. -Wl,-O1 -rdynamic -Wl,-export-dynamic
+dldflags = 
+archflag = 
+DLDFLAGS = $(ldflags) $(dldflags) $(archflag)
+LDSHARED = $(CC) -shared
+AR = i686-pc-linux-gnu-ar
 EXEEXT = 
 
-RUBY_INSTALL_NAME = ruby
-RUBY_SO_NAME = ruby
-arch = i686-darwin9.6.0
-sitearch = i686-darwin9.6.0
-vendorarch = i686-darwin9.6.0
+RUBY_INSTALL_NAME = ruby18
+RUBY_SO_NAME = ruby18
+arch = i686-linux
+sitearch = i686-linux
 ruby_version = 1.8
-ruby = /opt/local/bin/ruby
+ruby = /usr/bin/ruby18
 RUBY = $(ruby)
 RM = rm -f
 MAKEDIRS = mkdir -p
@@ -73,8 +75,8 @@ COPY = cp
 
 preload = 
 
-libpath = . $(libdir) /opt/local/lib/postgresql83 /opt/local/lib/postgresql83/
-LIBPATH =  -L. -L$(libdir) -L/opt/local/lib/postgresql83 -L/opt/local/lib/postgresql83/
+libpath = . $(libdir) /usr/lib
+LIBPATH =  -L. -L$(libdir) -Wl,-R$(libdir) -L/usr/lib -Wl,-R/usr/lib
 DEFFILE = 
 
 CLEANFILES = mkmf.log
@@ -84,20 +86,21 @@ extout =
 extout_prefix = 
 target_prefix = 
 LOCAL_LIBS = 
-LIBS = $(LIBRUBYARG_SHARED) -lpq  -lpthread -ldl -lobjc  
+LIBS = $(LIBRUBYARG_SHARED) -lpq  -ldl -lcrypt -lm   -lc
 SRCS = do_postgres_ext.c
 OBJS = do_postgres_ext.o
 TARGET = do_postgres_ext
-DLLIB = $(TARGET).bundle
+DLLIB = $(TARGET).so
 EXTSTATIC = 
 STATIC_LIB = 
 
+BINDIR        = $(bindir)
 RUBYCOMMONDIR = $(sitedir)$(target_prefix)
-RUBYLIBDIR    = $(sitelibdir)$(target_prefix)
-RUBYARCHDIR   = $(sitearchdir)$(target_prefix)
+RUBYLIBDIR = /data/merb/dp-admanager/releases/20090307070358/gems/gems/do_postgres-0.9.11/lib$(target_prefix)
+RUBYARCHDIR = /data/merb/dp-admanager/releases/20090307070358/gems/gems/do_postgres-0.9.11/lib$(target_prefix)
 
 TARGET_SO     = $(DLLIB)
-CLEANLIBS     = $(TARGET).bundle $(TARGET).il? $(TARGET).tds $(TARGET).map
+CLEANLIBS     = $(TARGET).so $(TARGET).il? $(TARGET).tds $(TARGET).map
 CLEANOBJS     = *.o *.a *.s[ol] *.pdb *.exp *.bak
 
 all:		$(DLLIB)

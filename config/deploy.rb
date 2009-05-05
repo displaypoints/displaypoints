@@ -9,7 +9,7 @@ set :application, "dp-admanager"
 set :user, 'app'
 set :runner, 'app'
 
-set :repository,  "git@github.com:downtowncartel/dp-admanager.git"
+set :repository,  "git@github.com:displaypoints/displaypoints.git"
 set :scm, :git
 set :deploy_to, "/data/merb/#{application}"
 set :deploy_via, :remote_cache
