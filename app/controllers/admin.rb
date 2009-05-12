@@ -1,3 +1,5 @@
+require 'fileutils'
+   
 class Admin < Application
   before :ensure_authenticated
   before :ensure_displaypoints
@@ -7,6 +9,7 @@ class Admin < Application
   end
 
   def gen_content
+    FileUtils.rm_rf '/tmp/dp'
     dbase = DeployBase.first
     publisher = Publisher.new(dbase)
     publisher.build
